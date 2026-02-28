@@ -1,0 +1,1056 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>あなたの「隠れた恋愛才能」診断🎀</title>
+
+    <!-- 角丸の可愛い日本語フォントと、太字英字フォント（Outfit） -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@500;700;900&family=Outfit:wght@700;900&display=swap"
+        rel="stylesheet">
+
+    <!-- 画像保存用ライブラリ -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+
+    <style>
+        /* =======================================================
+           Y2Kレトロ × ニュアンスくすみカラー スタイル定義
+        ======================================================= */
+        :root {
+            --color-pink: #F196A3;
+            /* ハートフェルトピンク */
+            --color-lavender: #E6E6FA;
+            /* 淡いラベンダー */
+            --color-mint: #BFCBA8;
+            /* くすみミント */
+            --color-text: #5C5C5C;
+            /* やさしいテキスト色 */
+            --color-bg: #FCF8F5;
+            /* ウォームホワイト */
+            --color-btn-shadow-light: #ffffff;
+            --color-btn-shadow-dark: rgba(200, 200, 200, 0.5);
+        }
+
+        body {
+            font-family: 'M PLUS Rounded 1c', sans-serif;
+            background-color: var(--color-bg);
+            /* 極薄のグリッド模様（レトロ感） */
+            background-image:
+                linear-gradient(rgba(241, 150, 163, 0.15) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(241, 150, 163, 0.15) 1px, transparent 1px);
+            background-size: 20px 20px;
+            color: var(--color-text);
+            margin: 0;
+            padding: 20px 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        /* 抽象的な幾何学シェイプたち */
+        .bg-shapes {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+            overflow: hidden;
+        }
+
+        .shape-blob {
+            position: absolute;
+            border-radius: 50%;
+            opacity: 0.4;
+            filter: blur(40px);
+            animation: floatBlob 15s infinite alternate ease-in-out;
+        }
+
+        .blob1 {
+            top: -5%;
+            left: -10%;
+            width: 300px;
+            height: 300px;
+            background: var(--color-pink);
+        }
+
+        .blob2 {
+            top: 60%;
+            right: -10%;
+            width: 250px;
+            height: 300px;
+            background: var(--color-lavender);
+            animation-delay: -5s;
+        }
+
+        .blob3 {
+            top: 30%;
+            left: 70%;
+            width: 200px;
+            height: 200px;
+            background: var(--color-mint);
+            animation-delay: -2s;
+        }
+
+        @keyframes floatBlob {
+            0% {
+                transform: translate(0, 0) scale(1);
+            }
+
+            100% {
+                transform: translate(30px, -30px) scale(1.1);
+            }
+        }
+
+        /* === アプリコンテナ === */
+        #app {
+            background: rgba(252, 248, 245, 0.7);
+            /* 半透明グラスモーフィズム */
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.6);
+            border-radius: 30px;
+            box-shadow: 0 15px 35px rgba(241, 150, 163, 0.15), inset 0 0 0 1px rgba(255, 255, 255, 0.8);
+            width: 90%;
+            max-width: 480px;
+            padding: 40px 25px;
+            text-align: center;
+            box-sizing: border-box;
+            position: relative;
+            z-index: 1;
+        }
+
+        h1 {
+            color: var(--color-pink);
+            font-size: 1.5rem;
+            margin-bottom: 25px;
+            font-weight: 900;
+            letter-spacing: 2px;
+            text-shadow: 2px 2px 0px rgba(255, 255, 255, 0.8);
+        }
+
+        /* Y2K風の英字タイトル */
+        .title-en {
+            font-family: 'Outfit', sans-serif;
+            font-size: 0.8rem;
+            color: var(--color-mint);
+            letter-spacing: 3px;
+            display: block;
+            margin-bottom: 5px;
+            text-transform: uppercase;
+        }
+
+        h2 {
+            font-size: 1.2rem;
+            color: var(--color-text);
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+
+        p {
+            font-size: 1rem;
+            line-height: 1.6;
+            margin-bottom: 25px;
+            font-weight: 500;
+        }
+
+        /* === 進捗表示 === */
+        #progress-text {
+            font-size: 0.85rem;
+            color: var(--color-text);
+            margin-bottom: 20px;
+            font-weight: 700;
+            display: inline-block;
+            background: var(--color-lavender);
+            padding: 6px 16px;
+            border-radius: 20px;
+            border: 2px solid #fff;
+            box-shadow: 2px 2px 0px rgba(241, 150, 163, 0.3);
+        }
+
+        /* === 選択肢ボタン (クレイモーフィズム・ぷっくり) === */
+        .choices button {
+            width: 100%;
+            padding: 16px 20px;
+            margin-bottom: 15px;
+            background-color: var(--color-bg);
+            border: none;
+            border-radius: 20px;
+            color: var(--color-text);
+            font-size: 0.95rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            text-align: left;
+            font-family: inherit;
+
+            /* クレイモーフィズムの影（ぷっくり感） */
+            box-shadow:
+                -4px -4px 8px var(--color-btn-shadow-light),
+                4px 4px 8px var(--color-btn-shadow-dark),
+                inset 2px 2px 4px rgba(255, 255, 255, 0.8),
+                inset -2px -2px 4px rgba(0, 0, 0, 0.05);
+        }
+
+        .choices button:hover {
+            background-color: var(--color-pink);
+            color: white;
+            box-shadow:
+                -4px -4px 8px var(--color-btn-shadow-light),
+                4px 4px 8px rgba(241, 150, 163, 0.4),
+                inset 2px 2px 4px rgba(255, 255, 255, 0.4),
+                inset -2px -2px 4px rgba(0, 0, 0, 0.1);
+            transform: translateY(-2px);
+        }
+
+        .choices button:active {
+            /* 押した時に凹む */
+            box-shadow:
+                inset 4px 4px 8px rgba(0, 0, 0, 0.1),
+                inset -4px -4px 8px rgba(255, 255, 255, 0.8);
+            transform: translateY(2px);
+        }
+
+        /* === 結果画面エリア (9:16 画像保存対応・トレカ風) === */
+        #capture-area-wrapper {
+            margin-bottom: 20px;
+            display: flex;
+            justify-content: center;
+        }
+
+        #capture-area {
+            /* 9:16比率に近いレイアウト。保存時に綺麗に見えるように */
+            width: 100%;
+            max-width: 360px;
+            aspect-ratio: 9 / 16;
+            background: #fff;
+            border-radius: 20px;
+            box-shadow: 0 10px 25px rgba(241, 150, 163, 0.2);
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            box-sizing: border-box;
+
+            /* カード内の背景: 少しだけ柄を入れる */
+            background-image: radial-gradient(var(--color-lavender) 2px, transparent 2px);
+            background-size: 20px 20px;
+            background-color: var(--color-bg);
+        }
+
+        /* トレカ風の枠線 */
+        .card-inner-border {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            right: 10px;
+            bottom: 10px;
+            border: 1px solid rgba(241, 150, 163, 0.3);
+            border-radius: 12px;
+            pointer-events: none;
+            backdrop-filter: blur(2px);
+        }
+
+        .capture-header {
+            font-family: 'Outfit', sans-serif;
+            color: var(--color-text);
+            font-size: 0.7rem;
+            letter-spacing: 2px;
+            margin-bottom: auto;
+            /* 上部へ追いやる */
+            opacity: 0.7;
+            padding-top: 15px;
+            z-index: 2;
+        }
+
+        .capture-content {
+            z-index: 2;
+            background: rgba(255, 255, 255, 0.85);
+            border-radius: 15px;
+            padding: 25px 15px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+            width: 90%;
+            margin-bottom: 20px;
+        }
+
+        .result-crown {
+            font-size: 2.5rem;
+            margin-bottom: 5px;
+            display: block;
+        }
+
+        #result-title {
+            color: var(--color-pink);
+            font-size: 1.4rem;
+            margin: 5px 0 0 0;
+            line-height: 1.4;
+            font-weight: 900;
+        }
+
+        .result-en {
+            font-family: 'Outfit', sans-serif;
+            color: var(--color-mint);
+            font-size: 0.9rem;
+            font-weight: 700;
+            margin-top: 5px;
+            margin-bottom: 15px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        #result-description {
+            font-size: 0.9rem;
+            line-height: 1.7;
+            color: var(--color-text);
+            text-align: left;
+            margin: 0;
+            font-weight: 500;
+        }
+
+        .capture-footer {
+            font-family: 'Outfit', sans-serif;
+            color: var(--color-pink);
+            font-size: 0.75rem;
+            opacity: 0.8;
+            margin-top: auto;
+            /* 下部へ追いやる */
+            padding-bottom: 15px;
+            z-index: 2;
+        }
+
+        /* === アクションボタン群 === */
+        .action-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .btn {
+            border: none;
+            border-radius: 15px;
+            padding: 14px;
+            font-family: inherit;
+            font-weight: 700;
+            cursor: pointer;
+            font-size: 0.9rem;
+            transition: all 0.2s;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-save {
+            background: var(--color-pink);
+            color: white;
+        }
+
+        .btn-copy {
+            background: var(--color-mint);
+            color: white;
+        }
+
+        .btn-reload {
+            background: transparent;
+            border: 1.5px dashed var(--color-pink);
+            color: var(--color-pink);
+        }
+
+        .share-header {
+            font-size: 1rem;
+            margin-top: 15px;
+            color: var(--color-pink);
+        }
+
+        .share-message {
+            font-size: 0.75rem;
+            margin-bottom: 10px;
+            color: var(--color-text);
+            opacity: 0.8;
+        }
+
+        .share-buttons {
+            display: flex;
+            gap: 8px;
+            justify-content: center;
+        }
+
+        .share-buttons .btn {
+            flex: 1;
+            padding: 10px;
+            font-size: 0.8rem;
+        }
+
+        .btn-ig {
+            background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+            color: white;
+        }
+
+        .btn-threads {
+            background: #000;
+            color: white;
+        }
+
+        .btn-x {
+            background: #555;
+            color: white;
+        }
+
+        .btn-line {
+            background: #06C755;
+            color: white;
+        }
+
+        .btn:hover {
+            opacity: 0.9;
+            transform: scale(1.02);
+        }
+
+        /* === 広告枠スタイル === */
+        .ad-space {
+            margin: 20px auto;
+            padding: 15px;
+            border: 1px dashed var(--color-pink);
+            border-radius: 20px;
+            background-color: rgba(255, 255, 255, 0.5);
+            text-align: center;
+        }
+
+        .ad-title {
+            font-size: 0.75rem;
+            color: var(--color-mint);
+            margin-bottom: 8px;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+
+        .ad-banner {
+            font-size: 0.8rem;
+            color: #ccc;
+            min-height: 50px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .ad-space .recommend-text {
+            font-size: 0.85rem;
+            color: var(--color-text);
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+
+        .ad-space .affiliate-button {
+            display: block;
+            background-color: var(--color-pink);
+            color: white;
+            padding: 12px 20px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: bold;
+            margin: 10px auto;
+            max-width: 250px;
+            transition: all 0.3s ease;
+        }
+
+        .ad-space .main-app-button {
+            background-color: #ff8c00;
+            /* オレンジ系 */
+            font-size: 1rem;
+        }
+
+        .ad-space img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin: 10px auto;
+            border-radius: 10px;
+        }
+
+        /* 年齢制限注釈スタイル */
+        .age-notice {
+            font-size: 0.7rem;
+            color: #999;
+            margin-top: 30px;
+            padding: 10px;
+            border-top: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        /* オリジナルバナー用スタイル */
+        .custom-banner {
+            display: block;
+            position: relative;
+            width: 100%;
+            max-width: 320px;
+            margin: 0 auto;
+            border-radius: 16px;
+            overflow: hidden;
+            text-decoration: none;
+            color: #fff;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .custom-banner:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .urano-banner {
+            background: linear-gradient(135deg, #0e5c5e 0%, #178385 50%, #1e9a9c 100%);
+            padding: 16px;
+            text-align: left;
+        }
+
+        .banner-header {
+            font-size: 0.7rem;
+            font-weight: 700;
+            color: #bbf0f1;
+            margin-bottom: 4px;
+            letter-spacing: 0.5px;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+        }
+
+        .banner-title {
+            font-size: 1.1rem;
+            font-weight: 900;
+            line-height: 1.35;
+            margin: 0 0 10px 0;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+        }
+
+        .banner-highlight {
+            color: #ffeb3b;
+        }
+
+        .banner-features {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 4px;
+            margin-bottom: 12px;
+        }
+
+        .feature-badge {
+            background: #fff;
+            color: #0e5c5e;
+            font-size: 0.65rem;
+            font-weight: 700;
+            padding: 3px 6px;
+            border-radius: 8px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
+        }
+
+        .banner-cta {
+            text-align: center;
+            background: linear-gradient(to right, #ff4763, #ff8eaa);
+            color: white;
+            padding: 10px 0;
+            border-radius: 20px;
+            font-weight: 900;
+            font-size: 0.95rem;
+            box-shadow: 0 4px 8px rgba(255, 71, 99, 0.4);
+            animation: pulse-btn 2.5s infinite;
+        }
+
+        @keyframes pulse-btn {
+            0% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.02);
+            }
+
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        /* -----------------------
+           ケアプリ (iOS用) バナー
+           ----------------------- */
+        .careapp-banner {
+            /* 宇宙/夜空を思わせる深いネオン系グラデーション */
+            background: linear-gradient(135deg, #0a0133 0%, #2f0854 40%, #521882 100%);
+            padding: 16px;
+            text-align: left;
+            position: relative;
+        }
+
+        /* 背景に星空のキラキラを演出 */
+        .careapp-banner::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: radial-gradient(white 1px, transparent 1px), radial-gradient(white 1px, transparent 1px);
+            background-size: 20px 20px, 15px 15px;
+            background-position: 0 0, 10px 10px;
+            opacity: 0.1;
+            pointer-events: none;
+        }
+
+        .careapp-banner .banner-header {
+            font-size: 0.75rem;
+            font-weight: 900;
+            color: #ff66cc;
+            /* ピンクネオン風 */
+            margin-bottom: 4px;
+            text-shadow: 0 0 5px rgba(255, 102, 204, 0.6);
+            letter-spacing: 1px;
+        }
+
+        .careapp-banner .banner-title {
+            font-size: 1.15rem;
+            font-weight: 900;
+            line-height: 1.4;
+            color: #e0f7ff;
+            margin: 0 0 10px 0;
+            text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.8);
+        }
+
+        .careapp-banner .banner-highlight {
+            color: #00e5ff;
+            /* シアンネオン風 */
+            text-shadow: 0 0 8px rgba(0, 229, 255, 0.5);
+            font-size: 1.25rem;
+        }
+
+        .careapp-banner .feature-badge {
+            background: rgba(255, 102, 204, 0.2);
+            border: 1px solid #ff66cc;
+            color: #fff;
+            text-shadow: 0 0 2px #ff66cc;
+            font-size: 0.65rem;
+            font-weight: 700;
+            padding: 3px 6px;
+            border-radius: 8px;
+        }
+
+        .careapp-banner .banner-cta {
+            text-align: center;
+            background: linear-gradient(to right, #00c6ff, #0072ff);
+            color: white;
+            padding: 10px 0;
+            border-radius: 20px;
+            font-weight: 900;
+            font-size: 0.95rem;
+            box-shadow: 0 4px 10px rgba(0, 114, 255, 0.5);
+            animation: pulse-btn 2.5s infinite;
+            position: relative;
+            z-index: 2;
+        }
+
+        .careapp-banner .banner-features {
+            position: relative;
+            z-index: 2;
+        }
+
+        /* ユーティリティ */
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="bg-shapes">
+        <div class="shape-blob blob1"></div>
+        <div class="shape-blob blob2"></div>
+        <div class="shape-blob blob3"></div>
+    </div>
+
+    <div id="app">
+        <span class="title-en">Love Talent Test</span>
+        <h1>隠れた恋愛才能<br>診断🎀</h1>
+
+        <!-- クイズ画面 -->
+        <div id="quiz-container">
+            <div id="progress-text">Q1 / 10</div>
+            <h2 id="question-text">読み込み中...</h2>
+            <div class="choices" id="choices-container"></div>
+        </div>
+
+        <!-- 結果画面 (初期は非表示) -->
+        <div id="result-container" class="hidden">
+
+            <!-- 上部広告枠 (自動振り分け) -->
+            <div class="ad-space top-ad">
+                <div class="ad-title">RECOMMEND FOR YOU</div>
+                <div id="top-ad-content"></div>
+            </div>
+
+            <div id="capture-area-wrapper">
+                <div id="capture-area">
+                    <div class="card-inner-border"></div>
+
+                    <div class="capture-header">
+                        # HIDDEN LOVE TALENT TEST
+                    </div>
+
+                    <div class="capture-content">
+                        <span class="result-crown">👑</span>
+                        <h3 id="result-title"></h3>
+                        <div class="result-en" id="result-en"></div>
+                        <p id="result-description"></p>
+                    </div>
+
+                    <div class="capture-footer">
+                        URL: examplesite.com/love-test
+                    </div>
+                </div>
+            </div>
+
+            <!-- アクションボタン群 -->
+            <div class="action-buttons">
+                <h3 class="share-header">Share with friends!</h3>
+                <div class="share-message">
+                    インスタやThreadsには保存した画像を<br>ステッカー感覚で載せてね📸
+                </div>
+
+                <button class="btn btn-save" onclick="saveAsImage()">📸 結果画像を保存する (9:16)</button>
+                <button class="btn btn-copy" onclick="copyToClipboard()">📋 テキストとURLをコピー</button>
+
+                <div class="share-buttons">
+                    <button class="btn btn-ig" onclick="dummyShare('Instagram')">Instagram</button>
+                    <button class="btn btn-threads" onclick="dummyShare('Threads')">Threads</button>
+                </div>
+                <div class="share-buttons">
+                    <button class="btn btn-x" onclick="shareX()">𝕏 (Twitter)</button>
+                    <button class="btn btn-line" onclick="shareLine()">LINE</button>
+                </div>
+
+                <button class="btn btn-reload" onclick="location.reload()">↺ 最初からやり直す</button>
+            </div>
+
+            <!-- 下部広告枠 (タイプ別) -->
+            <div class="ad-space bottom-ad">
+                <div class="ad-title">お役立ち恋愛情報</div>
+                <div id="bottom-ad-content"></div>
+            </div>
+
+            <!-- 年齢制限注釈 -->
+            <div class="age-notice">
+                ※占いは18歳以上（または20歳以上）の方が対象です。<br>
+                ※各サービスの利用規約をご確認の上、お楽しみください。
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const questions = [
+            {
+                text: "休日の午後はどう過ごすのが好き？",
+                choices: [
+                    { text: "A. カフェでのんびり読書☕️", type: "A" },
+                    { text: "B. 友達と買い物や遊びに行く🛍️", type: "B" },
+                    { text: "C. 家でリラックスして映画やゲーム🎬", type: "C" },
+                    { text: "D. アクティブにスポーツやアウトドア🏕️", type: "D" }
+                ]
+            },
+            {
+                text: "初対面の人と接するとき、どんな態度をとることが多い？",
+                choices: [
+                    { text: "A. 自分から積極的に話しかける🙋‍♀️", type: "B" },
+                    { text: "B. 相手が話しかけてくるのを待つ🫣", type: "C" },
+                    { text: "C. ニコニコしながら聞き役に徹する😊", type: "A" },
+                    { text: "D. 共通の話題を探りながら少しずつ話す💡", type: "D" }
+                ]
+            },
+            {
+                text: "恋人が落ち込んでいるとき、どうしてあげる？",
+                choices: [
+                    { text: "A. 美味しいものをご馳走したり、外に連れ出す🍰", type: "B" },
+                    { text: "B. とにかくじっくりと話を聞いてあげる👂", type: "A" },
+                    { text: "C. そっと寄り添い、静かな時間を共有する🫂", type: "C" },
+                    { text: "D. 解決策やアドバイスを論理的に提案する📝", type: "D" }
+                ]
+            },
+            {
+                text: "理想のデートプランはどれに一番近い？",
+                choices: [
+                    { text: "A. 話題のテーマパークやイベントで思い切りはしゃぐ🎡", type: "B" },
+                    { text: "B. おしゃれなレストランでロマンチックなディナー🥂", type: "D" },
+                    { text: "C. 美術館や水族館など、落ち着いた場所を巡る🐠", type: "A" },
+                    { text: "D. 家で一緒に料理を作って、のんびり過ごす🍳", type: "C" }
+                ]
+            },
+            {
+                text: "恋人と些細なことで喧嘩しちゃった！どう対応する？",
+                choices: [
+                    { text: "A. 少し時間を置いて冷静になってから自分から謝る🙇‍♀️", type: "C" },
+                    { text: "B. その場ですぐに話し合って解決しようとする🗣️", type: "D" },
+                    { text: "C. 相手が謝ってくるまで少し様子を見る👀", type: "B" },
+                    { text: "D. 何事もなかったかのように明るく振る舞って仲直りする🌟", type: "A" }
+                ]
+            },
+            {
+                text: "恋愛において、最も大切だと思うことは何？",
+                choices: [
+                    { text: "A. お互いの趣味や価値観が合うこと🤝", type: "D" },
+                    { text: "B. ドキドキするような刺激的な関係でいること🔥", type: "B" },
+                    { text: "C. 言葉にしなくても伝わる安心感や信頼感🍀", type: "C" },
+                    { text: "D. お互いが成長し合えるようなパートナーシップ🌱", type: "A" }
+                ]
+            },
+            {
+                text: "恋人からの連絡の頻度について、理想はどれ？",
+                choices: [
+                    { text: "A. 毎日こまめに連絡を取り合いたい📱", type: "A" },
+                    { text: "B. 用事があるときや、数日に1回程度でいい💌", type: "C" },
+                    { text: "C. お互いのペースに合わせて無理なく🕊️", type: "D" },
+                    { text: "D. 特に決まりは作らず、気まぐれでいい🎈", type: "B" }
+                ]
+            },
+            {
+                text: "サプライズプレゼントをされるなら、どんなものが嬉しい？",
+                choices: [
+                    { text: "A. ずっと欲しかったものをこっそり買ってくれていた🎁", type: "D" },
+                    { text: "B. 素敵なレストランでのディナーなどの体験🍝", type: "B" },
+                    { text: "C. 日常的に使えるちょっとした小物や消耗品💄", type: "C" },
+                    { text: "D. 思いのこもった手紙や手作りのもの💌", type: "A" }
+                ]
+            },
+            {
+                text: "恋人の過去の恋愛について、どう感じる？",
+                choices: [
+                    { text: "A. 全く気にしない、今の自分たちの方が大切🌈", type: "B" },
+                    { text: "B. 気になるけど、あえて聞かないようにする🤫", type: "C" },
+                    { text: "C. 隠し事なくすべて話してほしいと思う💬", type: "A" },
+                    { text: "D. 嫉妬してしまうので、絶対に聞きたくない😣", type: "D" }
+                ]
+            },
+            {
+                text: "将来、どんな関係の夫婦やカップルになりたい？",
+                choices: [
+                    { text: "A. いつまでも恋人同士のようなドキドキ感のある関係💞", type: "B" },
+                    { text: "B. 親友のようになんでも相談し合える関係👬", type: "D" },
+                    { text: "C. お互いの趣味や一人の時間を尊重し合える関係☕️", type: "C" },
+                    { text: "D. 笑いの絶えない、明るく楽しい家庭を築きたい🏡", type: "A" }
+                ]
+            }
+        ];
+
+        const resultsData = {
+            "A": {
+                title: "包容力抜群のオアシス",
+                en: "OASIS OF TOLERANCE",
+                description: "あなたの隠れた恋愛才能は、相手を底なしの優しさで包み込む『圧倒的な包容力』！ダメなところもひっくるめて受け入れてくれるあなたと一緒にいると、相手はまるでオアシスを見つけたかのように安心します✨"
+            },
+            "B": {
+                title: "太陽みたいなエナジー",
+                en: "SUNNY ENERGY",
+                description: "あなたの隠れた恋愛才能は、周りの空気を一瞬でパッと明るくする『ポジティブなエネルギー』！「この子と一緒にいると楽しい！」と思わせる天才。相手をグイグイ引っ張る魅力的なヒロインポジションです🌻"
+            },
+            "C": {
+                title: "マイペースな穏やか波",
+                en: "GENTLE WAVES",
+                description: "あなたの隠れた恋愛才能は、飾らない自然体でいられる『奇跡の穏やかさ』！無理して相手に合わせるのではなく、二人のペースを大切に育むことができる人。一緒にいるだけで心地よい最高のパートナーです☁️"
+            },
+            "D": {
+                title: "向上心あふれるパートナー",
+                en: "GROWING PARTNER",
+                description: "あなたの隠れた恋愛才能は、お互いのレベルをバッチリ高め合える『賢いコミュニケーション能力』！人生の良き理解者として最強のタッグを組める人です。誰もが羨む自立したカップルになれる才能の持ち主💎"
+            },
+            "MIX": {
+                title: "変幻自在のカメレオン",
+                en: "CHAMELEON CHARM",
+                description: "あなたの隠れた恋愛才能は、相手や状況に合わせて自由自在に自分を変えられる『抜群のバランス感覚』！時には甘え、時にはしっかりリードし、どんな相手も虜にしてしまうスーパーマルチプレイヤーです💫"
+            }
+        };
+
+        let currentQuestionIndex = 0;
+        let answers = { "A": 0, "B": 0, "C": 0, "D": 0 };
+        let currentResultTitle = "";
+
+        window.onload = function () {
+            showQuestion();
+        };
+
+        function showQuestion() {
+            const q = questions[currentQuestionIndex];
+            document.getElementById("progress-text").innerText = `Q${currentQuestionIndex + 1} / 10`;
+            document.getElementById("question-text").innerText = q.text;
+
+            const choicesContainer = document.getElementById("choices-container");
+            choicesContainer.innerHTML = "";
+
+            q.choices.forEach(choice => {
+                const button = document.createElement("button");
+                button.innerText = choice.text;
+
+                button.onclick = function () {
+                    answerQuestion(choice.type);
+                };
+                choicesContainer.appendChild(button);
+            });
+        }
+
+        function answerQuestion(selectedType) {
+            answers[selectedType]++;
+            currentQuestionIndex++;
+
+            if (currentQuestionIndex < questions.length) {
+                showQuestion();
+            } else {
+                showResult();
+            }
+        }
+
+        function showResult() {
+            document.getElementById("quiz-container").style.display = "none";
+            document.getElementById("result-container").classList.remove("hidden");
+            window.scrollTo(0, 0);
+
+            let maxCount = -1;
+            let resultTypeKey = "MIX";
+            let isTie = false;
+
+            for (const type in answers) {
+                if (answers[type] > maxCount) {
+                    maxCount = answers[type];
+                    resultTypeKey = type;
+                    isTie = false;
+                } else if (answers[type] === maxCount) {
+                    isTie = true;
+                }
+            }
+            if (isTie) {
+                resultTypeKey = "MIX";
+            }
+
+            const result = resultsData[resultTypeKey];
+            currentResultTitle = result.title;
+
+            document.getElementById("result-title").innerText = result.title;
+            document.getElementById("result-en").innerText = result.en;
+            document.getElementById("result-description").innerHTML = result.description.replace(/\n/g, '<br>');
+
+            // アフィリエイトリンクの動的表示を呼び出す
+            displayAffiliateLinks(result.title);
+        }
+
+        // ▼ アフィリエイト・デバイス自動振り分け機能 ▼
+
+        function getOS() {
+            const userAgent = navigator.userAgent || navigator.vendor || window.opera;
+            if (/android/i.test(userAgent)) return 'Android';
+            if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) return 'iOS';
+            return 'Other';
+        }
+
+        function displayAffiliateLinks(resultTitle) {
+            const topAdSpace = document.getElementById('top-ad-content');
+            const bottomAdSpace = document.getElementById('bottom-ad-content');
+            const os = getOS();
+
+            // 上部広告：デバイス別 (iOS: ケアプリ / Android: ウラーノ)
+            if (os === 'iOS') {
+                topAdSpace.innerHTML = `
+                    <a href='https://mttag.com/s/FVEwe5OMQ6c' rel='nofollow' target='_blank' class='custom-banner careapp-banner'>
+                        <div class='banner-header'>＼ 誰にも言えない悩み ／</div>
+                        <div class='banner-title'>チャットで<br><span class='banner-highlight'>叶えたい恋の悩み✨</span></div>
+                        <div class='banner-features'>
+                            <span class='feature-badge'>24時間365日</span>
+                            <span class='feature-badge'>匿名OK</span>
+                            <span class='feature-badge'>250名以上の専門家</span>
+                        </div>
+                        <div class='banner-cta'>ケアプリで今すぐ相談する ▶</div>
+                    </a>
+                    <img src='https://mttag.com/banner/FVEwe5OMQ6c' width='1' height='1' border='0' style='display:none;' />
+                `;
+            } else {
+                topAdSpace.innerHTML = `
+                    <a href='https://mttag.com/s/KOl3yRhOJtU' rel='nofollow' target='_blank' class='custom-banner urano-banner'>
+                        <div class='banner-header'>＼チャットで気軽に相談できる／</div>
+                        <div class='banner-title'>一流占い師がアナタの<br>悩みを<span class='banner-highlight'>解決に導く✨</span></div>
+                        <div class='banner-features'>
+                            <span class='feature-badge'>24時間365日OK</span>
+                            <span class='feature-badge'>簡単登録</span>
+                            <span class='feature-badge'>電話・メアド不要</span>
+                        </div>
+                        <div class='banner-cta'>ウラーノで今すぐ相談する ▶</div>
+                    </a>
+                    <img src='https://mttag.com/banner/KOl3yRhOJtU' width='1' height='1' border='0' style='display:none;' />
+                `;
+            }
+
+            // 下部広告：タイプ別
+            if (resultTitle.includes('太陽') || resultTitle.includes('包容力')) {
+                bottomAdSpace.innerHTML = `
+                    <p class="recommend-text">あなたの魅力をさらに輝かせる！</p>
+                    <a href='https://mttag.com/s/SxEQ5KFsReE' rel='nofollow' target='_blank'>
+                        <img src='https://mttag.com/banner/SxEQ5KFsReE' alt='占い師紹介リンク集１' border='0' />
+                    </a>
+                `;
+            } else {
+                bottomAdSpace.innerHTML = `
+                    <p class="recommend-text">あの人の本音、知りたい？</p>
+                    <a href='https://mttag.com/s/UJy-M-sarJ4' rel='nofollow' target='_blank'>
+                        <img src='https://mttag.com/banner/UJy-M-sarJ4' alt='占い師紹介リンク集２' border='0' />
+                    </a>
+                `;
+            }
+        }
+
+        // ▼ アクション機能 ▼
+
+        function shareX() {
+            const text = encodeURIComponent(`私の隠れた恋愛才能は「${currentResultTitle}」でした！💖\n\n#隠れた恋愛才能診断`);
+            const url = encodeURIComponent(window.location.href);
+            window.open(`https://twitter.com/intent/tweet?text=${text}&url=${url}`, '_blank');
+        }
+
+        function shareLine() {
+            const text = encodeURIComponent(`私の隠れた恋愛才能は「${currentResultTitle}」でした！💖\n\nここからやってみて！✨\n${window.location.href}`);
+            window.open(`https://line.me/R/msg/text/?${text}`, '_blank');
+        }
+
+        function dummyShare(snsName) {
+            alert(`【${snsName}でシェアする方法】\n\n① 上にある「📸 結果画像を保存する」ボタンで、結果の画像 (9:16) をスマホに保存してください。\n② ${snsName}のアプリを開いて、ストーリーズやフィードに画像を載せて投稿してね✨`);
+        }
+
+        function copyToClipboard() {
+            const tempText = `私の隠れた恋愛才能は「${currentResultTitle}」でした！💖\n\nみんなもここから診断してみてね！✨\n${window.location.href}`;
+            if (navigator.clipboard) {
+                navigator.clipboard.writeText(tempText).then(() => {
+                    alert("テキストとURLをコピーしたよ！💖\nSNSに貼り付けてシェアしてね！");
+                }).catch(err => {
+                    alert("コピーに失敗しちゃいました🥲");
+                });
+            } else {
+                prompt("下のテキストをコピーしてね！", tempText);
+            }
+        }
+
+        function saveAsImage() {
+            const target = document.getElementById("capture-area");
+            html2canvas(target, {
+                backgroundColor: "#FCF8F5",
+                scale: 2
+            }).then(canvas => {
+                const imgData = canvas.toDataURL("image/png");
+                const link = document.createElement("a");
+                link.download = "恋愛才能診断_Y2K.png";
+                link.href = imgData;
+                link.click();
+            }).catch(err => {
+                console.error("画像の保存に失敗しました。", err);
+                alert("画像の保存に失敗しました。もう一回やってみてね🥲");
+            });
+        }
+    </script>
+</body>
+
+</html>
