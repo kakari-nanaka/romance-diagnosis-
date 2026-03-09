@@ -1270,7 +1270,7 @@
 
     <div id="app">
         <span class="title-en">Love Talent Test</span>
-        <h1>隠れた恋愛才能<br>診断🎀</h1>
+        <h1>浮気されやすさ<br>診断🎀</h1>
 
         <!-- スタート画面 -->
         <div id="start-container">
@@ -1351,9 +1351,11 @@
                         <section class="future-prediction" id="future-prediction">
                             <h3><span>🔮</span> あなたの次の恋愛</h3>
                             <p id="prediction-text" class="analysis-text" style="text-align: center;"></p>
-                            <p id="future-detail-text" class="analysis-text" style="margin-top: 10px;"></p>
-                            <p style="color:#ff4757; font-weight:bold; margin-top: 15px;">※重要な注意点があります</p>
-                            <a href="javascript:void(0)" class="cta-button" style="margin-top: 15px;"
+                            <p id="future-detail-text" class="analysis-text"
+                                style="text-align: center; margin-top: 10px;"></p>
+                            <p style="color:#ff4757; font-weight:bold; margin-top: 15px; text-align: center;">
+                                ※重要な注意点があります</p>
+                            <a href="javascript:void(0)" class="cta-button" style="margin: 15px auto 0;"
                                 id="future-cta-btn">恋愛の未来を占う</a>
                         </section>
 
@@ -1383,7 +1385,7 @@
                         </div>
 
                         <div class="capture-footer-new">
-                            <div style="font-size: 0.9rem; color: var(--color-pink);">HIDDEN LOVE TALENT</div>
+                            <div style="font-size: 0.9rem; color: var(--color-pink);">浮気されやすさ診断</div>
                             <div style="display: flex; justify-content: space-between; margin-top: 5px;">
                                 <span>タイプ：<span id="footer-type-name"></span></span>
                                 <span>偏差値：<span id="footer-deviation"></span></span>
@@ -2048,7 +2050,24 @@
             // 相性占いセクションのボタン
             const compatCtaContainer = document.getElementById("compat-cta-button-container");
             if (compatCtaContainer) {
-                compatCtaContainer.innerHTML = `<a href="${linkUrl}" class="cta-button" target="_blank" style="font-size: 0.95rem; padding: 15px 20px;" onclick="trackEvent('affiliate_click', {partner: '${partnerName}', position: 'compat_cta', type: '${os}'})">無料で相性を占う ▶</a>`;
+                compatCtaContainer.innerHTML = `<a href="${linkUrl}" class="cta-button" target="_blank" style="font-size: 0.95rem; padding: 15px 20px; margin: 0 auto;" onclick="trackEvent('affiliate_click', {partner: '${partnerName}', position: 'compat_cta', type: '${os}'})">無料で相性を占う ▶</a>`;
+            }
+
+            // --- 今回の追加修正：消失していた下部広告枠（お役立ち恋愛情報）の復旧 ---
+            if (resultTitle.includes('陽キャ') || resultTitle.includes('カメレオン')) {
+                bottomAdSpace.innerHTML = `
+                    <p class="recommend-text">あなたの魅力をさらに輝かせる！</p>
+                    <a href='https://mttag.com/s/SxEQ5KFsReE' rel='nofollow' target='_blank' onclick="trackEvent('click_affiliate', { ad_name: 'mttag_1' })">
+                        <img src='https://mttag.com/banner/SxEQ5KFsReE' alt='占い師紹介リンク集１' border='0' />
+                    </a>
+                `;
+            } else {
+                bottomAdSpace.innerHTML = `
+                    <p class="recommend-text">あの人の本音、知りたい？</p>
+                    <a href='https://mttag.com/s/UJy-M-sarJ4' rel='nofollow' target='_blank' onclick="trackEvent('click_affiliate', { ad_name: 'mttag_2' })">
+                        <img src='https://mttag.com/banner/UJy-M-sarJ4' alt='占い師紹介リンク集２' border='0' />
+                    </a>
+                `;
             }
         }
 
