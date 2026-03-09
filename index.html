@@ -229,8 +229,9 @@
         #capture-area {
             /* 9:16比率に近いレイアウト。保存時に綺麗に見えるように */
             width: 100%;
-            max-width: 360px;
-            aspect-ratio: 9 / 16;
+            max-width: 380px;
+            /* 縦長になりすぎないよう制限を解除し、中身に合わせて伸びるように変更 */
+            min-height: 600px;
             background: #fff;
             border-radius: 20px;
             box-shadow: 0 10px 25px rgba(241, 150, 163, 0.2);
@@ -278,10 +279,60 @@
             z-index: 2;
             background: rgba(255, 255, 255, 0.85);
             border-radius: 15px;
-            padding: 25px 15px;
+            padding: 20px 15px;
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
             width: 90%;
             margin-bottom: 20px;
+        }
+
+        /* === 画像オーバーレイ用コンテナ === */
+        .result-image-container {
+            position: relative;
+            width: 100%;
+            border-radius: 12px;
+            overflow: hidden;
+            margin-bottom: 15px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .result-image-container .result-crown {
+            position: absolute;
+            top: 5px;
+            right: 10px;
+            z-index: 10;
+            font-size: 2rem;
+        }
+
+        .result-image-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            padding: 40px 15px 15px 15px;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.8) 0%, rgba(0, 0, 0, 0) 100%);
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            text-align: left;
+        }
+
+        #result-title {
+            color: #fff;
+            font-size: 1.35rem;
+            margin: 0;
+            line-height: 1.3;
+            font-weight: 900;
+            text-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+        }
+
+        .result-en {
+            font-family: 'Outfit', sans-serif;
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 0.8rem;
+            font-weight: 700;
+            margin-top: 3px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
         }
 
         .result-crown {
@@ -290,24 +341,7 @@
             display: block;
         }
 
-        #result-title {
-            color: var(--color-pink);
-            font-size: 1.4rem;
-            margin: 5px 0 0 0;
-            line-height: 1.4;
-            font-weight: 900;
-        }
-
-        .result-en {
-            font-family: 'Outfit', sans-serif;
-            color: var(--color-mint);
-            font-size: 0.9rem;
-            font-weight: 700;
-            margin-top: 5px;
-            margin-bottom: 15px;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-        }
+        /* .result-title, .result-en は上で定義済み */
 
         #result-description {
             font-size: 0.9rem;
@@ -659,6 +693,248 @@
             z-index: 2;
         }
 
+        /* === バズを生む新機能（ハッシュタグ、ステータス、相性） === */
+        .result-hashtags {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 5px;
+            margin: 10px 0;
+        }
+
+        .hashtag {
+            background: rgba(230, 230, 250, 0.5);
+            color: var(--color-pink);
+            font-size: 0.7rem;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 12px;
+            border: 1px solid var(--color-pink);
+        }
+
+        .result-stats {
+            margin: 15px 0;
+            text-align: left;
+            background: rgba(255, 255, 255, 0.6);
+            padding: 10px;
+            border-radius: 12px;
+            border: 1px dashed var(--color-mint);
+        }
+
+        .stat-row {
+            margin-bottom: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .stat-row:last-child {
+            margin-bottom: 0;
+        }
+
+        .stat-label {
+            font-size: 0.7rem;
+            font-weight: 700;
+            color: var(--color-text);
+            flex: 0 0 45%;
+        }
+
+        .stat-bar-bg {
+            flex: 1;
+            height: 8px;
+            background: var(--color-bg);
+            border-radius: 4px;
+            overflow: hidden;
+            position: relative;
+            box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+        }
+
+        .stat-bar-fill {
+            height: 100%;
+            border-radius: 4px;
+            width: 0%;
+            transition: width 1s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        .fill-pink {
+            background: linear-gradient(90deg, #F196A3, #ffb6c1);
+        }
+
+        .fill-mint {
+            background: linear-gradient(90deg, #BFCBA8, #d4e0bb);
+        }
+
+        .fill-lavender {
+            background: linear-gradient(90deg, #E6E6FA, #d8bfd8);
+        }
+
+        .result-match {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 15px;
+            gap: 10px;
+        }
+
+        .match-box {
+            flex: 1;
+            background: var(--color-bg);
+            border-radius: 12px;
+            padding: 8px;
+            text-align: center;
+            box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.05);
+            border: 1px dashed rgba(241, 150, 163, 0.3);
+        }
+
+        .match-box-title {
+            font-size: 0.6rem;
+            font-weight: 900;
+            margin-bottom: 4px;
+        }
+
+        .match-good .match-box-title {
+            color: #ff6b81;
+        }
+
+        .match-bad .match-box-title {
+            color: #576574;
+        }
+
+        .match-type-name {
+            font-size: 0.75rem;
+            font-weight: 700;
+            color: var(--color-text);
+        }
+
+        .all-types-section {
+            margin: 20px 0;
+            text-align: left;
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+        }
+
+        .all-types-header {
+            padding: 15px;
+            font-weight: 900;
+            color: var(--color-pink);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            background: var(--color-bg);
+        }
+
+        .all-types-header:hover {
+            background: #fff;
+        }
+
+        .all-types-content {
+            display: none;
+            padding: 15px;
+        }
+
+        .all-types-content.open {
+            display: block;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .type-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+            padding-bottom: 15px;
+            border-bottom: 1px dashed var(--color-pink);
+        }
+
+        .type-item:last-child {
+            margin-bottom: 0;
+            padding-bottom: 0;
+            border-bottom: none;
+        }
+
+        .type-item-crown {
+            font-size: 1.5rem;
+            margin-right: 10px;
+            background: var(--color-lavender);
+            min-width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .type-item-info h4 {
+            margin: 0 0 3px 0;
+            color: var(--color-text);
+            font-size: 0.9rem;
+        }
+
+        .type-item-info p {
+            margin: 0;
+            font-size: 0.75rem;
+            line-height: 1.4;
+            color: #666;
+        }
+
+        /* === スタート画面 === */
+        #start-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 10px 0 20px 0;
+            animation: fadeIn 0.5s ease;
+        }
+
+        /* === トップページ画像 === */
+        .top-page-image {
+            width: 100%;
+            height: auto;
+            border-radius: 20px;
+            box-shadow: 0 10px 25px rgba(241, 150, 163, 0.4);
+            margin-bottom: 25px;
+            object-fit: cover;
+        }
+
+        /* === 結果キャラクター画像 === */
+        .result-character-img {
+            width: 100%;
+            height: auto;
+            vertical-align: middle;
+            object-fit: cover;
+        }
+
+        .type-item-img {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-right: 15px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .start-description {
+            font-size: 0.95rem;
+            line-height: 1.6;
+            color: var(--color-text);
+            margin-bottom: 30px;
+            font-weight: 700;
+        }
+
+        .btn-start {
+            background: linear-gradient(to right, #F196A3, #ffb6c1);
+            color: white;
+            font-size: 1.1rem;
+            padding: 16px 30px;
+            border-radius: 30px;
+            box-shadow: 0 5px 15px rgba(241, 150, 163, 0.4);
+            animation: pulse-btn 2.5s infinite;
+            width: 90%;
+            max-width: 300px;
+        }
+
         /* ユーティリティ */
         .hidden {
             display: none;
@@ -677,8 +953,19 @@
         <span class="title-en">Love Talent Test</span>
         <h1>隠れた恋愛才能<br>診断🎀</h1>
 
-        <!-- クイズ画面 -->
-        <div id="quiz-container">
+        <!-- スタート画面 -->
+        <div id="start-container">
+            <img src="images/top_page_group_1773017763877.png" alt="恋愛才能診断キャラクター" class="top-page-image">
+            <p class="start-description">
+                たった10問の質問に答えるだけで、<br>
+                あなたの「本当の恋愛タイプ」と<br>
+                「相性バツグンな相手」がわかる！✨
+            </p>
+            <button class="btn btn-start" onclick="startDiagnosis()">診断をスタートする ▶</button>
+        </div>
+
+        <!-- クイズ画面 (初期は非表示) -->
+        <div id="quiz-container" class="hidden">
             <div id="progress-text">Q1 / 10</div>
             <h2 id="question-text">読み込み中...</h2>
             <div class="choices" id="choices-container"></div>
@@ -702,10 +989,33 @@
                     </div>
 
                     <div class="capture-content">
-                        <span class="result-crown">👑</span>
-                        <h3 id="result-title"></h3>
-                        <div class="result-en" id="result-en"></div>
+                        <div class="result-image-container">
+                            <span class="result-crown" id="result-crown">👑</span>
+                            <img id="result-character-img" class="result-character-img" src="" alt="キャラクター画像">
+                            <div class="result-image-overlay">
+                                <h3 id="result-title"></h3>
+                                <div class="result-en" id="result-en"></div>
+                            </div>
+                        </div>
+
+                        <div class="result-hashtags" id="result-hashtags"></div>
+
                         <p id="result-description"></p>
+
+                        <div class="result-stats" id="result-stats">
+                            <!-- JSで生成 -->
+                        </div>
+
+                        <div class="result-match">
+                            <div class="match-box match-good">
+                                <div class="match-box-title">❤️ 相性サイコー</div>
+                                <div class="match-type-name" id="match-good-name"></div>
+                            </div>
+                            <div class="match-box match-bad">
+                                <div class="match-box-title">⚠️ 少し注意かも？</div>
+                                <div class="match-type-name" id="match-bad-name"></div>
+                            </div>
+                        </div>
                     </div>
 
                     <div class="capture-footer">
@@ -714,14 +1024,34 @@
                 </div>
             </div>
 
+            <div class="deep-dive-section" style="text-align:center; margin-bottom: 25px;">
+                <button class="btn btn-start"
+                    style="width: 100%; max-width: 360px; font-size: 0.95rem; padding: 14px 20px; box-shadow: 0 4px 10px rgba(241, 150, 163, 0.4);"
+                    onclick="scrollToAllTypes()">
+                    他のタイプとの相性を詳しく見る 👀
+                </button>
+            </div>
+
+            <!-- 全タイプ一覧 (図鑑機能) -->
+            <div class="all-types-section" id="all-types-section-target">
+                <div class="all-types-header" onclick="toggleAllTypes()">
+                    <span>📖 全5タイプの恋愛才能辞典を見る</span>
+                    <span id="all-types-icon">▼</span>
+                </div>
+                <div class="all-types-content" id="all-types-content">
+                    <!-- JSで自動生成 -->
+                </div>
+            </div>
+
             <!-- アクションボタン群 -->
             <div class="action-buttons">
                 <h3 class="share-header">Share with friends!</h3>
                 <div class="share-message">
-                    インスタやThreadsには保存した画像を<br>ステッカー感覚で載せてね📸
+                    「〇〇タイプだった！」って友達にLINEで送ってみよう💌<br>
+                    #隠れた恋愛才能診断 で投稿して、同じタイプの人と繋がろう！✨
                 </div>
 
-                <button class="btn btn-save" onclick="saveAsImage()">📸 結果画像を保存する (9:16)</button>
+                <button class="btn btn-save" onclick="saveAsImage()">📸 結果画像を保存する</button>
                 <button class="btn btn-copy" onclick="copyToClipboard()">📋 テキストとURLをコピー</button>
 
                 <div class="share-buttons">
@@ -846,29 +1176,112 @@
 
         const resultsData = {
             "A": {
-                title: "包容力抜群のオアシス",
+                title: "バブみ強めな癒やし系沼",
                 en: "OASIS OF TOLERANCE",
-                description: "あなたの隠れた恋愛才能は、相手を底なしの優しさで包み込む『圧倒的な包容力』！ダメなところもひっくるめて受け入れてくれるあなたと一緒にいると、相手はまるでオアシスを見つけたかのように安心します✨"
+                description: "あなたの隠れた才能は、相手を底無し沼のような優しさで包み込む『圧倒的・包容力』！ダメなところも全部受け入れてくれるあなたと一緒にいると、相手は完全に依存してしまいます✨",
+                image: "images/type_a_character_1773017634214.png",
+                hashtags: ["#圧倒的包容力", "#平和主義", "#聞き上手", "#歩くオアシス"],
+                stats: [
+                    { label: "甘やかし度", value: 95, colorClass: "fill-pink" },
+                    { label: "メンタルつよつよ度", value: 80, colorClass: "fill-mint" },
+                    { label: "ロマンチック度", value: 60, colorClass: "fill-lavender" }
+                ],
+                matchGood: "D",
+                matchBad: "B"
             },
             "B": {
-                title: "太陽みたいなエナジー",
+                title: "圧倒的💥陽キャエナジー",
                 en: "SUNNY ENERGY",
-                description: "あなたの隠れた恋愛才能は、周りの空気を一瞬でパッと明るくする『ポジティブなエネルギー』！「この子と一緒にいると楽しい！」と思わせる天才。相手をグイグイ引っ張る魅力的なヒロインポジションです🌻"
+                description: "あなたの才能は、周りの空気を一瞬でパッと明るくする『スーパー・ポジティブ』！「この子と一緒にいると楽しい！」と思わせる天才。相手をグイグイ引っ張る無敵のヒロインポジションです🌻",
+                image: "images/type_b_character_1773017702586.png",
+                hashtags: ["#天性の愛され力", "#笑顔クリエイター", "#一緒にいて飽きない", "#コミュ力お化け"],
+                stats: [
+                    { label: "コミュ力", value: 100, colorClass: "fill-pink" },
+                    { label: "アクティブ度", value: 90, colorClass: "fill-mint" },
+                    { label: "病まない度", value: 85, colorClass: "fill-lavender" }
+                ],
+                matchGood: "C",
+                matchBad: "A"
             },
             "C": {
-                title: "マイペースな穏やか波",
+                title: "エフォートレスな自然体",
                 en: "GENTLE WAVES",
-                description: "あなたの隠れた恋愛才能は、飾らない自然体でいられる『奇跡の穏やかさ』！無理して相手に合わせるのではなく、二人のペースを大切に育むことができる人。一緒にいるだけで心地よい最高のパートナーです☁️"
+                description: "あなたの才能は、飾らずにありのままでいられる『奇跡のマイペース』！無理して相手に合わせるのではなく、二人のペースを大切に育めるサステナブルな関係構築の天才。最高の癒やしパートナー☁️",
+                image: "images/type_c_character_1773017715657.png",
+                hashtags: ["#マイペース", "#ブレない芯", "#安心感ハンパない", "#おうちデート派"],
+                stats: [
+                    { label: "マイペース度", value: 95, colorClass: "fill-pink" },
+                    { label: "精神安定度", value: 90, colorClass: "fill-mint" },
+                    { label: "執着しない度", value: 85, colorClass: "fill-lavender" }
+                ],
+                matchGood: "B",
+                matchBad: "D"
             },
             "D": {
-                title: "向上心あふれるパートナー",
+                title: "ハイスペックな最強相棒",
                 en: "GROWING PARTNER",
-                description: "あなたの隠れた恋愛才能は、お互いのレベルをバッチリ高め合える『賢いコミュニケーション能力』！人生の良き理解者として最強のタッグを組める人です。誰もが羨む自立したカップルになれる才能の持ち主💎"
+                description: "あなたの才能は、お互いのレベルをバッチリ高め合える『クレバーな対話力』！人生の良き理解者として最強のタッグを組める人です。誰もが羨む、自立したイマドキのパーフェクトカップル💎",
+                image: "images/type_d_character_1773017730735.png",
+                hashtags: ["#高め合える関係", "#対話重視", "#自立系女子", "#最高のパートナー"],
+                stats: [
+                    { label: "知性・論理力", value: 95, colorClass: "fill-pink" },
+                    { label: "リード力", value: 80, colorClass: "fill-mint" },
+                    { label: "感情コントロール", value: 85, colorClass: "fill-lavender" }
+                ],
+                matchGood: "A",
+                matchBad: "C"
             },
             "MIX": {
-                title: "変幻自在のカメレオン",
+                title: "あざと賢いカメレオン",
                 en: "CHAMELEON CHARM",
-                description: "あなたの隠れた恋愛才能は、相手や状況に合わせて自由自在に自分を変えられる『抜群のバランス感覚』！時には甘え、時にはしっかりリードし、どんな相手も虜にしてしまうスーパーマルチプレイヤーです💫"
+                description: "あなたの才能は、相手や状況に合わせて自由自在にアップデートできる『抜群のバランス感覚』！時には甘え、時にはしっかりリードし、どんな相手も虜にしてしまうスーパーマルチプレイヤー💫",
+                image: "images/type_e_character_1773017747762.png",
+                hashtags: ["#変幻自在", "#あざとい", "#バランス感覚神", "#モテの境地"],
+                stats: [
+                    { label: "空気を読む力", value: 100, colorClass: "fill-pink" },
+                    { label: "小悪魔度", value: 95, colorClass: "fill-mint" },
+                    { label: "適応力", value: 100, colorClass: "fill-lavender" }
+                ],
+                matchGood: "MIX",
+                matchBad: "誰とでも仲良くできる"
+            }
+        };
+
+        const compatibilityTexts = {
+            "A": {
+                "A": "似た者同士、相手を思いやりすぎて決断に迷うかも。たまには本音でぶつかることも大切です。",
+                "B": "あなたの包容力が、自由奔放な相手を優しく受け止める最高のバランス！一緒にいると元気をもらえます。",
+                "C": "お互いのペースを尊重し合える、とても穏やかで平和な関係。疲れないオアシスのような相性です。",
+                "D": "相手の理論的な部分をあなたの優しさが上手く中和し、深い信頼関係で結ばれる最強の相棒になります。",
+                "MIX": "相手の変幻自在な魅力に少し振り回されつつも、最終的にはあなたの大きな愛で包み込める相性です。"
+            },
+            "B": {
+                "A": "あなたの明るさに相手が癒やされ、どんなあなたもニコニコ受け入れてくれる安心の組み合わせ。",
+                "B": "まるで親友同士！エネルギーがぶつかり合う分、一緒にいると最強に楽しいエンタメカップルに！",
+                "C": "あなたが引っ張り、相手が穏やかに見守る。お互いの長所が活きて自然体でいられる相性です。",
+                "D": "気合いが空回りすることもあるあなたに、相手の冷静なアドバイスがビシッと決まる良いコンビ。",
+                "MIX": "お互いに場の空気を読んで盛り上げられる、刺激的で絶対に飽きない最高のエンタメパートナー。"
+            },
+            "C": {
+                "A": "お互いに刺激は少なめですが、絶対的な安心感で結ばれる長続きカップル。のんびりデートがおすすめ。",
+                "B": "あなたの穏やかさが、行動力のある相手にとって最高の「帰る場所」になり、深く愛される相性です。",
+                "C": "言葉がなくても分かり合える、空気のような自然体でいられる関係。一緒にいて一番疲れない相手。",
+                "D": "相手のリードに身を任せつつ、あなたのマイペースさが良い緩衝材になってスマートにまとまります。",
+                "MIX": "相手の器用さに感心しつつも、あなたは自分のペースを崩さないため、良い意味で相手を転がせる相性。"
+            },
+            "D": {
+                "A": "あなたの理屈っぽさを、相手の優しさがまるっと包み込んでくれる、精神的にとても満たされる相性。",
+                "B": "相手の圧倒的な行動力とあなたの知性が組み合わさることで、お互いを高め合える無敵のタッグに。",
+                "C": "お互い自立しているため、依存しすぎない大人でスマートな関係が築けます。程よい距離感が心地よい。",
+                "D": "価値観が合えば最強のバディ。たまには論理を捨てて、感情を素直に出すことも長続きの秘訣です。",
+                "MIX": "相手のあざとさを見抜きつつも、なんだかんだでその魅力にハマってあげる大人の余裕を持てる関係。"
+            },
+            "MIX": {
+                "A": "あなたがどんな顔を見せてもすべて受け入れてくれるので、一番素直な「素の自分」でいられる相性。",
+                "B": "一緒に悪ふざけをして盛り上がれる、とにかく刺激的で毎日がイベントのような楽しいパートナー。",
+                "C": "マイペースな相手にはあなたの適応力が最大限に発揮され、居心地の良いサステナブルな関係に。",
+                "D": "相手の高い見込みや要望にうまく合わせられるため、相手に「最高の理解者」と思わせます。",
+                "MIX": "お互いに相手の出方を伺う高度な心理戦になりがち。素直になるのが一番の長続きの秘訣かも！"
             }
         };
 
@@ -877,8 +1290,19 @@
         let currentResultTitle = "";
 
         window.onload = function () {
-            showQuestion();
+            // 初期状態はスタート画面を表示しているため、特に何もしない
         };
+
+        function startDiagnosis() {
+            // スタート画面を隠して、クイズ画面を表示する
+            document.getElementById("start-container").style.display = "none";
+
+            const quizContainer = document.getElementById("quiz-container");
+            quizContainer.classList.remove("hidden");
+            quizContainer.style.display = "block";
+
+            showQuestion();
+        }
 
         function showQuestion() {
             const q = questions[currentQuestionIndex];
@@ -935,12 +1359,132 @@
             const result = resultsData[resultTypeKey];
             currentResultTitle = result.title;
 
+            // シェアテキスト用グローバル変数
+            window.currentHashtags = result.hashtags.join(" ");
+            window.currentGoodMatch = resultsData[result.matchGood] ? resultsData[result.matchGood].title : "誰とでも最高";
+
             document.getElementById("result-title").innerText = result.title;
             document.getElementById("result-en").innerText = result.en;
+
+            // 画像の差し替え
+            const charaImg = document.getElementById("result-character-img");
+            charaImg.src = result.image;
+
             document.getElementById("result-description").innerHTML = result.description.replace(/\n/g, '<br>');
+
+            const hashtagsContainer = document.getElementById("result-hashtags");
+            hashtagsContainer.innerHTML = "";
+            result.hashtags.forEach(tag => {
+                const span = document.createElement("span");
+                span.className = "hashtag";
+                span.innerText = tag;
+                hashtagsContainer.appendChild(span);
+            });
+
+            const statsContainer = document.getElementById("result-stats");
+            statsContainer.innerHTML = "";
+            result.stats.forEach(stat => {
+                const row = document.createElement("div");
+                row.className = "stat-row";
+                const label = document.createElement("div");
+                label.className = "stat-label";
+                label.innerText = stat.label;
+
+                const barBg = document.createElement("div");
+                barBg.className = "stat-bar-bg";
+
+                const barFill = document.createElement("div");
+                barFill.className = `stat-bar-fill ${stat.colorClass}`;
+                barFill.style.width = "0%";
+
+                barBg.appendChild(barFill);
+                row.appendChild(label);
+                row.appendChild(barBg);
+                statsContainer.appendChild(row);
+
+                setTimeout(() => {
+                    barFill.style.width = `${stat.value}%`;
+                }, 300);
+            });
+
+            const goodMatchObj = resultsData[result.matchGood];
+            document.getElementById("match-good-name").innerText = goodMatchObj ? goodMatchObj.title : "みんな！";
+
+            const badMatchObj = resultsData[result.matchBad];
+            document.getElementById("match-bad-name").innerText = badMatchObj ? badMatchObj.title : result.matchBad;
+
+            generateAllTypesDict(resultTypeKey);
 
             // アフィリエイトリンクの動的表示を呼び出す
             displayAffiliateLinks(result.title);
+        }
+
+        function generateAllTypesDict(myTypeKey) {
+            const container = document.getElementById("all-types-content");
+            container.innerHTML = "";
+            for (const key in resultsData) {
+                const data = resultsData[key];
+
+                let compHtml = "";
+                if (myTypeKey && compatibilityTexts[myTypeKey] && key !== myTypeKey) {
+                    const compText = compatibilityTexts[myTypeKey][key];
+                    compHtml = `
+                        <div style="margin-top: 15px; padding: 12px; background: rgba(241, 150, 163, 0.1); border-radius: 8px; border-left: 4px solid var(--color-pink);">
+                            <p style="font-size:0.75rem; font-weight:900; color:var(--color-pink); margin:0 0 6px 0;">
+                                👩‍❤️‍👨 「${resultsData[myTypeKey].title}」のあなたとの相性は…
+                            </p>
+                            <p style="font-size:0.8rem; line-height:1.5; color:var(--color-text); margin:0;">
+                                ${compText}
+                            </p>
+                        </div>
+                    `;
+                } else if (key === myTypeKey) {
+                    compHtml = `
+                        <div style="margin-top: 15px; padding: 8px; background: rgba(191, 203, 168, 0.2); border-radius: 8px; text-align: center;">
+                            <span style="font-size:0.8rem; font-weight:bold; color:var(--color-mint);">📍 あなたの診断結果タイプです</span>
+                        </div>
+                    `;
+                }
+
+                const item = document.createElement("div");
+                item.className = "type-item";
+                item.innerHTML = `
+                    <div style="display: flex; align-items: center; margin-bottom: 10px;">
+                        <img class="type-item-img" src="${data.image}" alt="${data.title}">
+                        <h4 style="margin:0; font-size:1rem; color:var(--color-text);">${data.title}</h4>
+                    </div>
+                    <div class="type-item-info">
+                        <p>${data.description}</p>
+                        ${compHtml}
+                    </div>
+                `;
+                container.appendChild(item);
+            }
+        }
+
+        function toggleAllTypes() {
+            const content = document.getElementById("all-types-content");
+            const icon = document.getElementById("all-types-icon");
+            if (content.classList.contains("open")) {
+                content.classList.remove("open");
+                icon.innerText = "▼";
+            } else {
+                content.classList.add("open");
+                icon.innerText = "▲";
+            }
+        }
+
+        function scrollToAllTypes() {
+            const content = document.getElementById("all-types-content");
+            const icon = document.getElementById("all-types-icon");
+            if (!content.classList.contains("open")) {
+                content.classList.add("open");
+                icon.innerText = "▲";
+            }
+            // 少し上にオフセットを持たせてスクロール
+            const target = document.getElementById("all-types-section-target");
+            const y = target.getBoundingClientRect().top + window.scrollY - 20;
+            window.scrollTo({ top: y, behavior: 'smooth' });
         }
 
         // ▼ アフィリエイト・デバイス自動振り分け機能 ▼
@@ -1008,14 +1552,18 @@
 
         // ▼ アクション機能 ▼
 
+        function getShareText() {
+            return `私の隠れた恋愛才能は「${currentResultTitle}」でした！💖\n相性最高のタイプは「${window.currentGoodMatch}」らしい！\n\n${window.currentHashtags}\n#隠れた恋愛才能診断`;
+        }
+
         function shareX() {
-            const text = encodeURIComponent(`私の隠れた恋愛才能は「${currentResultTitle}」でした！💖\n\n#隠れた恋愛才能診断`);
+            const text = encodeURIComponent(getShareText());
             const url = encodeURIComponent(window.location.href);
             window.open(`https://twitter.com/intent/tweet?text=${text}&url=${url}`, '_blank');
         }
 
         function shareLine() {
-            const text = encodeURIComponent(`私の隠れた恋愛才能は「${currentResultTitle}」でした！💖\n\nここからやってみて！✨\n${window.location.href}`);
+            const text = encodeURIComponent(`${getShareText()}\n\nここからやってみて！✨\n${window.location.href}`);
             window.open(`https://line.me/R/msg/text/?${text}`, '_blank');
         }
 
@@ -1024,7 +1572,7 @@
         }
 
         function copyToClipboard() {
-            const tempText = `私の隠れた恋愛才能は「${currentResultTitle}」でした！💖\n\nみんなもここから診断してみてね！✨\n${window.location.href}`;
+            const tempText = `${getShareText()}\n\nみんなもここから診断してみてね！✨\n${window.location.href}`;
             if (navigator.clipboard) {
                 navigator.clipboard.writeText(tempText).then(() => {
                     alert("テキストとURLをコピーしたよ！💖\nSNSに貼り付けてシェアしてね！");
