@@ -6,6 +6,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>あなたの「隠れた恋愛才能」診断🎀</title>
 
+    <!-- Google tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-DBEYKCHN7S"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-DBEYKCHN7S');
+
+        // カスタムイベント制作用の関数
+        function trackEvent(eventName, params = {}) {
+            if (typeof gtag === 'function') {
+                gtag('event', eventName, params);
+            }
+        }
+    </script>
+
     <!-- 角丸の可愛い日本語フォントと、太字英字フォント（Outfit） -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -1294,6 +1311,8 @@
         };
 
         function startDiagnosis() {
+            trackEvent('start_diagnosis');
+
             // スタート画面を隠して、クイズ画面を表示する
             document.getElementById("start-container").style.display = "none";
 
@@ -1417,6 +1436,12 @@
 
             // アフィリエイトリンクの動的表示を呼び出す
             displayAffiliateLinks(result.title);
+
+            // アクセス解析：結果表示イベント
+            trackEvent('view_result', {
+                result_type: resultTypeKey,
+                result_title: result.title
+            });
         }
 
         function generateAllTypesDict(myTypeKey) {
@@ -1504,7 +1529,7 @@
             // 上部広告：デバイス別 (iOS: ケアプリ / Android: ウラーノ)
             if (os === 'iOS') {
                 topAdSpace.innerHTML = `
-                    <a href='https://mttag.com/s/FVEwe5OMQ6c' rel='nofollow' target='_blank' class='custom-banner careapp-banner'>
+                    <a href='https://mttag.com/s/FVEwe5OMQ6c' rel='nofollow' target='_blank' class='custom-banner careapp-banner' onclick="trackEvent('click_affiliate', { ad_name: 'careapp', device: 'iOS' })">
                         <div class='banner-header'>＼ 誰にも言えない悩み ／</div>
                         <div class='banner-title'>チャットで<br><span class='banner-highlight'>叶えたい恋の悩み✨</span></div>
                         <div class='banner-features'>
@@ -1518,7 +1543,7 @@
                 `;
             } else {
                 topAdSpace.innerHTML = `
-                    <a href='https://mttag.com/s/KOl3yRhOJtU' rel='nofollow' target='_blank' class='custom-banner urano-banner'>
+                    <a href='https://mttag.com/s/T0bH03Hq6sA' rel='nofollow' target='_blank' class='custom-banner urano-banner' onclick="trackEvent('click_affiliate', { ad_name: 'urano', device: '${os}' })">
                         <div class='banner-header'>＼チャットで気軽に相談できる／</div>
                         <div class='banner-title'>一流占い師がアナタの<br>悩みを<span class='banner-highlight'>解決に導く✨</span></div>
                         <div class='banner-features'>
@@ -1536,14 +1561,14 @@
             if (resultTitle.includes('太陽') || resultTitle.includes('包容力')) {
                 bottomAdSpace.innerHTML = `
                     <p class="recommend-text">あなたの魅力をさらに輝かせる！</p>
-                    <a href='https://mttag.com/s/SxEQ5KFsReE' rel='nofollow' target='_blank'>
+                    <a href='https://mttag.com/s/SxEQ5KFsReE' rel='nofollow' target='_blank' onclick="trackEvent('click_affiliate', { ad_name: 'mttag_1' })">
                         <img src='https://mttag.com/banner/SxEQ5KFsReE' alt='占い師紹介リンク集１' border='0' />
                     </a>
                 `;
             } else {
                 bottomAdSpace.innerHTML = `
                     <p class="recommend-text">あの人の本音、知りたい？</p>
-                    <a href='https://mttag.com/s/UJy-M-sarJ4' rel='nofollow' target='_blank'>
+                    <a href='https://mttag.com/s/UJy-M-sarJ4' rel='nofollow' target='_blank' onclick="trackEvent('click_affiliate', { ad_name: 'mttag_2' })">
                         <img src='https://mttag.com/banner/UJy-M-sarJ4' alt='占い師紹介リンク集２' border='0' />
                     </a>
                 `;
@@ -1557,21 +1582,25 @@
         }
 
         function shareX() {
+            trackEvent('share', { method: 'X' });
             const text = encodeURIComponent(getShareText());
             const url = encodeURIComponent(window.location.href);
             window.open(`https://twitter.com/intent/tweet?text=${text}&url=${url}`, '_blank');
         }
 
         function shareLine() {
+            trackEvent('share', { method: 'LINE' });
             const text = encodeURIComponent(`${getShareText()}\n\nここからやってみて！✨\n${window.location.href}`);
             window.open(`https://line.me/R/msg/text/?${text}`, '_blank');
         }
 
         function dummyShare(snsName) {
+            trackEvent('share', { method: snsName });
             alert(`【${snsName}でシェアする方法】\n\n① 上にある「📸 結果画像を保存する」ボタンで、結果の画像 (9:16) をスマホに保存してください。\n② ${snsName}のアプリを開いて、ストーリーズやフィードに画像を載せて投稿してね✨`);
         }
 
         function copyToClipboard() {
+            trackEvent('share', { method: 'copy_link' });
             const tempText = `${getShareText()}\n\nみんなもここから診断してみてね！✨\n${window.location.href}`;
             if (navigator.clipboard) {
                 navigator.clipboard.writeText(tempText).then(() => {
@@ -1585,6 +1614,7 @@
         }
 
         function saveAsImage() {
+            trackEvent('save_image', { result_title: currentResultTitle });
             const target = document.getElementById("capture-area");
             html2canvas(target, {
                 backgroundColor: "#FCF8F5",
