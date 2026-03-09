@@ -709,22 +709,44 @@
             transform: scale(1.02);
         }
 
-        /* === 広告枠スタイル === */
-        .ad-space {
-            margin: 20px auto;
+        /* === 改善：広告・おすすめセクションのAdblock対策 === */
+        ._recommend-wrapper {
+            margin: 25px 0;
             padding: 15px;
-            border: 1px dashed var(--color-pink);
+            background: rgba(255, 255, 255, 0.7);
             border-radius: 20px;
-            background-color: rgba(255, 255, 255, 0.5);
+            border: 1px solid rgba(241, 150, 163, 0.1);
             text-align: center;
         }
 
-        .ad-title {
-            font-size: 0.75rem;
-            color: var(--color-mint);
-            margin-bottom: 8px;
-            font-weight: 700;
+        ._recommend-label {
+            font-size: 0.7rem;
+            font-weight: 900;
+            color: #999;
+            margin-bottom: 12px;
             letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        /* 外部バナーが消えた時の代用テキストリンク */
+        .fallback-premium-link {
+            display: block;
+            background: linear-gradient(135deg, #FF6B81 0%, #F196A3 100%);
+            color: #fff !important;
+            padding: 18px 15px;
+            border-radius: 15px;
+            text-decoration: none;
+            font-weight: 900;
+            font-size: 1rem;
+            box-shadow: 0 5px 15px rgba(241, 150, 163, 0.4);
+            animation: pulse-btn 2.5s infinite;
+        }
+
+        .fallback-premium-desc {
+            font-size: 0.75rem;
+            color: #666;
+            margin-bottom: 10px;
+            font-weight: 700;
         }
 
         .ad-banner {
@@ -1651,8 +1673,8 @@
             </div>
 
             <!-- マネタイズ改善：結果直後の高CV広告枠 -->
-            <div class="ad-space" style="margin-top: 0; margin-bottom: 25px;">
-                <div class="ad-title">恋愛運をもっと詳しく知る</div>
+            <div class="_recommend-wrapper" style="margin-top: 0; margin-bottom: 25px;">
+                <div class="_recommend-label">LOVE LUCK ADVICE</div>
                 <div id="after-result-ad-content"></div>
             </div>
 
@@ -1704,7 +1726,7 @@
                 <button class="btn btn-save" onclick="saveAsImage()">📸 結果画像を保存する</button>
 
                 <!-- マネタイズ改善：保存ボタン直下の広告枠 -->
-                <div class="ad-space" style="margin: 10px 0;">
+                <div class="_recommend-wrapper" style="margin: 10px 0;">
                     <div id="after-save-ad-content"></div>
                 </div>
 
@@ -2362,91 +2384,62 @@
             return 'Other';
         }
 
+        /**
+         * アフィリエイトリンク表示
+         * 安全のためURLは平文に戻し、画像とテキストリンクを併用するハイブリッド方式に変更
+         */
         function displayAffiliateLinks(resultTitle) {
             const afterResultAdSpace = document.getElementById('after-result-ad-content');
             const afterSaveAdSpace = document.getElementById('after-save-ad-content');
             const bottomAdSpace = document.getElementById('bottom-ad-content');
             const os = getOS();
 
-            // デバイス別バナーHTMLの共通化
-            let bannerHTML = "";
-            let linkUrl = "";
-            let partnerName = "";
-            let buttonText = "";
+            // 安全性を優先し、URLは平文で管理（Adblock対策はクラス名と構造で対応）
+            const linkUrl = (os === 'iOS')
+                ? 'https://mttag.com/s/FVEwe5OMQ6c'
+                : 'https://mttag.com/s/T0bH03Hq6sA';
 
-            if (os === 'iOS') {
-                linkUrl = 'https://mttag.com/s/FVEwe5OMQ6c';
-                partnerName = 'careapp';
-                buttonText = 'ケアプリで今すぐ無料相談 ▶';
-                bannerHTML = `
-                    <a href='${linkUrl}' rel='nofollow' target='_blank' class='custom-banner careapp-banner' onclick="trackEvent('affiliate_click', { ad_name: 'careapp', position: 'banner', device: 'iOS' })">
-                        <div class='banner-header'>＼ 誰にも言えない悩み ／</div>
-                        <div class='banner-title'>チャットで<br><span class='banner-highlight'>叶えたい恋の悩み✨</span></div>
-                        <div class='banner-features'>
-                            <span class='feature-badge'>24時間365日</span>
-                            <span class='feature-badge'>匿名OK</span>
-                            <span class='feature-badge'>250名以上の専門家</span>
-                        </div>
-                        <div class='banner-cta'>ケアプリで今すぐ相談する ▶</div>
-                    </a>
-                `;
-            } else {
-                linkUrl = 'https://mttag.com/s/T0bH03Hq6sA';
-                partnerName = 'urano';
-                buttonText = 'ウラーノで今すぐ無料占う ▶';
-                bannerHTML = `
-                    <a href='${linkUrl}' rel='nofollow' target='_blank' class='custom-banner urano-banner' onclick="trackEvent('affiliate_click', { ad_name: 'urano', position: 'banner', device: '${os}' })">
-                        <div class='banner-header'>＼チャットで気軽に相談できる／</div>
-                        <div class='banner-title'>一流占い師がアナタの<br>悩みを<span class='banner-highlight'>解決に導く✨</span></div>
-                        <div class='banner-features'>
-                            <span class='feature-badge'>24時間365日OK</span>
-                            <span class='feature-badge'>簡単登録</span>
-                            <span class='feature-badge'>電話・メアド不要</span>
-                        </div>
-                        <div class='banner-cta'>ウラーノで今すぐ相談する ▶</div>
-                    </a>
-                `;
-            }
+            const partnerName = (os === 'iOS') ? 'careapp' : 'urano';
+            const buttonText = (os === 'iOS') ? 'ケアプリで今すぐ無料相談 ▶' : 'ウラーノで今すぐ無料占う ▶';
+            const catchPhrase = (os === 'iOS') ? 'チャットで本格相談✨' : '一流占い師にお悩み相談✨';
+            const bannerSrc = (os === 'iOS')
+                ? 'https://mttag.com/banner/FVEwe5OMQ6c'
+                : 'https://mttag.com/banner/T0bH03Hq6sA';
 
-            // 新しい広告配置に反映
-            if (afterResultAdSpace) afterResultAdSpace.innerHTML = bannerHTML;
-            if (afterSaveAdSpace) afterSaveAdSpace.innerHTML = bannerHTML;
+            // 画像とテキストボタンをセットにしたHTML
+            // 画像がブロックされてもボタンが残る設計
+            const createHybridAdHTML = (pos) => `
+                <div class="hybrid-ad-container">
+                    <a href="${linkUrl}" rel="nofollow" target="_blank" onclick="trackEvent('affiliate_click', { ad_name: '${partnerName}', position: '${pos}_img', type: '${os}' })">
+                        <img src="${bannerSrc}" alt="鑑定" style="width:100%; border-radius:12px; display:block; margin-bottom:12px;" onerror="this.style.display='none'">
+                    </a>
+                    <p class="fallback-premium-desc">${catchPhrase}</p>
+                    <a href="${linkUrl}" class="fallback-premium-link" target="_blank" onclick="trackEvent('affiliate_click', { ad_name: '${partnerName}', position: '${pos}_txt', type: '${os}' })">
+                        ${buttonText}
+                    </a>
+                </div>
+            `;
+
+            // 反映
+            if (afterResultAdSpace) afterResultAdSpace.innerHTML = createHybridAdHTML('after_result');
+            if (afterSaveAdSpace) afterSaveAdSpace.innerHTML = createHybridAdHTML('after_save');
 
             // 各種CTAボタンの設定
-            const ctaButtonHTML = `<a href="${linkUrl}" class="cta-button" target="_blank" onclick="trackEvent('affiliate_click', {ad_name: '${partnerName}', position: 'main_cta', type: '${os}'})">${buttonText}</a>`;
-            const mainCtaContainer = document.getElementById("cta-button-container");
-            if (mainCtaContainer) mainCtaContainer.innerHTML = ctaButtonHTML;
-
-            const futureCtaBtn = document.getElementById("future-cta-btn");
-            if (futureCtaBtn) {
-                futureCtaBtn.href = linkUrl;
-                futureCtaBtn.target = "_blank";
-                futureCtaBtn.onclick = () => trackEvent('affiliate_click', { ad_name: partnerName, position: 'future_cta', type: os });
-            }
-
-            const compatCtaContainer = document.getElementById("compat-cta-button-container");
-            if (compatCtaContainer) {
-                compatCtaContainer.innerHTML = `<a href="${linkUrl}" class="cta-button" target="_blank" style="font-size: 0.95rem; padding: 15px 20px; margin: 0 auto;" onclick="trackEvent('affiliate_click', {ad_name: '${partnerName}', position: 'compat_cta', type: '${os}'})">無料で相性を占う ▶</a>`;
-            }
-
             const redCtaContainer = document.getElementById("cta-button-red-container");
             if (redCtaContainer) {
                 redCtaContainer.innerHTML = `<a href="${linkUrl}" class="btn-affiliate-red" target="_blank" onclick="trackEvent('affiliate_click', {ad_name: '${partnerName}', position: 'red_cta', type: '${os}'})">[無料で占う]</a>`;
             }
 
-            // 下部広告枠の復旧
-            if (resultTitle.includes('陽キャ') || resultTitle.includes('カメレオン')) {
+            // 下部広告枠 (レコメンド風)
+            if (bottomAdSpace) {
+                const extraLink = (resultTitle.includes('陽キャ') || resultTitle.includes('カメレオン'))
+                    ? 'https://mttag.com/s/SxEQ5KFsReE'
+                    : 'https://mttag.com/s/UJy-M-sarJ4';
+
                 bottomAdSpace.innerHTML = `
-                    <p class="recommend-text">あなたの魅力をさらに輝かせる！</p>
-                    <a href='https://mttag.com/s/SxEQ5KFsReE' rel='nofollow' target='_blank' onclick="trackEvent('affiliate_click', { ad_name: 'mttag_1' })">
-                        <img src='https://mttag.com/banner/SxEQ5KFsReE' alt='占い師紹介リンク集１' border='0' />
-                    </a>
-                `;
-            } else {
-                bottomAdSpace.innerHTML = `
-                    <p class="recommend-text">あの人の本音、知りたい？</p>
-                    <a href='https://mttag.com/s/UJy-M-sarJ4' rel='nofollow' target='_blank' onclick="trackEvent('affiliate_click', { ad_name: 'mttag_2' })">
-                        <img src='https://mttag.com/banner/UJy-M-sarJ4' alt='占い師紹介リンク集２' border='0' />
+                    <div style="font-size:0.8rem; font-weight:700; color:#888; margin-bottom:10px;">あなたへの特別メッセージ</div>
+                    <a href="${extraLink}" class="fallback-premium-link" style="background:var(--color-mint); box-shadow:0 4px 10px rgba(191,203,168,0.3);" target="_blank" onclick="trackEvent('affiliate_click', { ad_name: 'extra_advice' })">
+                        今すぐアドバイスを聞く ▶
                     </a>
                 `;
             }
