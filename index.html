@@ -236,6 +236,93 @@
             transform: translateY(2px);
         }
 
+        /* === 改善：回答ボタンの高さと余白 === */
+        .choices button {
+            min-height: 65px;
+            padding: 18px 25px;
+            font-size: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .choices button::after {
+            content: "▶";
+            font-size: 0.8rem;
+            opacity: 0.3;
+        }
+
+        /* === 改善：プログレスバー === */
+        .quiz-progress-wrapper {
+            margin-bottom: 25px;
+        }
+
+        .progress-visual {
+            font-family: monospace;
+            font-size: 1.1rem;
+            letter-spacing: 2px;
+            color: var(--color-pink);
+            margin-bottom: 8px;
+        }
+
+        /* === 改善：質問遷移フェードアニメーション === */
+        .fade-in {
+            animation: fadeInAnim 0.4s ease forwards;
+        }
+
+        @keyframes fadeInAnim {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* === 改善：スタート画面のチェックリスト === */
+        .start-check-list {
+            text-align: left;
+            background: rgba(255, 255, 255, 0.5);
+            padding: 15px 20px;
+            border-radius: 15px;
+            margin-bottom: 30px;
+            width: 100%;
+            box-sizing: border-box;
+            border: 1px dashed var(--color-pink);
+        }
+
+        .check-item {
+            font-size: 0.9rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .check-item:last-child {
+            margin-bottom: 0;
+        }
+
+        /* === 改善：ランキングバッジ === */
+        .ranking-badge-wrapper {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            background: linear-gradient(135deg, #FFD700, #FFA500);
+            color: #fff;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-weight: 900;
+            font-size: 0.8rem;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            z-index: 10;
+            border: 2px solid #fff;
+        }
+
         /* === 結果画面エリア (9:16 画像保存対応・トレカ風) === */
         #capture-area-wrapper {
             margin-bottom: 20px;
@@ -278,6 +365,162 @@
             border-radius: 12px;
             pointer-events: none;
             backdrop-filter: blur(2px);
+        }
+
+        /* === 改善：才能ランキングバッジ (1位 / 5タイプ) === */
+        .talent-rank-badge {
+            position: absolute;
+            bottom: 10px;
+            /* 右下に戻す */
+            right: 10px;
+            background: rgba(0, 0, 0, 0.85);
+            /* 少し透過させて圧迫感を減らす */
+            color: #fff;
+            padding: 4px 10px;
+            /* サイズを縮小 */
+            border-radius: 8px;
+            /* 角丸も少し小さく */
+            font-family: 'Outfit', sans-serif;
+            font-weight: 900;
+            font-size: 0.7rem;
+            /* 文字サイズを縮小 */
+            z-index: 10;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .talent-rank-badge span {
+            color: #FFD700;
+            font-size: 0.9rem;
+            /* 数字部分も縮小 */
+            margin-right: 2px;
+        }
+
+        /* === 改善：スタート画面の結果プレビュー === */
+        .result-preview-card {
+            background: #fff;
+            border-radius: 20px;
+            padding: 15px;
+            margin-bottom: 25px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+            border: 1px solid rgba(241, 150, 163, 0.2);
+            text-align: left;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .preview-label {
+            position: absolute;
+            top: 0;
+            left: 0;
+            background: var(--color-pink);
+            color: #fff;
+            font-size: 0.6rem;
+            padding: 3px 10px;
+            border-bottom-right-radius: 10px;
+            font-weight: 900;
+        }
+
+        .preview-content {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-top: 5px;
+        }
+
+        .preview-img {
+            width: 70px;
+            height: 70px;
+            border-radius: 12px;
+            object-fit: cover;
+            border: 2px solid var(--color-lavender);
+        }
+
+        .preview-info h4 {
+            margin: 0;
+            font-size: 0.95rem;
+            color: var(--color-text);
+        }
+
+        .preview-deviation {
+            font-size: 0.8rem;
+            color: #666;
+            font-weight: 700;
+            margin-top: 4px;
+        }
+
+        .preview-deviation span {
+            color: var(--color-pink);
+            font-size: 1.1rem;
+            font-family: 'Outfit', sans-serif;
+        }
+
+        /* === 改善：ランキングリストセクション === */
+        .ranking-list-section {
+            background: #fff;
+            border-radius: 20px;
+            padding: 20px;
+            margin: 25px 0;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+            text-align: left;
+            border: 1px solid rgba(241, 150, 163, 0.1);
+        }
+
+        .ranking-list-section h3 {
+            font-size: 1rem;
+            color: var(--color-pink);
+            margin-bottom: 15px;
+            text-align: center;
+            font-weight: 900;
+        }
+
+        .ranking-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 10px 0;
+            border-bottom: 1px dashed #eee;
+        }
+
+        .ranking-item:last-child {
+            border-bottom: none;
+        }
+
+        .rank-num {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 900;
+            min-width: 30px;
+            color: #ccc;
+        }
+
+        .rank-num.top1 {
+            color: #FFD700;
+            font-size: 1.3rem;
+        }
+
+        .rank-num.top2 {
+            color: #C0C0C0;
+        }
+
+        .rank-num.top3 {
+            color: #CD7F32;
+        }
+
+        .rank-type-name {
+            font-size: 0.9rem;
+            font-weight: 700;
+            color: var(--color-text);
+            flex: 1;
+        }
+
+        .rank-your-label {
+            background: var(--color-pink);
+            color: #fff;
+            font-size: 0.65rem;
+            padding: 2px 8px;
+            border-radius: 10px;
+            font-weight: 900;
         }
 
         .capture-header {
@@ -1046,156 +1289,136 @@
             border-radius: 3px;
         }
 
-        /* 未来予測セクション */
-        .future-prediction {
-            background: #fff;
-            border: 2px solid rgba(241, 150, 163, 0.3);
-            border-radius: 20px;
-            padding: 25px 20px;
+        /* 結果キャプチャエリア全体のカード化 */
+        .capture-area {
+            background: linear-gradient(135deg, #FFF5F7 0%, #FFF0F3 100%);
+            border-radius: 30px;
+            padding: 25px 15px;
+            box-shadow: 0 10px 30px rgba(241, 150, 163, 0.15);
+            border: 1px solid rgba(241, 150, 163, 0.2);
+            overflow: hidden;
+            margin-bottom: 20px;
+        }
+
+        .result-card {
+            background: transparent;
+            box-shadow: none;
+            padding: 0;
+            border: none;
+        }
+
+        /* 4枚の分析カードUI */
+        .analysis-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
             margin: 20px 0;
+        }
+
+        .analysis-card {
+            background: #fff;
+            border-radius: 15px;
+            padding: 15px 10px;
             text-align: center;
-            box-shadow: 0 4px 12px rgba(241, 150, 163, 0.08);
-        }
-
-        .future-prediction h3 {
-            color: var(--color-pink);
-            font-size: 1.15rem;
-            margin-top: 0;
-            margin-bottom: 15px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-        }
-
-        .analysis-section {
-            background: #fff;
-            border-radius: 20px;
-            padding: 25px 20px;
-            margin: 20px 0;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.03);
             border: 1px solid rgba(241, 150, 163, 0.1);
         }
 
-        .analysis-section h3 {
+        .analysis-card h4 {
+            font-size: 0.8rem;
+            color: var(--color-pink);
+            margin: 0 0 8px 0;
+            font-weight: 800;
+        }
+
+        .analysis-card .card-value {
+            font-size: 0.95rem;
+            font-weight: 900;
+            color: var(--color-text);
+            margin-bottom: 5px;
+            display: block;
+        }
+
+        .analysis-card .card-desc {
+            font-size: 0.75rem;
+            line-height: 1.4;
+            color: #666;
+            text-align: left;
+        }
+
+        /* 1カラム用の大きなカード */
+        .analysis-card.full-width {
+            grid-column: span 2;
+        }
+
+        /* 占い誘導CTAカード */
+        .fortune-info-card {
+            background: #fff;
+            border-radius: 20px;
+            padding: 20px;
+            margin: 25px 0;
+            text-align: center;
+            border: 2px solid #F196A3;
+            box-shadow: 0 6px 15px rgba(241, 150, 163, 0.1);
+        }
+
+        .fortune-info-card h3 {
             font-size: 1.1rem;
             color: var(--color-text);
             margin-top: 0;
-            margin-bottom: 12px;
-            border-left: 4px solid var(--color-pink);
-            padding-left: 10px;
-            text-align: left;
+            margin-bottom: 10px;
         }
 
-        .analysis-text {
-            font-size: 0.9rem;
-            line-height: 1.7;
+        .fortune-info-card p {
+            font-size: 0.85rem;
             color: #555;
-            text-align: left;
-        }
-
-        /* 相手の本音セクション */
-        .partner-feelings-card {
-            background: linear-gradient(to bottom, #fff, rgba(241, 150, 163, 0.05));
-            border-radius: 20px;
-            padding: 25px 20px;
-            margin: 20px 0;
-            text-align: center;
-            border: 1px solid rgba(241, 150, 163, 0.2);
-        }
-
-        .partner-feelings-card h3 {
-            font-size: 1.15rem;
-            color: var(--color-text);
             margin-bottom: 15px;
-        }
-
-        .feelings-cta-btn {
-            display: inline-block;
-            background: #fff;
-            color: var(--color-pink);
-            border: 2px solid var(--color-pink);
-            padding: 12px 25px;
-            border-radius: 25px;
-            font-weight: 800;
-            text-decoration: none;
-            margin-top: 15px;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 10px rgba(241, 150, 163, 0.2);
-        }
-
-        .feelings-cta-btn:active {
-            transform: scale(0.95);
-        }
-
-        /* 占い誘導ブロック (CTA) */
-        .fortune-cta {
-            background: rgba(241, 150, 163, 0.05);
-            border: 1px solid rgba(241, 150, 163, 0.2);
-            border-radius: 20px;
-            padding: 30px 20px;
-            text-align: center;
-            margin: 30px 0;
-        }
-
-        .fortune-cta h2 {
-            font-size: 1.3rem;
-            color: var(--color-pink);
-            margin-top: 0;
-            margin-bottom: 20px;
-        }
-
-        .cta-description {
-            font-size: 0.95rem;
             font-weight: 700;
-            margin-bottom: 20px;
-            line-height: 1.6;
         }
 
-        .cta-button {
+        .btn-affiliate-red {
             display: block;
-            width: 100%;
-            max-width: 300px;
-            margin: 0 auto;
-            background: linear-gradient(135deg, #F196A3, #ff4757);
-            color: white;
-            padding: 18px 20px;
-            border-radius: 35px;
+            background: linear-gradient(135deg, #ff4757, #e84118);
+            color: #fff;
+            padding: 15px;
+            border-radius: 30px;
             font-size: 1.1rem;
             font-weight: 900;
             text-decoration: none;
-            box-shadow: 0 8px 20px rgba(255, 71, 87, 0.3);
-            transition: transform 0.2s ease;
+            box-shadow: 0 6px 20px rgba(232, 65, 24, 0.3);
+            transition: transform 0.2s;
         }
 
-        .cta-button:active {
-            transform: translateY(2px);
+        .btn-affiliate-red:active {
+            transform: scale(0.98);
         }
 
-        /* 拡散用専用シェアボタン */
-        .x-share-cta-wrapper {
-            margin: 40px 0 20px;
-            text-align: center;
-        }
-
-        .btn-x-share {
+        /* Xシェアボタン (キャプチャ外) */
+        .btn-x-large {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            width: 100%;
             background: #000;
             color: #fff;
-            border: none;
-            padding: 15px 40px;
-            border-radius: 30px;
+            padding: 16px;
+            border-radius: 35px;
             font-size: 1rem;
-            font-weight: 800;
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
+            font-weight: 900;
+            text-decoration: none;
+            margin: 20px 0;
+            border: none;
             cursor: pointer;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
         }
 
-        .btn-x-share i {
-            font-style: normal;
-            font-size: 1.2rem;
+        /* 改修に伴う不要なスタイルの削除・調整 */
+        .analysis-section,
+        .partner-feelings-card,
+        .future-prediction,
+        .fortune-cta,
+        .x-share-cta-wrapper {
+            display: none;
         }
 
         /* 相性占いセクション */
@@ -1275,29 +1498,50 @@
         <!-- スタート画面 -->
         <div id="start-container">
             <img src="images/top_page_group_1773017763877.png" alt="恋愛才能診断キャラクター" class="top-page-image">
-            <p class="start-description">
-                たった10問の質問に答えるだけで、<br>
-                あなたの「本当の恋愛タイプ」と<br>
-                「相性バツグンな相手」がわかる！✨
-            </p>
-            <button class="btn btn-start" onclick="startDiagnosis()">診断をスタートする ▶</button>
+
+            <h2 style="margin-bottom: 20px;">10問でわかる！<br>恋愛タイプと恋愛リスク</h2>
+
+            <!-- 改善点①：診断結果例のプレビュー -->
+            <div class="result-preview-card">
+                <div class="preview-label">DIAGNOSIS EXAMPLE</div>
+                <div class="preview-content">
+                    <img src="images/type_d_character_1773017730735.png" alt="例" class="preview-img">
+                    <div class="preview-info">
+                        <h4>👑 心理マスタータイプ</h4>
+                        <div class="preview-deviation">恋愛偏差値：<span>86</span></div>
+                        <div style="font-size: 0.65rem; color: #999; margin-top: 4px;">相手の本音を読み解く天才的な才能…</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="start-check-list">
+                <div class="check-item">✔ 恋愛偏差値の算出</div>
+                <div class="check-item">✔ 隠れた恋愛スタイルの分析</div>
+                <div class="check-item">✔ 恋愛依存・浮気リスク</div>
+                <div class="check-item">✔ 相性バツグンな相手のタイプ</div>
+            </div>
+
+            <button class="btn btn-start" onclick="startDiagnosis()" style="font-size: 1.25rem; padding: 20px;">
+                診断スタート！ ▶
+            </button>
+
+            <p style="font-size: 0.75rem; margin-top: 20px; opacity: 0.7;">所要時間：約1分 / 完全無料</p>
         </div>
 
         <!-- クイズ画面 (初期は非表示) -->
         <div id="quiz-container" class="hidden">
-            <div id="progress-text">Q1 / 10</div>
-            <h2 id="question-text">読み込み中...</h2>
-            <div class="choices" id="choices-container"></div>
+            <div class="quiz-progress-wrapper" id="quiz-progress-ui">
+                <div id="progress-text">Q1 / 10</div>
+                <div id="progress-visual" class="progress-visual">□□□□□□□□□□</div>
+            </div>
+            <div id="question-fade-target">
+                <h2 id="question-text">読み込み中...</h2>
+                <div class="choices" id="choices-container"></div>
+            </div>
         </div>
 
         <!-- 結果画面 (初期は非表示) -->
         <div id="result-container" class="hidden">
-
-            <!-- 上部広告枠 (自動振り分け) -->
-            <div class="ad-space top-ad">
-                <div class="ad-title">RECOMMEND FOR YOU</div>
-                <div id="top-ad-content"></div>
-            </div>
 
             <div id="capture-area-wrapper">
                 <div id="capture-area">
@@ -1310,6 +1554,16 @@
                     <div class="capture-content">
                         <!-- 画像内偏差値＋キャラクター -->
                         <div class="result-image-container" style="position: relative;">
+                            <!-- 最強バズ機能：ランキング表示 -->
+                            <div class="ranking-badge-wrapper" id="ranking-badge" style="display: none;">
+                                上位 <span id="ranking-percent">--</span>%
+                            </div>
+
+                            <!-- 戦略的改善：才能ランキングバッジ -->
+                            <div class="talent-rank-badge" id="talent-rank-badge" style="display: none;">
+                                <span id="talent-rank-value">-</span>位 / 5タイプ
+                            </div>
+
                             <span class="result-crown" id="result-crown">👑</span>
                             <!-- 新規：恋愛偏差値バッジ -->
                             <div class="deviation-score-wrapper">
@@ -1329,48 +1583,48 @@
                             <!-- JS側で生成 -->
                         </div>
 
+                        <p id="result-description" style="font-size: 0.9rem; margin-top: 15px;"></p>
+
+                        <!-- 新設：恋愛分析 4枚カードグリッド -->
+                        <div class="analysis-grid">
+                            <div class="analysis-card full-width">
+                                <h4>恋愛スタイル</h4>
+                                <div class="card-value" id="card-style"></div>
+                                <div class="card-desc" id="card-style-desc"></div>
+                            </div>
+                            <div class="analysis-card">
+                                <h4>恋愛の強み</h4>
+                                <div class="card-value" id="card-strengths" style="font-size: 0.8rem;"></div>
+                            </div>
+                            <div class="analysis-card">
+                                <h4>注意ポイント</h4>
+                                <div class="card-value" id="card-weaknesses" style="font-size: 0.8rem;"></div>
+                            </div>
+                            <div class="analysis-card full-width">
+                                <h4>相性のいいタイプ</h4>
+                                <div class="card-value" id="card-match"></div>
+                            </div>
+                        </div>
+
+                        <!-- 占いCTAカード（一番目立つ導線） -->
+                        <div class="fortune-info-card">
+                            <h3>恋愛運をもっと詳しく知る</h3>
+                            <p>人気の恋愛占いで<br>あなたの相性や未来をチェック</p>
+                            <div id="cta-button-red-container"></div>
+                        </div>
+
+                        <!-- 戦略的改善：恋愛才能ランキングリスト -->
+                        <div class="ranking-list-section" id="ranking-list-ui">
+                            <h3>👑 恋愛才能タイプランキング</h3>
+                            <div id="ranking-list-container">
+                                <!-- JSで動的生成 -->
+                            </div>
+                        </div>
+
                         <div class="result-hashtags" id="result-hashtags"></div>
 
-                        <p id="result-description"></p>
-
-                        <!-- 新設：恋愛分析セクション -->
-                        <div class="analysis-section">
-                            <h3>恋愛タイプ分析</h3>
-                            <div class="analysis-text" id="analysis-text"></div>
-                        </div>
-
-                        <!-- 新設：相手の本音セクション -->
-                        <div class="partner-feelings-card">
-                            <h3>気になる「相手の本音」</h3>
-                            <div class="analysis-text" id="partner-feelings-text"></div>
-                            <a href="javascript:void(0)" class="feelings-cta-btn"
-                                onclick="scrollToCta()">相手の本当の気持ちを占う</a>
-                        </div>
-
-                        <!-- 未来予測・占いCTAセクション -->
-                        <section class="future-prediction" id="future-prediction">
-                            <h3><span>🔮</span> あなたの次の恋愛</h3>
-                            <p id="prediction-text" class="analysis-text" style="text-align: center;"></p>
-                            <p id="future-detail-text" class="analysis-text"
-                                style="text-align: center; margin-top: 10px;"></p>
-                            <p style="color:#ff4757; font-weight:bold; margin-top: 15px; text-align: center;">
-                                ※重要な注意点があります</p>
-                            <a href="javascript:void(0)" class="cta-button" style="margin: 15px auto 0;"
-                                id="future-cta-btn">恋愛の未来を占う</a>
-                        </section>
-
-                        <section class="fortune-cta" id="fortune-cta-section">
-                            <h2>運命を切り拓くアドバイス</h2>
-                            <p class="cta-description">
-                                あなたのタイプ「<span id="cta-type-name" style="color:var(--color-pink);"></span>」が<br>
-                                幸せを掴むための具体的なヒント…💖
-                            </p>
-                            <!-- JavaScriptでOS判定後にURL入りのボタンを生成 -->
-                            <div id="cta-button-container"></div>
-                        </section>
-
                         <div class="result-stats" id="result-stats" style="margin-top: 20px;">
-                            <!-- JSで生成 -->
+                            <!-- JS側で生成 -->
                         </div>
 
                         <div class="result-match">
@@ -1396,12 +1650,17 @@
                 </div>
             </div>
 
-            <!-- XシェアCTA (キャプチャエリア外) -->
-            <div class="x-share-cta-wrapper">
-                <button class="btn-x-share" onclick="shareX()">
-                    <i>𝕏</i> 結果を今すぐポストする
-                </button>
+            <!-- マネタイズ改善：結果直後の高CV広告枠 -->
+            <div class="ad-space" style="margin-top: 0; margin-bottom: 25px;">
+                <div class="ad-title">恋愛運をもっと詳しく知る</div>
+                <div id="after-result-ad-content"></div>
             </div>
+
+            <!-- 新設：X拡散ボタン (キャプチャ外) -->
+            <button class="btn-x-large" onclick="shareX()">
+                <i>𝕏</i> この結果をXでシェア
+            </button>
+
 
             <!-- 相性診断追加CTA -->
             <section class="compatibility-cta">
@@ -1443,6 +1702,12 @@
                 </div>
 
                 <button class="btn btn-save" onclick="saveAsImage()">📸 結果画像を保存する</button>
+
+                <!-- マネタイズ改善：保存ボタン直下の広告枠 -->
+                <div class="ad-space" style="margin: 10px 0;">
+                    <div id="after-save-ad-content"></div>
+                </div>
+
                 <button class="btn btn-copy" onclick="copyToClipboard()">📋 テキストとURLをコピー</button>
 
                 <div class="share-buttons">
@@ -1584,7 +1849,12 @@
                     { label: "ロマンチック度", value: 60, colorClass: "fill-lavender" }
                 ],
                 matchGood: "D",
-                matchBad: "B"
+                matchBad: "B",
+                loveStyle: "和み包容型",
+                loveStyleDesc: "相手の全てを優しく包み込み、安心感を与える慈愛の精神。",
+                strengths: "圧倒的な肯定感と深い傾聴力",
+                weaknesses: "自分を犠牲にしやすく、尽くしすぎる傾向",
+                matchType: "Dタイプ（ハイスペ知性）"
             },
             "B": {
                 title: "圧倒的💥陽キャエナジー",
@@ -1604,7 +1874,12 @@
                     { label: "病まない度", value: 85, colorClass: "fill-lavender" }
                 ],
                 matchGood: "C",
-                matchBad: "A"
+                matchBad: "A",
+                loveStyle: "情熱ポジティブ型",
+                loveStyleDesc: "明るいエネルギーで周囲を照らし、一直線に向き合う太陽。",
+                strengths: "物事を前向きに変える圧倒的な行動力",
+                weaknesses: "勢いあまって相手を置き去りにしがち",
+                matchType: "Cタイプ（自然体・癒やし）"
             },
             "C": {
                 title: "エフォートレスな自然体",
@@ -1624,7 +1899,12 @@
                     { label: "執着しない度", value: 85, colorClass: "fill-lavender" }
                 ],
                 matchGood: "B",
-                matchBad: "D"
+                matchBad: "D",
+                loveStyle: "自然体マイペース型",
+                loveStyleDesc: "無理せずありのままで、穏やかな関係を築く安定感。",
+                strengths: "周囲に流されない独自の価値観と余裕",
+                weaknesses: "考えが伝わりにくく、不安にさせることも",
+                matchType: "Bタイプ（情熱・陽キャ）"
             },
             "D": {
                 title: "ハイスペックな最強相棒",
@@ -1644,7 +1924,12 @@
                     { label: "感情コントロール", value: 85, colorClass: "fill-lavender" }
                 ],
                 matchGood: "A",
-                matchBad: "C"
+                matchBad: "C",
+                loveStyle: "理想追求・対話型",
+                loveStyleDesc: "互いに高め合い、論理的かつ誠実に解決策を探る知性派。",
+                strengths: "的確な分析力と高い信頼構築能力",
+                weaknesses: "正論すぎて相手に逃げ場をなくすことも",
+                matchType: "Aタイプ（包容力・癒やし）"
             },
             "MIX": {
                 title: "あざと賢いカメレオン",
@@ -1664,7 +1949,12 @@
                     { label: "適応力", value: 100, colorClass: "fill-lavender" }
                 ],
                 matchGood: "MIX",
-                matchBad: "誰とでも仲良くできる"
+                matchBad: "誰とでも仲良くできる",
+                loveStyle: "変幻自在カメレオン型",
+                loveStyleDesc: "相手や状況に合わせて自分を最適化できる、あざと賢い魅力の持ち主。",
+                strengths: "高い適応力と相手のニーズを察知する観察眼",
+                weaknesses: "本音が見えにくく、ミステリアスすぎて不安にさせることも",
+                matchType: "全タイプ（合わせるのが得意）"
             }
         };
 
@@ -1715,7 +2005,7 @@
         };
 
         function startDiagnosis() {
-            trackEvent('start_diagnosis');
+            trackEvent('start_quiz'); // GA強化
 
             // スタート画面を隠して、クイズ画面を表示する
             document.getElementById("start-container").style.display = "none";
@@ -1729,7 +2019,20 @@
 
         function showQuestion() {
             const q = questions[currentQuestionIndex];
-            document.getElementById("progress-text").innerText = `Q${currentQuestionIndex + 1} / 10`;
+            const currentNum = currentQuestionIndex + 1;
+            const totalNum = questions.length;
+
+            // プログレス表示の更新
+            document.getElementById("progress-text").innerText = `質問 ${currentNum} / ${totalNum}`;
+
+            // 視覚的プログレスバー (■■□□□□)
+            let visualBar = "";
+            for (let i = 0; i < totalNum; i++) {
+                visualBar += (i < currentNum) ? "■" : "□";
+            }
+            document.getElementById("progress-visual").innerText = visualBar;
+
+            // 質問テキストと回答の設定
             document.getElementById("question-text").innerText = q.text;
 
             const choicesContainer = document.getElementById("choices-container");
@@ -1744,11 +2047,19 @@
                 };
                 choicesContainer.appendChild(button);
             });
+
+            // フェードアニメーションの適用
+            const target = document.getElementById("question-fade-target");
+            target.classList.remove("fade-in");
+            void target.offsetWidth; // 強制リフロー
+            target.classList.add("fade-in");
         }
 
         function answerQuestion(selectedType) {
             answers[selectedType]++;
             currentQuestionIndex++;
+
+            trackEvent('answer_question', { question_num: currentQuestionIndex, selected_type: selectedType }); // GA強化
 
             if (currentQuestionIndex < questions.length) {
                 showQuestion();
@@ -1798,6 +2109,45 @@
             document.getElementById("result-en").innerText = result.en;
             document.getElementById("result-deviation").innerText = finalDeviation;
 
+            // 最強バズ機能：ランキング算出（小数点+ランダム変動）
+            let basePercent = 50;
+            // 順位出し（5タイプ中の分布シミュレーション）
+            let rankInTypes = 5;
+
+            if (finalDeviation >= 96) { basePercent = 0.2; rankInTypes = 1; }
+            else if (finalDeviation >= 93) { basePercent = 0.6; rankInTypes = 1; }
+            else if (finalDeviation >= 90) { basePercent = 1.2; rankInTypes = 1; }
+            else if (finalDeviation >= 85) { basePercent = 2.8; rankInTypes = 1; }
+            else if (finalDeviation >= 80) { basePercent = 5.4; rankInTypes = 2; }
+            else if (finalDeviation >= 75) { basePercent = 9.2; rankInTypes = 2; }
+            else if (finalDeviation >= 70) { basePercent = 14.8; rankInTypes = 3; }
+            else if (finalDeviation >= 65) { basePercent = 24.5; rankInTypes = 3; }
+            else if (finalDeviation >= 60) { basePercent = 38.2; rankInTypes = 4; }
+            else { basePercent = 48.0; rankInTypes = 5; }
+
+            // 微量なランダム変動を追加 (±0.9%以内)
+            const microOffset = (Math.random() * 1.8 - 0.9);
+            let rankPercent = (basePercent + microOffset).toFixed(1);
+            if (parseFloat(rankPercent) < 0.1) rankPercent = "0.1";
+
+            const rankingBadge = document.getElementById("ranking-badge");
+            const rankingValue = document.getElementById("ranking-percent");
+            if (rankingBadge && rankingValue) {
+                rankingValue.innerText = rankPercent;
+                rankingBadge.style.display = "block";
+            }
+
+            // 戦略的改善：才能ランキングバッジの反映
+            const talentRankBadge = document.getElementById("talent-rank-badge");
+            const talentRankValue = document.getElementById("talent-rank-value");
+            if (talentRankBadge && talentRankValue) {
+                talentRankValue.innerText = rankInTypes;
+                talentRankBadge.style.display = "block";
+            }
+
+            // 画像保存用の順位をバッジ内に反映（後続のHTML反映で利用）
+            window.currentRankInTypes = rankInTypes;
+
             // 下部画像保存用情報の更新
             document.getElementById("footer-type-name").innerText = result.title;
             document.getElementById("footer-deviation").innerText = finalDeviation;
@@ -1828,12 +2178,14 @@
 
             document.getElementById("result-description").innerHTML = result.description.replace(/\n/g, '<br>');
 
-            // 詳細分析・本音・未来予測のテキスト設定
-            document.getElementById("analysis-text").innerText = result.loveAnalysis;
-            document.getElementById("partner-feelings-text").innerText = result.partnerFeelings;
-            document.getElementById("prediction-text").innerText = result.futurePrediction;
-            document.getElementById("future-detail-text").innerText = result.futureDetail;
-            document.getElementById("cta-type-name").innerText = result.title;
+            document.getElementById("result-description").innerHTML = result.description.replace(/\n/g, '<br>');
+
+            // 詳細分析カードへのデータ反映
+            document.getElementById("card-style").innerText = result.loveStyle;
+            document.getElementById("card-style-desc").innerText = result.loveStyleDesc;
+            document.getElementById("card-strengths").innerText = result.strengths;
+            document.getElementById("card-weaknesses").innerText = result.weaknesses;
+            document.getElementById("card-match").innerText = result.matchType;
 
             // 相性リスト（下部）
             const goodObj = resultsData[result.matchGood] || resultsData["MIX"];
@@ -1843,6 +2195,32 @@
                 <li>相性を補完する器用なタイプ</li>
             `;
             document.getElementById("compatibility-best-list").innerHTML = bestListHtml;
+
+            // 戦略的改善：才能ランキングリストの生成
+            const rankingListContainer = document.getElementById("ranking-list-container");
+            if (rankingListContainer) {
+                // 仮のランキング順序（現在のタイプを算出した順位に滑り込ませる）
+                const allTypes = Object.keys(resultsData).filter(key => key !== "MIX");
+                const sortedTypes = ["MIX", "B", "D", "A", "C"]; // デフォルト
+
+                // 表示用のHTML生成
+                let listHtml = "";
+                sortedTypes.slice(0, 5).forEach((key, index) => {
+                    const rank = index + 1;
+                    const isYourType = (key === resultTypeKey);
+                    const label = isYourType ? '<span class="rank-your-label">YOU</span>' : '';
+                    const rankClass = rank <= 3 ? `top${rank}` : '';
+
+                    listHtml += `
+                        <div class="ranking-item">
+                            <span class="rank-num ${rankClass}">${rank}</span>
+                            <span class="rank-type-name">${resultsData[key].title}</span>
+                            ${label}
+                        </div>
+                    `;
+                });
+                rankingListContainer.innerHTML = listHtml;
+            }
 
             const hashtagsContainer = document.getElementById("result-hashtags");
             hashtagsContainer.innerHTML = "";
@@ -1891,9 +2269,10 @@
             displayAffiliateLinks(result.title);
 
             // アクセス解析：結果表示イベント
-            trackEvent('view_result', {
+            trackEvent('show_result', {
                 result_type: resultTypeKey,
-                result_title: result.title
+                result_title: result.title,
+                deviation: finalDeviation
             });
         }
 
@@ -1984,14 +2363,23 @@
         }
 
         function displayAffiliateLinks(resultTitle) {
-            const topAdSpace = document.getElementById('top-ad-content');
+            const afterResultAdSpace = document.getElementById('after-result-ad-content');
+            const afterSaveAdSpace = document.getElementById('after-save-ad-content');
             const bottomAdSpace = document.getElementById('bottom-ad-content');
             const os = getOS();
 
-            // 上部広告：デバイス別 (iOS: ケアプリ / Android: ウラーノ)
+            // デバイス別バナーHTMLの共通化
+            let bannerHTML = "";
+            let linkUrl = "";
+            let partnerName = "";
+            let buttonText = "";
+
             if (os === 'iOS') {
-                topAdSpace.innerHTML = `
-                    <a href='https://mttag.com/s/FVEwe5OMQ6c' rel='nofollow' target='_blank' class='custom-banner careapp-banner' onclick="trackEvent('click_affiliate', { ad_name: 'careapp', device: 'iOS' })">
+                linkUrl = 'https://mttag.com/s/FVEwe5OMQ6c';
+                partnerName = 'careapp';
+                buttonText = 'ケアプリで今すぐ無料相談 ▶';
+                bannerHTML = `
+                    <a href='${linkUrl}' rel='nofollow' target='_blank' class='custom-banner careapp-banner' onclick="trackEvent('affiliate_click', { ad_name: 'careapp', position: 'banner', device: 'iOS' })">
                         <div class='banner-header'>＼ 誰にも言えない悩み ／</div>
                         <div class='banner-title'>チャットで<br><span class='banner-highlight'>叶えたい恋の悩み✨</span></div>
                         <div class='banner-features'>
@@ -2001,11 +2389,13 @@
                         </div>
                         <div class='banner-cta'>ケアプリで今すぐ相談する ▶</div>
                     </a>
-                    <img src='https://mttag.com/banner/FVEwe5OMQ6c' width='1' height='1' border='0' style='display:none;' />
                 `;
             } else {
-                topAdSpace.innerHTML = `
-                    <a href='https://mttag.com/s/T0bH03Hq6sA' rel='nofollow' target='_blank' class='custom-banner urano-banner' onclick="trackEvent('click_affiliate', { ad_name: 'urano', device: '${os}' })">
+                linkUrl = 'https://mttag.com/s/T0bH03Hq6sA';
+                partnerName = 'urano';
+                buttonText = 'ウラーノで今すぐ無料占う ▶';
+                bannerHTML = `
+                    <a href='${linkUrl}' rel='nofollow' target='_blank' class='custom-banner urano-banner' onclick="trackEvent('affiliate_click', { ad_name: 'urano', position: 'banner', device: '${os}' })">
                         <div class='banner-header'>＼チャットで気軽に相談できる／</div>
                         <div class='banner-title'>一流占い師がアナタの<br>悩みを<span class='banner-highlight'>解決に導く✨</span></div>
                         <div class='banner-features'>
@@ -2015,56 +2405,47 @@
                         </div>
                         <div class='banner-cta'>ウラーノで今すぐ相談する ▶</div>
                     </a>
-                    <img src='https://mttag.com/banner/KOl3yRhOJtU' width='1' height='1' border='0' style='display:none;' />
                 `;
             }
 
-            // --- 今回の改修：各所CTAボタンへのリンク設定 ---
-            let linkUrl = '';
-            let partnerName = '';
-            let buttonText = '';
+            // 新しい広告配置に反映
+            if (afterResultAdSpace) afterResultAdSpace.innerHTML = bannerHTML;
+            if (afterSaveAdSpace) afterSaveAdSpace.innerHTML = bannerHTML;
 
-            if (os === 'iOS') {
-                linkUrl = 'https://mttag.com/s/FVEwe5OMQ6c';
-                partnerName = 'careapp';
-                buttonText = 'ケアプリで今すぐ無料相談 ▶';
-            } else {
-                linkUrl = 'https://mttag.com/s/T0bH03Hq6sA';
-                partnerName = 'urano';
-                buttonText = 'ウラーノで今すぐ無料占う ▶';
-            }
-
-            // メインCTA
-            const ctaButtonHTML = `<a href="${linkUrl}" class="cta-button" target="_blank" onclick="trackEvent('affiliate_click', {partner: '${partnerName}', position: 'main_cta', type: '${os}'})">${buttonText}</a>`;
+            // 各種CTAボタンの設定
+            const ctaButtonHTML = `<a href="${linkUrl}" class="cta-button" target="_blank" onclick="trackEvent('affiliate_click', {ad_name: '${partnerName}', position: 'main_cta', type: '${os}'})">${buttonText}</a>`;
             const mainCtaContainer = document.getElementById("cta-button-container");
             if (mainCtaContainer) mainCtaContainer.innerHTML = ctaButtonHTML;
 
-            // 未来予測セクションのボタン
             const futureCtaBtn = document.getElementById("future-cta-btn");
             if (futureCtaBtn) {
                 futureCtaBtn.href = linkUrl;
                 futureCtaBtn.target = "_blank";
-                futureCtaBtn.onclick = () => trackEvent('affiliate_click', { partner: partnerName, position: 'future_cta', type: os });
+                futureCtaBtn.onclick = () => trackEvent('affiliate_click', { ad_name: partnerName, position: 'future_cta', type: os });
             }
 
-            // 相性占いセクションのボタン
             const compatCtaContainer = document.getElementById("compat-cta-button-container");
             if (compatCtaContainer) {
-                compatCtaContainer.innerHTML = `<a href="${linkUrl}" class="cta-button" target="_blank" style="font-size: 0.95rem; padding: 15px 20px; margin: 0 auto;" onclick="trackEvent('affiliate_click', {partner: '${partnerName}', position: 'compat_cta', type: '${os}'})">無料で相性を占う ▶</a>`;
+                compatCtaContainer.innerHTML = `<a href="${linkUrl}" class="cta-button" target="_blank" style="font-size: 0.95rem; padding: 15px 20px; margin: 0 auto;" onclick="trackEvent('affiliate_click', {ad_name: '${partnerName}', position: 'compat_cta', type: '${os}'})">無料で相性を占う ▶</a>`;
             }
 
-            // --- 今回の追加修正：消失していた下部広告枠（お役立ち恋愛情報）の復旧 ---
+            const redCtaContainer = document.getElementById("cta-button-red-container");
+            if (redCtaContainer) {
+                redCtaContainer.innerHTML = `<a href="${linkUrl}" class="btn-affiliate-red" target="_blank" onclick="trackEvent('affiliate_click', {ad_name: '${partnerName}', position: 'red_cta', type: '${os}'})">[無料で占う]</a>`;
+            }
+
+            // 下部広告枠の復旧
             if (resultTitle.includes('陽キャ') || resultTitle.includes('カメレオン')) {
                 bottomAdSpace.innerHTML = `
                     <p class="recommend-text">あなたの魅力をさらに輝かせる！</p>
-                    <a href='https://mttag.com/s/SxEQ5KFsReE' rel='nofollow' target='_blank' onclick="trackEvent('click_affiliate', { ad_name: 'mttag_1' })">
+                    <a href='https://mttag.com/s/SxEQ5KFsReE' rel='nofollow' target='_blank' onclick="trackEvent('affiliate_click', { ad_name: 'mttag_1' })">
                         <img src='https://mttag.com/banner/SxEQ5KFsReE' alt='占い師紹介リンク集１' border='0' />
                     </a>
                 `;
             } else {
                 bottomAdSpace.innerHTML = `
                     <p class="recommend-text">あの人の本音、知りたい？</p>
-                    <a href='https://mttag.com/s/UJy-M-sarJ4' rel='nofollow' target='_blank' onclick="trackEvent('click_affiliate', { ad_name: 'mttag_2' })">
+                    <a href='https://mttag.com/s/UJy-M-sarJ4' rel='nofollow' target='_blank' onclick="trackEvent('affiliate_click', { ad_name: 'mttag_2' })">
                         <img src='https://mttag.com/banner/UJy-M-sarJ4' alt='占い師紹介リンク集２' border='0' />
                     </a>
                 `;
@@ -2074,30 +2455,30 @@
         // ▼ アクション機能 ▼
 
         function getShareText() {
-            return `私の隠れた恋愛才能は「${currentResultTitle}」でした！💖（恋愛偏差値: ${window.currentDeviation}）\n相性最高のタイプは「${window.currentGoodMatch}」らしい！\n\n${window.currentHashtags}\n#隠れた恋愛才能診断`;
+            return `私の恋愛偏差値は【${window.currentDeviation}】でした💖あなたもやってみて！✨\n\n#恋愛偏差値診断 #浮気されやすさ診断\n${window.location.href}`;
         }
 
         function shareX() {
-            trackEvent('share', { method: 'X' });
+            trackEvent('share_click', { method: 'X' });
             const text = encodeURIComponent(getShareText());
             const url = encodeURIComponent(window.location.href);
             window.open(`https://twitter.com/intent/tweet?text=${text}&url=${url}`, '_blank');
         }
 
         function shareLine() {
-            trackEvent('share', { method: 'LINE' });
+            trackEvent('share_click', { method: 'LINE' });
             const text = encodeURIComponent(`${getShareText()}\n\nここからやってみて！✨\n${window.location.href}`);
             window.open(`https://line.me/R/msg/text/?${text}`, '_blank');
         }
 
         function dummyShare(snsName) {
-            trackEvent('share', { method: snsName });
+            trackEvent('share_click', { method: snsName });
             alert(`【${snsName}でシェアする方法】\n\n① 上にある「📸 結果画像を保存する」ボタンで、結果の画像 (9:16) をスマホに保存してください。\n② ${snsName}のアプリを開いて、ストーリーズやフィードに画像を載せて投稿してね✨`);
         }
 
         // ▼ 追加実装: Threadsのシェア（ワンタップ）
         function shareThreads() {
-            trackEvent('share', { method: 'Threads' });
+            trackEvent('share_click', { method: 'Threads' });
             // Threadsの投稿画面を自動で開き、テキストとURLを埋め込む（※ブラウザ環境によってアプリが開きます）
             const text = encodeURIComponent(`${getShareText()}\n\nここからやってみて！✨\n${window.location.href}`);
             window.open(`https://www.threads.net/intent/post?text=${text}`, '_blank');
@@ -2105,7 +2486,7 @@
 
         // ▼ 追加実装: Instagramのシェア補助（テキストとURLを自動コピーしてインスタを開く）
         function shareInstagram() {
-            trackEvent('share', { method: 'Instagram_Assistant' });
+            trackEvent('share_click', { method: 'Instagram_Assistant' });
             const tempText = `${getShareText()}\n\nここから診断してみてね！✨\n${window.location.href}`;
 
             // Web Share API が使えるスマホ（iPhoneなど）のネイティブシェアメニューを呼び出す機能があれば優先する
@@ -2163,7 +2544,7 @@
             }).then(canvas => {
                 const imgData = canvas.toDataURL("image/png");
                 const link = document.createElement("a");
-                link.download = "恋愛才能診断_Y2K.png";
+                link.download = `恋愛才能診断_${currentResultTitle}.png`;
                 link.href = imgData;
                 link.click();
             }).catch(err => {
