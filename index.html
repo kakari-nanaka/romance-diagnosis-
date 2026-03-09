@@ -956,6 +956,253 @@
         .hidden {
             display: none;
         }
+
+        /* === 新規UI追加CSS === */
+
+        /* 恋愛偏差値メーター */
+        .deviation-score-wrapper {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            width: 70px;
+            height: 70px;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 50%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+            border: 3px solid var(--color-pink);
+            z-index: 10;
+        }
+
+        .deviation-text-small {
+            font-size: 0.55rem;
+            font-weight: 700;
+            color: var(--color-pink);
+            margin-bottom: 2px;
+        }
+
+        .deviation-value {
+            font-size: 1.4rem;
+            font-weight: 900;
+            color: var(--color-text);
+            line-height: 1;
+            font-family: 'Outfit', sans-serif;
+        }
+
+        /* 恋愛リスク指標カード */
+        .risk-indicators {
+            display: flex;
+            justify-content: space-between;
+            gap: 10px;
+            margin: 15px 0;
+            padding: 0 10px;
+        }
+
+        @media (max-width: 375px) {
+            .risk-indicators {
+                flex-direction: column;
+            }
+        }
+
+        .risk-card {
+            flex: 1;
+            background: #fff;
+            border-radius: 12px;
+            padding: 12px;
+            text-align: center;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+            border: 1px solid rgba(241, 150, 163, 0.2);
+        }
+
+        .risk-label {
+            font-size: 0.65rem;
+            font-weight: 700;
+            color: #666;
+            margin-bottom: 5px;
+        }
+
+        .risk-value {
+            font-size: 1.1rem;
+            font-weight: 900;
+            color: var(--color-pink);
+            margin-bottom: 5px;
+            font-family: 'Outfit', sans-serif;
+        }
+
+        .risk-bar-bg {
+            width: 100%;
+            height: 6px;
+            background-color: var(--color-lavender);
+            border-radius: 3px;
+            overflow: hidden;
+        }
+
+        .risk-bar-fill {
+            height: 100%;
+            background-color: var(--color-pink);
+            border-radius: 3px;
+        }
+
+        /* 未来予測セクション */
+        .future-prediction {
+            background: rgba(255, 255, 255, 0.6);
+            border: 1px dashed var(--color-mint);
+            border-radius: 15px;
+            padding: 20px;
+            margin: 20px 0;
+            text-align: center;
+        }
+
+        .future-prediction h3 {
+            color: var(--color-text);
+            font-size: 1.1rem;
+            margin-top: 0;
+            margin-bottom: 10px;
+        }
+
+        .future-prediction p {
+            font-size: 0.9rem;
+            line-height: 1.6;
+            color: var(--color-text);
+            margin-bottom: 15px;
+        }
+
+        .reveal-button {
+            background: #fff;
+            color: var(--color-pink);
+            border: 2px solid var(--color-pink);
+            border-radius: 20px;
+            padding: 10px 20px;
+            font-size: 0.9rem;
+            font-weight: 700;
+            cursor: pointer;
+            box-shadow: 0 2px 5px rgba(241, 150, 163, 0.2);
+            font-family: inherit;
+        }
+
+        /* 占い誘導ブロック (CTA) */
+        .fortune-cta {
+            background: rgba(241, 150, 163, 0.1);
+            border-radius: 20px;
+            padding: 25px 20px;
+            text-align: center;
+            margin: 20px 0;
+            box-shadow: 0 5px 15px rgba(241, 150, 163, 0.15);
+        }
+
+        .fortune-cta h2 {
+            font-size: 1.25rem;
+            color: var(--color-text);
+            margin-top: 0;
+            margin-bottom: 15px;
+        }
+
+        .fortune-cta p {
+            font-size: 0.9rem;
+            color: #444;
+            line-height: 1.6;
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+
+        .fortune-cta ul {
+            text-align: left;
+            display: inline-block;
+            margin: 0 auto 20px auto;
+            padding: 0 0 0 20px;
+            font-size: 0.9rem;
+            color: var(--color-text);
+        }
+
+        .fortune-cta ul li {
+            margin-bottom: 8px;
+            font-weight: 700;
+        }
+
+        .fortune-cta ul li::marker {
+            color: var(--color-pink);
+        }
+
+        .cta-button {
+            display: block;
+            width: 100%;
+            max-width: 320px;
+            margin: 0 auto;
+            background: linear-gradient(135deg, #F196A3, #ff4757);
+            color: white;
+            font-size: 1.1rem;
+            font-weight: 900;
+            padding: 16px 20px;
+            border-radius: 30px;
+            text-decoration: none;
+            box-shadow: 0 6px 15px rgba(255, 71, 87, 0.4);
+            animation: pulse-btn 2s infinite;
+            cursor: pointer;
+        }
+
+        /* 相性占いセクション */
+        .compatibility-cta {
+            background: #fff;
+            border-radius: 15px;
+            padding: 20px;
+            margin: 25px 0;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+            text-align: center;
+            border: 2px solid rgba(191, 203, 168, 0.5);
+        }
+
+        .compatibility-cta h3 {
+            font-size: 1.05rem;
+            color: var(--color-text);
+            margin-top: 0;
+            margin-bottom: 15px;
+        }
+
+        .compatibility-list {
+            list-style: none;
+            padding: 0;
+            margin: 0 0 15px 0;
+            text-align: left;
+            display: inline-block;
+        }
+
+        .compatibility-list li {
+            font-size: 0.9rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+            color: #555;
+        }
+
+        .compatibility-list li::before {
+            content: "❤️";
+            margin-right: 6px;
+        }
+
+        .capture-footer-new {
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 12px;
+            padding: 12px;
+            margin-top: 20px;
+            text-align: center;
+            font-size: 0.8rem;
+            color: var(--color-text);
+            font-weight: 700;
+            border: 2px dashed rgba(241, 150, 163, 0.5);
+        }
+
+        .capture-footer-new div {
+            margin-bottom: 4px;
+        }
+
+        .capture-footer-url {
+            font-family: 'Outfit', sans-serif;
+            color: var(--color-pink);
+            font-size: 0.85rem;
+            margin-top: 6px;
+        }
     </style>
 </head>
 
@@ -1006,8 +1253,15 @@
                     </div>
 
                     <div class="capture-content">
-                        <div class="result-image-container">
+                        <!-- 画像内偏差値＋キャラクター -->
+                        <div class="result-image-container" style="position: relative;">
                             <span class="result-crown" id="result-crown">👑</span>
+                            <!-- 新規：恋愛偏差値バッジ -->
+                            <div class="deviation-score-wrapper">
+                                <div class="deviation-text-small">恋愛偏差値</div>
+                                <div class="deviation-value" id="result-deviation">--</div>
+                            </div>
+
                             <img id="result-character-img" class="result-character-img" src="" alt="キャラクター画像">
                             <div class="result-image-overlay">
                                 <h3 id="result-title"></h3>
@@ -1015,11 +1269,40 @@
                             </div>
                         </div>
 
+                        <!-- 恋愛リスク指標 -->
+                        <div class="risk-indicators" id="risk-indicators">
+                            <!-- JS側で生成 -->
+                        </div>
+
                         <div class="result-hashtags" id="result-hashtags"></div>
 
                         <p id="result-description"></p>
 
-                        <div class="result-stats" id="result-stats">
+                        <!-- 未来予測・占いCTAセクション -->
+                        <section class="future-prediction" id="future-prediction">
+                            <h3>あなたの次の恋愛</h3>
+                            <p id="prediction-text"></p>
+                            <p style="color:#ff6b81; font-weight:bold;">ただしこの恋愛には<br>重要な注意点があります。</p>
+                            <button class="reveal-button" onclick="scrollToCta()">この恋愛の注意点を見る</button>
+                        </section>
+
+                        <section class="fortune-cta" id="fortune-cta-section">
+                            <h2>あなたの恋愛の未来を占う</h2>
+                            <p>
+                                あなたの恋愛タイプは<br>
+                                「<span id="cta-type-name" style="color:var(--color-pink);"></span>」です。
+                            </p>
+                            <p>占いでは以下が分かります</p>
+                            <ul>
+                                <li>相手の本音を知る</li>
+                                <li>次の恋愛時期を知る</li>
+                                <li>あなたと相性の良い相手</li>
+                            </ul>
+                            <!-- プレースホルダー。JavaScriptでOS判定後にURL入りのボタンを生成 -->
+                            <div id="cta-button-container"></div>
+                        </section>
+
+                        <div class="result-stats" id="result-stats" style="margin-top: 20px;">
                             <!-- JSで生成 -->
                         </div>
 
@@ -1033,13 +1316,28 @@
                                 <div class="match-type-name" id="match-bad-name"></div>
                             </div>
                         </div>
-                    </div>
 
-                    <div class="capture-footer">
-                        URL: romance-diagnosis.lover.workers.dev
+                        <div class="capture-footer-new">
+                            <div>恋愛才能診断</div>
+                            <div>タイプ：<span id="footer-type-name"></span></div>
+                            <div>恋愛偏差値：<span id="footer-deviation"></span></div>
+                            <div class="capture-footer-url">romance-diagnosis.lover.workers.dev</div>
+                        </div>
                     </div>
                 </div>
             </div>
+
+            <!-- 相性診断追加CTA -->
+            <section class="compatibility-cta">
+                <h3>あなたと相性がいい恋愛タイプ</h3>
+                <ul class="compatibility-list" id="compatibility-best-list">
+                    <!-- JS書き換え -->
+                </ul>
+                <p style="font-size:0.85rem; font-weight:700; color:#ff6b81; margin-bottom:15px;">
+                    今気になる相手との相性も占えます
+                </p>
+                <div id="compat-cta-button-container"></div>
+            </section>
 
             <div class="deep-dive-section" style="text-align:center; margin-bottom: 25px;">
                 <button class="btn btn-start"
@@ -1198,6 +1496,9 @@
                 description: "あなたの隠れた才能は、相手を底無し沼のような優しさで包み込む『圧倒的・包容力』！ダメなところも全部受け入れてくれるあなたと一緒にいると、相手は完全に依存してしまいます✨",
                 image: "images/type_a_character_1773017634214.png",
                 hashtags: ["#圧倒的包容力", "#平和主義", "#聞き上手", "#歩くオアシス"],
+                deviationScore: 68,
+                riskStats: { success: 65, depend: 88, cheat: 62 },
+                futurePrediction: "あなたの次の恋愛は、身近な人との関係が発展して始まる可能性が高いです。しかし、尽くしすぎるあまり相手が甘えすぎてしまうという注意点があります。",
                 stats: [
                     { label: "甘やかし度", value: 95, colorClass: "fill-pink" },
                     { label: "メンタルつよつよ度", value: 80, colorClass: "fill-mint" },
@@ -1212,6 +1513,9 @@
                 description: "あなたの才能は、周りの空気を一瞬でパッと明るくする『スーパー・ポジティブ』！「この子と一緒にいると楽しい！」と思わせる天才。相手をグイグイ引っ張る無敵のヒロインポジションです🌻",
                 image: "images/type_b_character_1773017702586.png",
                 hashtags: ["#天性の愛され力", "#笑顔クリエイター", "#一緒にいて飽きない", "#コミュ力お化け"],
+                deviationScore: 75,
+                riskStats: { success: 82, depend: 30, cheat: 45 },
+                futurePrediction: "あなたの次の恋愛は、新しい環境やイベントでの出会いから始まる可能性が高いです。しかし、相手の繊細なサインを見逃してしまうという注意点があります。",
                 stats: [
                     { label: "コミュ力", value: 100, colorClass: "fill-pink" },
                     { label: "アクティブ度", value: 90, colorClass: "fill-mint" },
@@ -1226,6 +1530,9 @@
                 description: "あなたの才能は、飾らずにありのままでいられる『奇跡のマイペース』！無理して相手に合わせるのではなく、二人のペースを大切に育めるサステナブルな関係構築の天才。最高の癒やしパートナー☁️",
                 image: "images/type_c_character_1773017715657.png",
                 hashtags: ["#マイペース", "#ブレない芯", "#安心感ハンパない", "#おうちデート派"],
+                deviationScore: 61,
+                riskStats: { success: 70, depend: 20, cheat: 55 },
+                futurePrediction: "あなたの次の恋愛は、趣味や興味を共有できる相手と穏やかに始まる可能性が高いです。しかし、関係がマンネリ化しやすいという注意点があります。",
                 stats: [
                     { label: "マイペース度", value: 95, colorClass: "fill-pink" },
                     { label: "精神安定度", value: 90, colorClass: "fill-mint" },
@@ -1240,6 +1547,9 @@
                 description: "あなたの才能は、お互いのレベルをバッチリ高め合える『クレバーな対話力』！人生の良き理解者として最強のタッグを組める人です。誰もが羨む、自立したイマドキのパーフェクトカップル💎",
                 image: "images/type_d_character_1773017730735.png",
                 hashtags: ["#高め合える関係", "#対話重視", "#自立系女子", "#最高のパートナー"],
+                deviationScore: 72,
+                riskStats: { success: 63, depend: 15, cheat: 35 },
+                futurePrediction: "あなたの次の恋愛は、職場や学びの場で尊敬できる相手と共に始まる可能性が高いです。しかし、ロマンチックさに欠けてしまうという注意点があります。",
                 stats: [
                     { label: "知性・論理力", value: 95, colorClass: "fill-pink" },
                     { label: "リード力", value: 80, colorClass: "fill-mint" },
@@ -1254,6 +1564,9 @@
                 description: "あなたの才能は、相手や状況に合わせて自由自在にアップデートできる『抜群のバランス感覚』！時には甘え、時にはしっかりリードし、どんな相手も虜にしてしまうスーパーマルチプレイヤー💫",
                 image: "images/type_e_character_1773017747762.png",
                 hashtags: ["#変幻自在", "#あざとい", "#バランス感覚神", "#モテの境地"],
+                deviationScore: 85,
+                riskStats: { success: 90, depend: 40, cheat: 70 },
+                futurePrediction: "あなたの次の恋愛は、少し意外なシチュエーションで電撃的に始まる可能性が高いです。しかし、相手の本音を読み違えやすいという注意点があります。",
                 stats: [
                     { label: "空気を読む力", value: 100, colorClass: "fill-pink" },
                     { label: "小悪魔度", value: 95, colorClass: "fill-mint" },
@@ -1384,12 +1697,50 @@
 
             document.getElementById("result-title").innerText = result.title;
             document.getElementById("result-en").innerText = result.en;
+            document.getElementById("result-deviation").innerText = result.deviationScore;
+
+            // 下部画像保存用情報の更新
+            document.getElementById("footer-type-name").innerText = result.title;
+            document.getElementById("footer-deviation").innerText = result.deviationScore;
 
             // 画像の差し替え
             const charaImg = document.getElementById("result-character-img");
             charaImg.src = result.image;
 
+            // 恋愛リスク指標の生成
+            const riskContainer = document.getElementById("risk-indicators");
+            riskContainer.innerHTML = `
+                <div class="risk-card">
+                    <div class="risk-label">恋愛成功率</div>
+                    <div class="risk-value">${result.riskStats.success}%</div>
+                    <div class="risk-bar-bg"><div class="risk-bar-fill" style="width: ${result.riskStats.success}%;"></div></div>
+                </div>
+                <div class="risk-card">
+                    <div class="risk-label">恋愛依存リスク</div>
+                    <div class="risk-value">${result.riskStats.depend}%</div>
+                    <div class="risk-bar-bg"><div class="risk-bar-fill" style="width: ${result.riskStats.depend}%;"></div></div>
+                </div>
+                <div class="risk-card">
+                    <div class="risk-label">浮気されやすさ</div>
+                    <div class="risk-value">${result.riskStats.cheat}%</div>
+                    <div class="risk-bar-bg"><div class="risk-bar-fill" style="width: ${result.riskStats.cheat}%;"></div></div>
+                </div>
+            `;
+
             document.getElementById("result-description").innerHTML = result.description.replace(/\n/g, '<br>');
+
+            // 未来予測＆CTAのテキスト設定
+            document.getElementById("prediction-text").innerText = result.futurePrediction;
+            document.getElementById("cta-type-name").innerText = result.title;
+
+            // 相性リスト（下部）
+            const goodObj = resultsData[result.matchGood] || resultsData["MIX"];
+            const bestListHtml = `
+                <li>${goodObj.title}</li>
+                <li>${resultsData["MIX"].title}</li>
+                <li>相性を補完する器用なタイプ</li>
+            `;
+            document.getElementById("compatibility-best-list").innerHTML = bestListHtml;
 
             const hashtagsContainer = document.getElementById("result-hashtags");
             hashtagsContainer.innerHTML = "";
@@ -1442,6 +1793,13 @@
                 result_type: resultTypeKey,
                 result_title: result.title
             });
+        }
+
+        function scrollToCta() {
+            trackEvent('click_reveal', { action: 'scroll_to_cta' });
+            const target = document.getElementById("fortune-cta-section");
+            const y = target.getBoundingClientRect().top + window.scrollY - 20;
+            window.scrollTo({ top: y, behavior: 'smooth' });
         }
 
         function generateAllTypesDict(myTypeKey) {
