@@ -1076,8 +1076,8 @@
                     <button class="btn btn-threads" onclick="shareThreads()">Threads</button>
                 </div>
                 <div class="share-buttons">
-                    <button class="btn btn-x" onclick="shareWithImage('X')">𝕏 (Twitter)</button>
-                    <button class="btn btn-line" onclick="shareWithImage('LINE')">LINE</button>
+                    <button class="btn btn-x" onclick="shareX()">𝕏 (Twitter)</button>
+                    <button class="btn btn-line" onclick="shareLine()">LINE</button>
                 </div>
 
                 <button class="btn btn-reload" onclick="location.reload()">↺ 最初からやり直す</button>
@@ -1581,74 +1581,17 @@
             return `私の隠れた恋愛才能は「${currentResultTitle}」でした！💖\n相性最高のタイプは「${window.currentGoodMatch}」らしい！\n\n${window.currentHashtags}\n#隠れた恋愛才能診断`;
         }
 
-        function shareXFallback() {
+        function shareX() {
             trackEvent('share', { method: 'X' });
             const text = encodeURIComponent(getShareText());
             const url = encodeURIComponent(window.location.href);
             window.open(`https://twitter.com/intent/tweet?text=${text}&url=${url}`, '_blank');
         }
 
-        function shareLineFallback() {
+        function shareLine() {
             trackEvent('share', { method: 'LINE' });
             const text = encodeURIComponent(`${getShareText()}\n\nここからやってみて！✨\n${window.location.href}`);
             window.open(`https://line.me/R/msg/text/?${text}`, '_blank');
-        }
-
-        // ▼ 追加実装：画像を自動生成してネイティブシェアで共有する機能（X, LINEなど汎用）
-        async function shareWithImage(snsName) {
-            trackEvent('share', { method: snsName + '_with_image' });
-
-            // Web Share API + ファイル共有がサポートされているかチェック
-            if (!navigator.share || !navigator.canShare) {
-                fallbackShare(snsName);
-                return;
-            }
-
-            try {
-                // 1. html2canvasで結果画像を生成
-                const target = document.getElementById("capture-area");
-                const canvas = await html2canvas(target, { backgroundColor: "#FCF8F5", scale: 2 });
-
-                // 2. CanvasをBlobに変換
-                canvas.toBlob(async (blob) => {
-                    if (!blob) {
-                        fallbackShare(snsName);
-                        return;
-                    }
-
-                    // 3. Fileオブジェクトを作成
-                    const file = new File([blob], "love_talent_result.png", { type: "image/png" });
-
-                    const shareData = {
-                        files: [file],
-                        title: 'あなたの隠れた恋愛才能診断🎀',
-                        text: `${getShareText()}\n\n`,
-                        url: window.location.href
-                    };
-
-                    // 4. 画像共有が可能かチェックしてシェア
-                    if (navigator.canShare(shareData)) {
-                        await navigator.share(shareData);
-                        console.log('画像付きシェア成功');
-                    } else {
-                        throw new Error("画像のシェアがサポートされていないか、データ形式の問題です");
-                    }
-                }, "image/png");
-
-            } catch (error) {
-                console.log('画像付きシェアに失敗、またはキャンセルされました', error);
-                fallbackShare(snsName);
-            }
-        }
-
-        function fallbackShare(snsName) {
-            if (snsName === 'X') {
-                shareXFallback();
-            } else if (snsName === 'LINE') {
-                shareLineFallback();
-            } else {
-                dummyShare(snsName);
-            }
         }
 
         function dummyShare(snsName) {
