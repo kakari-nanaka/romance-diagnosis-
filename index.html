@@ -1604,71 +1604,71 @@
                         <div class="risk-indicators" id="risk-indicators">
                             <!-- JS側で生成 -->
                         </div>
+                    </div> <!-- capture-areaの閉じタグをここへ移動（画像と指標のみキャプチャ） -->
+                </div>
 
-                        <p id="result-description" style="font-size: 0.9rem; margin-top: 15px;"></p>
+                <p id="result-description" style="font-size: 0.9rem; margin-top: 15px; padding: 0 15px;"></p>
 
-                        <!-- 新設：恋愛分析 4枚カードグリッド -->
-                        <div class="analysis-grid">
-                            <div class="analysis-card full-width">
-                                <h4>恋愛スタイル</h4>
-                                <div class="card-value" id="card-style"></div>
-                                <div class="card-desc" id="card-style-desc"></div>
-                            </div>
-                            <div class="analysis-card">
-                                <h4>恋愛の強み</h4>
-                                <div class="card-value" id="card-strengths" style="font-size: 0.8rem;"></div>
-                            </div>
-                            <div class="analysis-card">
-                                <h4>注意ポイント</h4>
-                                <div class="card-value" id="card-weaknesses" style="font-size: 0.8rem;"></div>
-                            </div>
-                            <div class="analysis-card full-width">
-                                <h4>相性のいいタイプ</h4>
-                                <div class="card-value" id="card-match"></div>
-                            </div>
-                        </div>
-
-                        <!-- 占いCTAカード（一番目立つ導線） -->
-                        <div class="fortune-info-card">
-                            <h3>恋愛運をもっと詳しく知る</h3>
-                            <p>人気の恋愛占いで<br>あなたの相性や未来をチェック</p>
-                            <div id="cta-button-red-container"></div>
-                        </div>
-
-                        <!-- 戦略的改善：恋愛才能ランキングリスト -->
-                        <div class="ranking-list-section" id="ranking-list-ui">
-                            <h3>👑 恋愛才能タイプランキング</h3>
-                            <div id="ranking-list-container">
-                                <!-- JSで動的生成 -->
-                            </div>
-                        </div>
-
-                        <div class="result-hashtags" id="result-hashtags"></div>
-
-                        <div class="result-stats" id="result-stats" style="margin-top: 20px;">
-                            <!-- JS側で生成 -->
-                        </div>
-
-                        <div class="result-match">
-                            <div class="match-box match-good">
-                                <div class="match-box-title">❤️ 相性サイコー</div>
-                                <div class="match-type-name" id="match-good-name"></div>
-                            </div>
-                            <div class="match-box match-bad">
-                                <div class="match-box-title">⚠️ 少し注意かも？</div>
-                                <div class="match-type-name" id="match-bad-name"></div>
-                            </div>
-                        </div>
-
-                        <div class="capture-footer-new">
-                            <div style="font-size: 0.9rem; color: var(--color-pink);">浮気されやすさ診断</div>
-                            <div style="display: flex; justify-content: space-between; margin-top: 5px;">
-                                <span>タイプ：<span id="footer-type-name"></span></span>
-                                <span>偏差値：<span id="footer-deviation"></span></span>
-                            </div>
-                            <div class="capture-footer-url">romance-diagnosis.lover.workers.dev</div>
-                        </div>
+                <!-- 新設：恋愛分析 4枚カードグリッド -->
+                <div class="analysis-grid">
+                    <div class="analysis-card full-width">
+                        <h4>恋愛スタイル</h4>
+                        <div class="card-value" id="card-style"></div>
+                        <div class="card-desc" id="card-style-desc"></div>
                     </div>
+                    <div class="analysis-card">
+                        <h4>恋愛の強み</h4>
+                        <div class="card-value" id="card-strengths" style="font-size: 0.8rem;"></div>
+                    </div>
+                    <div class="analysis-card">
+                        <h4>注意ポイント</h4>
+                        <div class="card-value" id="card-weaknesses" style="font-size: 0.8rem;"></div>
+                    </div>
+                    <div class="analysis-card full-width">
+                        <h4>相性のいいタイプ</h4>
+                        <div class="card-value" id="card-match"></div>
+                    </div>
+                </div>
+
+                <!-- 占いCTAカード（一番目立つ導線） -->
+                <div class="fortune-info-card">
+                    <h3>恋愛運をもっと詳しく知る</h3>
+                    <p>人気の恋愛占いで<br>あなたの相性や未来をチェック</p>
+                    <div id="cta-button-red-container"></div>
+                </div>
+
+                <!-- 戦略的改善：恋愛才能ランキングリスト -->
+                <div class="ranking-list-section" id="ranking-list-ui">
+                    <h3>👑 恋愛才能タイプランキング</h3>
+                    <div id="ranking-list-container">
+                        <!-- JSで動的生成 -->
+                    </div>
+                </div>
+
+                <div class="result-hashtags" id="result-hashtags"></div>
+
+                <div class="result-stats" id="result-stats" style="margin-top: 20px;">
+                    <!-- JS側で生成 -->
+                </div>
+
+                <div class="result-match">
+                    <div class="match-box match-good">
+                        <div class="match-box-title">❤️ 相性サイコー</div>
+                        <div class="match-type-name" id="match-good-name"></div>
+                    </div>
+                    <div class="match-box match-bad">
+                        <div class="match-box-title">⚠️ 少し注意かも？</div>
+                        <div class="match-type-name" id="match-bad-name"></div>
+                    </div>
+                </div>
+
+                <div class="capture-footer-new" style="display:none;"> <!-- 画像用フッターは非表示にするか、必要なら残す（今回はユーザー要望に合わせる） -->
+                    <div style="font-size: 0.9rem; color: var(--color-pink);">浮気されやすさ診断</div>
+                    <div style="display: flex; justify-content: space-between; margin-top: 5px;">
+                        <span>タイプ：<span id="footer-type-name"></span></span>
+                        <span>偏差値：<span id="footer-deviation"></span></span>
+                    </div>
+                    <div class="capture-footer-url">romance-diagnosis.lover.workers.dev</div>
                 </div>
             </div>
 
@@ -2528,22 +2528,52 @@
             }
         }
 
-        function saveAsImage() {
+        /**
+         * 画像保存・シェア体験の最適化
+         * 範囲を絞り、iOSではシェアシート(写真アプリ保存)を起動、PCではDL
+         */
+        async function saveAsImage() {
             trackEvent('save_image', { result_title: currentResultTitle });
             const target = document.getElementById("capture-area");
-            html2canvas(target, {
-                backgroundColor: "#FCF8F5",
-                scale: 2
-            }).then(canvas => {
-                const imgData = canvas.toDataURL("image/png");
+
+            try {
+                // キャプチャ実行 (JPEG品質向上のためscale:3)
+                const canvas = await html2canvas(target, {
+                    backgroundColor: "#FCF8F5",
+                    scale: 3,
+                    logging: false,
+                    useCORS: true
+                });
+
+                // JPEG形式に変換 (品質0.9)
+                const dataUrl = canvas.toDataURL("image/jpeg", 0.9);
+                const fileName = `恋愛才能診断_${currentResultTitle}.jpg`;
+
+                // Web Share API (iOS/Androidでの写真保存・SNS直接シェア)
+                if (navigator.share && navigator.canShare) {
+                    const blob = await (await fetch(dataUrl)).blob();
+                    const file = new File([blob], fileName, { type: "image/jpeg" });
+
+                    if (navigator.canShare({ files: [file] })) {
+                        await navigator.share({
+                            files: [file],
+                            title: '恋愛才能診断結果',
+                            text: `恋愛偏差値は【${window.currentDeviation}】でした！✨ #恋愛才能診断`
+                        });
+                        return; // シェアが成功したら終了
+                    }
+                }
+
+                // フォールバック: 従来のダウンロード処理 (PC/未対応ブラウザ)
                 const link = document.createElement("a");
-                link.download = `恋愛才能診断_${currentResultTitle}.png`;
-                link.href = imgData;
+                link.download = fileName;
+                link.href = dataUrl;
                 link.click();
-            }).catch(err => {
+
+            } catch (err) {
                 console.error("画像の保存に失敗しました。", err);
                 alert("画像の保存に失敗しました。もう一回やってみてね🥲");
-            });
+            }
         }
     </script>
 </body>
