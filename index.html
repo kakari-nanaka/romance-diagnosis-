@@ -1759,35 +1759,64 @@
                             </div>
                         </div>
 
-                        <!-- 占いCTAカード（一番目立つ導線） -->
+                        <!-- 最強の全乗せCTA（スクラッチ＋口コミ） -->
                         <div class="pasona-section" id="pasona-section-ui" data-html2canvas-ignore="true">
                             <div class="pasona-problem" id="pasona-problem-text">
                                 本当の危機：あなたは「都合よく扱われる」リスクを抱えています。
                             </div>
                             <div class="pasona-agitation" id="pasona-agitation-text">
-                                あなたのその特別な才能は、一歩間違えると「相手をダメにする」「浮気に走らせる」原因になります。愛情を注いでいるのに、なぜかいつも自分が傷つく側になっていませんか？
+                                あなたの特別な才能は、一歩間違えると「相手をダメにする」原因になります。愛情を注いでいるのに、なぜかいつも自分が傷つく側になっていませんか？
                             </div>
                             <div class="pasona-solution">
                                 <p id="pasona-solution-text">
-                                    でも大丈夫です。あなたのタイプの弱点を補い、あの人を「あなたにだけ沼らせる」確実な方法があります。
+                                    でも大丈夫。あの人を「あなたにだけ沼らせる」確実な方法があります。
                                 </p>
                             </div>
 
-                            <div class="fortune-info-card">
-                                <div class="urgency-badge">🔥 本日分の無料相談枠：残りわずか</div>
-                                <h3 style="font-size: 1.05rem; margin-top: 0; margin-bottom: 10px; color:#2d3436;">
-                                    浮気される前に…！
-                                </h3>
-                                <p style="font-size: 0.8rem; color:#636e72; margin-bottom: 15px; font-weight:700;">
-                                    あなたの「隠された運命」と「相手の本音」を<br>
-                                    プロの占い師が<span style="color:#ff4757; font-weight:900;">今だけ無料で個別鑑定</span>🔮
-                                </p>
-                                <div id="cta-button-red-container"></div>
-                                <p style="font-size: 0.65rem; color:#b2bec3; margin-top: 10px; font-weight:bold;">
-                                    ※ 相談者が殺到しているため、予告なく無料枠が終了する場合があります。
-                                </p>
+                            <!-- スクラッチ機能 -->
+                            <div style="margin-top:20px; text-align:center;">
+                                <div id="scratch-cover" style="background:linear-gradient(45deg, #ffd32a, #ff3f34); border-radius:15px; padding:35px 15px; color:#fff; font-weight:900; font-size:1.2rem; cursor:pointer; box-shadow:0 8px 15px rgba(255, 63, 52, 0.3); transition:all 0.5s ease;" onclick="this.style.opacity='0'; this.style.transform='scale(0.9)'; setTimeout(()=>this.style.display='none', 500); document.getElementById('scratch-result-box').style.display='block'; setTimeout(()=>document.getElementById('scratch-result-box').style.opacity='1', 50); trackEvent('scratch_open');">
+                                    👇 ここをタップして削る 👇<br>
+                                    <span style="font-size:0.8rem; font-weight:normal; margin-top:10px; display:inline-block;">あなた専用の秘密の特典を見る</span>
+                                </div>
+
+                                <div id="scratch-result-box" style="display:none; opacity:0; transition:opacity 0.5s ease; background:#fff; border:4px dashed #ff4757; border-radius:15px; padding:20px; animation: popUp 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);">
+                                    <div class="urgency-badge" style="position:static; display:inline-block; margin-bottom:10px;">🔥 本日分の無料相談枠：残りわずか</div>
+                                    <h3 style="color:#ff4757; margin:0 0 10px 0; font-size:1.3rem;">🎉【特賞】大当り🎉</h3>
+                                    <p style="font-size:0.9rem; font-weight:bold; color:#2d3436; margin-bottom:15px;">おめでとうございます！<br>プロ占い師の『初回無料鑑定チケット』を獲得しました！</p>
+                                    <div id="cta-button-red-container"></div>
+                                    <p style="font-size:0.65rem; color:#888; margin-top:10px; font-weight:bold;">※この画面を閉じるとチケットは失効します</p>
+                                </div>
+                            </div>
+
+                            <!-- SNS風リアル口コミセクション -->
+                            <div style="background:#fff; border-radius:12px; padding:15px; text-align:left; box-shadow:0 2px 8px rgba(0,0,0,0.05); margin-top:25px;">
+                                <div style="font-size:0.8rem; font-weight:bold; color:#ff4757; margin-bottom:12px; text-align:center;">⚠️ 鑑定を受けた方々のリアルな声</div>
+                                
+                                <div style="display:flex; margin-bottom:15px; padding-bottom:15px; border-bottom:1px solid #f1f2f6;">
+                                    <div style="width:35px; height:35px; border-radius:50%; background:#dfe6e9; display:flex; align-items:center; justify-content:center; font-size:1.2rem; margin-right:10px;">👩</div>
+                                    <div>
+                                        <div style="font-size:0.75rem; color:#636e72; font-weight:bold;">Aさん (24歳) <span style="color:#b2bec3; font-weight:normal;">・ たった今</span></div>
+                                        <div style="font-size:0.8rem; color:#2d3436; margin-top:4px; line-height:1.4;">
+                                            まじで当たってた…このままだと都合のいい女になるとこだった、先生に即相談してよかった😭🙏 驚くほど彼が変わりました！
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div style="display:flex;">
+                                    <div style="width:35px; height:35px; border-radius:50%; background:#dfe6e9; display:flex; align-items:center; justify-content:center; font-size:1.2rem; margin-right:10px;">👧</div>
+                                    <div>
+                                        <div style="font-size:0.75rem; color:#636e72; font-weight:bold;">Rさん (27歳) <span style="color:#b2bec3; font-weight:normal;">・ 1時間前</span></div>
+                                        <div style="font-size:0.8rem; color:#2d3436; margin-top:4px; line-height:1.4;">
+                                            最初は疑ってたけど、先生に言われた通り慎重に動いたら彼との仲が劇的に改善。無料でここまで教えてくれるのガチですごい。
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
+                        <style>
+                            @keyframes popUp { 0% { transform: scale(0.5); } 100% { transform: scale(1); } }
+                        </style>
 
                         <!-- 戦略的改善：恋愛才能ランキングリスト -->
                         <div class="ranking-list-section" id="ranking-list-ui" data-html2canvas-ignore="true">
@@ -2568,7 +2597,7 @@
 
         /**
          * アフィリエイトリンク表示
-         * 安全のためURLは平文に戻し、画像とテキストリンクを併用するハイブリッド方式に変更
+         * 【全乗せ・パーソナライズ版】診断タイプに応じた専用ボタン文言を動的に生成
          */
         function displayAffiliateLinks(resultTitle) {
             const afterResultAdSpace = document.getElementById('after-result-ad-content');
@@ -2576,55 +2605,45 @@
             const bottomAdSpace = document.getElementById('bottom-ad-content');
             const os = getOS();
 
-            // 安全性を優先し、URLは平文で管理（Adblock対策はクラス名と構造で対応）
-            const linkUrl = (os === 'iOS')
-                ? 'https://mttag.com/s/FVEwe5OMQ6c'
-                : 'https://mttag.com/s/T0bH03Hq6sA';
-
+            const linkUrl = (os === 'iOS') ? 'https://mttag.com/s/FVEwe5OMQ6c' : 'https://mttag.com/s/T0bH03Hq6sA';
             const partnerName = (os === 'iOS') ? 'careapp' : 'urano';
-            const buttonText = (os === 'iOS') ? 'ケアプリで今すぐ無料相談 ▶' : 'ウラーノで今すぐ無料占う ▶';
-            const catchPhrase = (os === 'iOS') ? 'チャットで本格相談✨' : '一流占い師にお悩み相談✨';
-            const bannerSrc = (os === 'iOS')
-                ? 'https://mttag.com/banner/FVEwe5OMQ6c'
-                : 'https://mttag.com/banner/T0bH03Hq6sA';
 
-            // 画像とテキストボタンをセットにしたHTML
-            // 画像がブロックされてもボタンが残る設計
+            // タイプに応じた動的コピー
+            let buttonText = "【あなた専用】今すぐ無料で占う ▶";
+            if (resultTitle.includes('バブみ')) buttonText = "【バブみタイプ専用】都合のいい関係を断ち切る ▶";
+            else if (resultTitle.includes('陽キャ')) buttonText = "【陽キャタイプ専用】本当の彼の本音を知る ▶";
+            else if (resultTitle.includes('自然体')) buttonText = "【マイペース専用】愛され続ける秘策を知る ▶";
+            else if (resultTitle.includes('ハイスペック')) buttonText = "【強がり専用】本命彼女になるための作戦会議 ▶";
+            else if (resultTitle.includes('カメレオン')) buttonText = "【カメレオン専用】唯一無二の本命になる ▶";
+
+            const catchPhrase = (os === 'iOS') ? 'チャットで本格相談✨' : '一流占い師にお悩み相談✨';
+
             const createHybridAdHTML = (pos) => `
-                <div class="hybrid-ad-container">
-                    <a href="${linkUrl}" rel="nofollow" target="_blank" onclick="trackEvent('affiliate_click', { ad_name: '${partnerName}', position: '${pos}_img', type: '${os}' })">
-                        <img src="${bannerSrc}" alt="鑑定" style="width:100%; border-radius:12px; display:block; margin-bottom:12px;" onerror="this.style.display='none'">
-                    </a>
-                    <p class="fallback-premium-desc">${catchPhrase}</p>
-                    <a href="${linkUrl}" class="fallback-premium-link" target="_blank" onclick="trackEvent('affiliate_click', { ad_name: '${partnerName}', position: '${pos}_txt', type: '${os}' })">
+                <div class="hybrid-ad-container" style="background:linear-gradient(135deg, #fffafb, #fff); padding:20px; border-radius:16px; border:2px solid #ffeaa7; box-shadow:0 8px 20px rgba(241,150,163,0.15); text-align:center;">
+                    <p style="font-size:0.85rem; color:#d63031; font-weight:900; margin:0 0 5px 0;">＼ ${catchPhrase} ／</p>
+                    <h4 style="font-size:1.15rem; color:#2d3436; margin:0 0 15px 0; letter-spacing:0.5px;">運命の人が誰かを知る🔮</h4>
+                    <a href="${linkUrl}" target="_blank" rel="nofollow" style="display:inline-block; background:linear-gradient(135deg, #ff4757, #e84118); color:#fff; padding:14px 10px; border-radius:30px; font-weight:900; text-decoration:none; width:95%; box-shadow:0 6px 15px rgba(232, 65, 24, 0.3); font-size:0.85rem;" onclick="trackEvent('affiliate_click', { ad_name: '${partnerName}', position: '${pos}_btn', type: '${os}' })">
                         ${buttonText}
                     </a>
                 </div>
             `;
 
-            // 反映
             if (afterResultAdSpace) afterResultAdSpace.innerHTML = createHybridAdHTML('after_result');
             if (afterSaveAdSpace) afterSaveAdSpace.innerHTML = createHybridAdHTML('after_save');
 
-            // 各種CTAボタンの設定
             const redCtaContainer = document.getElementById("cta-button-red-container");
             if (redCtaContainer) {
-                redCtaContainer.innerHTML = `<a href="${linkUrl}" class="btn-affiliate-red" target="_blank" onclick="trackEvent('affiliate_click', {ad_name: '${partnerName}', position: 'red_cta', type: '${os}'})">今すぐ無料で鑑定する ▶</a>`;
+                redCtaContainer.innerHTML = `<a href="${linkUrl}" class="btn-affiliate-red" style="font-size:0.9rem; padding:15px 10px;" target="_blank" onclick="trackEvent('affiliate_click', {ad_name: '${partnerName}', position: 'red_cta', type: '${os}'})">${buttonText}</a>`;
             }
 
-            // 追従型CTA (Floating Action Button) の設定
             const floatingCtaContainer = document.getElementById("floating-cta-container");
             if (floatingCtaContainer) {
                 floatingCtaContainer.innerHTML = `<a href="${linkUrl}" class="btn-affiliate-red" style="padding: 12px; font-size: 1rem;" target="_blank" onclick="trackEvent('affiliate_click', {ad_name: '${partnerName}', position: 'floating', type: '${os}'})">今すぐ無料で鑑定する ▶</a>`;
                 document.getElementById("floating-cta").style.display = "block";
             }
 
-            // 下部広告枠 (レコメンド風)
             if (bottomAdSpace) {
-                const extraLink = (resultTitle.includes('陽キャ') || resultTitle.includes('カメレオン'))
-                    ? 'https://mttag.com/s/SxEQ5KFsReE'
-                    : 'https://mttag.com/s/UJy-M-sarJ4';
-
+                const extraLink = (resultTitle.includes('陽キャ') || resultTitle.includes('カメレオン')) ? 'https://mttag.com/s/SxEQ5KFsReE' : 'https://mttag.com/s/UJy-M-sarJ4';
                 bottomAdSpace.innerHTML = `
                     <div style="font-size:0.8rem; font-weight:700; color:#888; margin-bottom:10px;">あなたへの特別メッセージ</div>
                     <a href="${extraLink}" class="fallback-premium-link" style="background:var(--color-mint); box-shadow:0 4px 10px rgba(191,203,168,0.3);" target="_blank" onclick="trackEvent('affiliate_click', { ad_name: 'extra_advice' })">
@@ -2764,7 +2783,46 @@
                 alert("画像の保存に失敗しました。もう一回やってみてね🥲");
             }
         }
+
+        // ▼ 全乗せ追加：警告ポップアップ（深いスクロールで発動）
+        let warningModalShown = false;
+        window.addEventListener('scroll', function() {
+            if(!warningModalShown && document.getElementById('result-container') && !document.getElementById('result-container').classList.contains('hidden')) {
+                // 結果画面でかなり下までスクロールしたら発動（離脱阻止）
+                if (window.scrollY > 1800) {
+                    warningModalShown = true;
+                    document.getElementById('warning-modal-overlay').style.display = 'flex';
+                    trackEvent('warning_modal_shown');
+                }
+            }
+        });
+
+        function closeWarningModal() {
+            trackEvent('warning_modal_closed');
+            document.getElementById('warning-modal-overlay').style.display = 'none';
+        }
     </script>
+
+    <!-- 警告ポップアップHTML -->
+    <div id="warning-modal-overlay" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.85); z-index:9999; align-items:center; justify-content:center; padding:20px; backdrop-filter:blur(5px);">
+        <div style="background:#fff; border-radius:20px; padding:30px 20px; text-align:center; box-shadow:0 10px 40px rgba(0,0,0,0.6); width:100%; max-width:400px; animation: modalPop 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);">
+            <div style="font-size:3rem; margin-bottom:10px;">⚠️</div>
+            <h2 style="color:#d63031; margin-top:0; font-size:1.4rem;">本当にいいんですか？</h2>
+            <p style="font-size:0.9rem; color:#2d3436; font-weight:bold; line-height:1.6; margin-bottom:20px;">
+                あなたの恋愛スタイルには<br><span style="color:#e84118;">重大な欠陥</span>が見つかっています。<br><br>
+                このまま目を逸らすと、<br>本来手に入るはずだった幸せを<br>永遠に逃すかもしれません。
+            </p>
+            <a href="javascript:void(0)" onclick="const os = getOS(); const url = (os === 'iOS') ? 'https://mttag.com/s/FVEwe5OMQ6c' : 'https://mttag.com/s/T0bH03Hq6sA'; window.open(url, '_blank'); trackEvent('affiliate_click', { ad_name: 'warning_modal', position: 'popup', type: os });" style="display:block; background:linear-gradient(135deg, #ff4757, #e84118); color:#fff; padding:15px; border-radius:35px; font-weight:900; text-decoration:none; margin-bottom:15px; box-shadow:0 6px 15px rgba(232, 65, 24, 0.3);">
+                ▶ 運命を今すぐ無料で変える
+            </a>
+            <div onclick="closeWarningModal()" style="font-size:0.75rem; color:#b2bec3; text-decoration:underline; cursor:pointer; font-weight:bold;">
+                × 警告を閉じて後悔する
+            </div>
+        </div>
+    </div>
+    <style>
+        @keyframes modalPop { 0% { opacity:0; transform:scale(0.8); } 100% { opacity:1; transform:scale(1); } }
+    </style>
 </body>
 
 </html>
