@@ -1,0 +1,2770 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>あなたの「隠れた恋愛才能」診断🎀</title>
+    <meta name="description" content="10問でわかる！あなたの隠れた恋愛タイプと恋愛偏差値、浮気されやすさを1分で無料診断。">
+    <!-- OGP Tags -->
+    <meta property="og:title" content="あなたの「隠れた恋愛才能」診断🎀">
+    <meta property="og:description" content="10問でわかる！あなたの隠れた恋愛タイプと恋愛偏差値、浮気されやすさを無料診断。">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://romance-diagnosis.lover.workers.dev/">
+    <meta property="og:image" content="https://romance-diagnosis.lover.workers.dev/images/top_page_group_1773017763877.png">
+    <meta name="twitter:card" content="summary_large_image">
+
+    <!-- Google tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-DBEYKCHN7S"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-DBEYKCHN7S');
+
+        // カスタムイベント制作用の関数
+        function trackEvent(eventName, params = {}) {
+            if (typeof gtag === 'function') {
+                gtag('event', eventName, params);
+            }
+        }
+    </script>
+
+    <!-- 角丸の可愛い日本語フォントと、太字英字フォント（Outfit） -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@500;700;900&family=Outfit:wght@700;900&display=swap"
+        rel="stylesheet">
+
+    <!-- 画像保存用ライブラリ -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+
+    <style>
+        /* =======================================================
+           Y2Kレトロ × ニュアンスくすみカラー スタイル定義
+        ======================================================= */
+        :root {
+            --color-pink: #F196A3;
+            /* ハートフェルトピンク */
+            --color-lavender: #E6E6FA;
+            /* 淡いラベンダー */
+            --color-mint: #BFCBA8;
+            /* くすみミント */
+            --color-text: #5C5C5C;
+            /* やさしいテキスト色 */
+            --color-bg: #FCF8F5;
+            /* ウォームホワイト */
+            --color-btn-shadow-light: #ffffff;
+            --color-btn-shadow-dark: rgba(200, 200, 200, 0.5);
+        }
+
+        body {
+            font-family: 'M PLUS Rounded 1c', sans-serif;
+            background-color: var(--color-bg);
+            /* 極薄のグリッド模様（レトロ感） */
+            background-image:
+                linear-gradient(rgba(241, 150, 163, 0.15) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(241, 150, 163, 0.15) 1px, transparent 1px);
+            background-size: 20px 20px;
+            color: var(--color-text);
+            margin: 0;
+            padding: 20px 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        /* 抽象的な幾何学シェイプたち */
+        .bg-shapes {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+            overflow: hidden;
+        }
+
+        .shape-blob {
+            position: absolute;
+            border-radius: 50%;
+            opacity: 0.4;
+            filter: blur(40px);
+            animation: floatBlob 15s infinite alternate ease-in-out;
+        }
+
+        .blob1 {
+            top: -5%;
+            left: -10%;
+            width: 300px;
+            height: 300px;
+            background: var(--color-pink);
+        }
+
+        .blob2 {
+            top: 60%;
+            right: -10%;
+            width: 250px;
+            height: 300px;
+            background: var(--color-lavender);
+            animation-delay: -5s;
+        }
+
+        .blob3 {
+            top: 30%;
+            left: 70%;
+            width: 200px;
+            height: 200px;
+            background: var(--color-mint);
+            animation-delay: -2s;
+        }
+
+        @keyframes floatBlob {
+            0% {
+                transform: translate(0, 0) scale(1);
+            }
+
+            100% {
+                transform: translate(30px, -30px) scale(1.1);
+            }
+        }
+
+        /* === アプリコンテナ === */
+        #app {
+            background: rgba(252, 248, 245, 0.7);
+            /* 半透明グラスモーフィズム */
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.6);
+            border-radius: 30px;
+            box-shadow: 0 15px 35px rgba(241, 150, 163, 0.15), inset 0 0 0 1px rgba(255, 255, 255, 0.8);
+            width: 90%;
+            max-width: 480px;
+            padding: 40px 25px;
+            text-align: center;
+            box-sizing: border-box;
+            position: relative;
+            z-index: 1;
+        }
+
+        h1 {
+            color: var(--color-pink);
+            font-size: 1.5rem;
+            margin-bottom: 25px;
+            font-weight: 900;
+            letter-spacing: 2px;
+            text-shadow: 2px 2px 0px rgba(255, 255, 255, 0.8);
+        }
+
+        /* Y2K風の英字タイトル */
+        .title-en {
+            font-family: 'Outfit', sans-serif;
+            font-size: 0.8rem;
+            color: var(--color-mint);
+            letter-spacing: 3px;
+            display: block;
+            margin-bottom: 5px;
+            text-transform: uppercase;
+        }
+
+        h2 {
+            font-size: 1.2rem;
+            color: var(--color-text);
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+
+        p {
+            font-size: 1rem;
+            line-height: 1.6;
+            margin-bottom: 25px;
+            font-weight: 500;
+        }
+
+        /* === 進捗表示 === */
+        #progress-text {
+            font-size: 0.85rem;
+            color: var(--color-text);
+            margin-bottom: 20px;
+            font-weight: 700;
+            display: inline-block;
+            background: var(--color-lavender);
+            padding: 6px 16px;
+            border-radius: 20px;
+            border: 2px solid #fff;
+            box-shadow: 2px 2px 0px rgba(241, 150, 163, 0.3);
+        }
+
+        /* === 選択肢ボタン (クレイモーフィズム・ぷっくり) === */
+        .choices button {
+            width: 100%;
+            padding: 16px 20px;
+            margin-bottom: 15px;
+            background-color: var(--color-bg);
+            border: none;
+            border-radius: 20px;
+            color: var(--color-text);
+            font-size: 0.95rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            text-align: left;
+            font-family: inherit;
+
+            /* クレイモーフィズムの影（ぷっくり感） */
+            box-shadow:
+                -4px -4px 8px var(--color-btn-shadow-light),
+                4px 4px 8px var(--color-btn-shadow-dark),
+                inset 2px 2px 4px rgba(255, 255, 255, 0.8),
+                inset -2px -2px 4px rgba(0, 0, 0, 0.05);
+        }
+
+        .choices button:hover {
+            background-color: var(--color-pink);
+            color: white;
+            box-shadow:
+                -4px -4px 8px var(--color-btn-shadow-light),
+                4px 4px 8px rgba(241, 150, 163, 0.4),
+                inset 2px 2px 4px rgba(255, 255, 255, 0.4),
+                inset -2px -2px 4px rgba(0, 0, 0, 0.1);
+            transform: translateY(-2px);
+        }
+
+        .choices button:active {
+            /* 押した時に凹む */
+            box-shadow:
+                inset 4px 4px 8px rgba(0, 0, 0, 0.1),
+                inset -4px -4px 8px rgba(255, 255, 255, 0.8);
+            transform: translateY(2px);
+        }
+
+        /* === 改善：回答ボタンの高さと余白 === */
+        .choices button {
+            min-height: 65px;
+            padding: 18px 25px;
+            font-size: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .choices button::after {
+            content: "▶";
+            font-size: 0.8rem;
+            opacity: 0.3;
+        }
+
+        /* === 改善：プログレスバー === */
+        .quiz-progress-wrapper {
+            margin-bottom: 25px;
+        }
+
+        .progress-visual {
+            font-family: monospace;
+            font-size: 1.1rem;
+            letter-spacing: 2px;
+            color: var(--color-pink);
+            margin-bottom: 8px;
+        }
+
+        /* === 改善：質問遷移フェードアニメーション === */
+        .fade-in {
+            animation: fadeInAnim 0.4s ease forwards;
+        }
+
+        @keyframes fadeInAnim {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* === 改善：スタート画面のチェックリスト === */
+        .start-check-list {
+            text-align: left;
+            background: rgba(255, 255, 255, 0.5);
+            padding: 15px 20px;
+            border-radius: 15px;
+            margin-bottom: 30px;
+            width: 100%;
+            box-sizing: border-box;
+            border: 1px dashed var(--color-pink);
+        }
+
+        .check-item {
+            font-size: 0.9rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .check-item:last-child {
+            margin-bottom: 0;
+        }
+
+        /* === 改善：ランキングバッジ === */
+        .ranking-badge-wrapper {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            background: linear-gradient(135deg, #FFD700, #FFA500);
+            color: #fff;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-weight: 900;
+            font-size: 0.8rem;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            z-index: 10;
+            border: 2px solid #fff;
+        }
+
+        /* === 結果画面エリア (9:16 画像保存対応・トレカ風) === */
+        #capture-area-wrapper {
+            margin-bottom: 20px;
+            display: flex;
+            justify-content: center;
+        }
+
+        #capture-area {
+            /* 9:16比率に近いレイアウト。保存時に綺麗に見えるように */
+            width: 100%;
+            max-width: 380px;
+            /* 縦長になりすぎないよう制限を解除し、中身に合わせて伸びるように変更 */
+            min-height: auto;
+            background: #fff;
+            border-radius: 20px;
+            box-shadow: 0 15px 35px rgba(241, 150, 163, 0.25), inset 0 0 0 2px rgba(255, 255, 255, 0.8);
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            box-sizing: border-box;
+
+            /* カード内の背景: 少しだけ柄を入れる */
+            background-image: radial-gradient(var(--color-lavender) 2px, transparent 2px);
+            background-size: 20px 20px;
+            background-color: var(--color-bg);
+            /* キラキラプレミアム感 */
+            border: 2px solid #F196A3;
+        }
+        #capture-area::after {
+            content: "";
+            position: absolute;
+            top: -50%; left: -50%; width: 200%; height: 200%;
+            background: linear-gradient(45deg, rgba(255,255,255,0) 40%, rgba(255,255,255,0.5) 50%, rgba(255,255,255,0) 60%);
+            transform: rotate(30deg);    
+            pointer-events: none;
+            animation: holo 6s infinite;
+        }
+        @keyframes holo {
+            0% { transform: translate(-40%, -40%) rotate(30deg); }
+            100% { transform: translate(40%, 40%) rotate(30deg); }
+        }
+
+        /* トレカ風の枠線 */
+        .card-inner-border {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            right: 10px;
+            bottom: 10px;
+            border: 1px solid rgba(241, 150, 163, 0.3);
+            border-radius: 12px;
+            pointer-events: none;
+            backdrop-filter: blur(2px);
+        }
+
+        /* === 改善：才能ランキングバッジ (1位 / 5タイプ) === */
+        .talent-rank-badge {
+            position: absolute;
+            bottom: 10px;
+            /* 右下に戻す */
+            right: 10px;
+            background: rgba(0, 0, 0, 0.85);
+            /* 少し透過させて圧迫感を減らす */
+            color: #fff;
+            padding: 4px 10px;
+            /* サイズを縮小 */
+            border-radius: 8px;
+            /* 角丸も少し小さく */
+            font-family: 'Outfit', sans-serif;
+            font-weight: 900;
+            font-size: 0.7rem;
+            /* 文字サイズを縮小 */
+            z-index: 10;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .talent-rank-badge span {
+            color: #FFD700;
+            font-size: 0.9rem;
+            /* 数字部分も縮小 */
+            margin-right: 2px;
+        }
+
+        /* === 改善：スタート画面の結果プレビュー === */
+        .result-preview-card {
+            background: #fff;
+            border-radius: 20px;
+            padding: 15px;
+            margin-bottom: 25px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+            border: 1px solid rgba(241, 150, 163, 0.2);
+            text-align: left;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .preview-label {
+            position: absolute;
+            top: 0;
+            left: 0;
+            background: var(--color-pink);
+            color: #fff;
+            font-size: 0.6rem;
+            padding: 3px 10px;
+            border-bottom-right-radius: 10px;
+            font-weight: 900;
+        }
+
+        .preview-content {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-top: 5px;
+        }
+
+        .preview-img {
+            width: 70px;
+            height: 70px;
+            border-radius: 12px;
+            object-fit: cover;
+            border: 2px solid var(--color-lavender);
+        }
+
+        .preview-info h4 {
+            margin: 0;
+            font-size: 0.95rem;
+            color: var(--color-text);
+        }
+
+        .preview-deviation {
+            font-size: 0.8rem;
+            color: #666;
+            font-weight: 700;
+            margin-top: 4px;
+        }
+
+        .preview-deviation span {
+            color: var(--color-pink);
+            font-size: 1.1rem;
+            font-family: 'Outfit', sans-serif;
+        }
+
+        /* === 改善：ランキングリストセクション === */
+        .ranking-list-section {
+            background: #fff;
+            border-radius: 20px;
+            padding: 20px;
+            margin: 25px 0;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+            text-align: left;
+            border: 1px solid rgba(241, 150, 163, 0.1);
+        }
+
+        .ranking-list-section h3 {
+            font-size: 1rem;
+            color: var(--color-pink);
+            margin-bottom: 15px;
+            text-align: center;
+            font-weight: 900;
+        }
+
+        .ranking-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 10px 0;
+            border-bottom: 1px dashed #eee;
+        }
+
+        .ranking-item:last-child {
+            border-bottom: none;
+        }
+
+        .rank-num {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 900;
+            min-width: 30px;
+            color: #ccc;
+        }
+
+        .rank-num.top1 {
+            color: #FFD700;
+            font-size: 1.3rem;
+        }
+
+        .rank-num.top2 {
+            color: #C0C0C0;
+        }
+
+        .rank-num.top3 {
+            color: #CD7F32;
+        }
+
+        .rank-type-name {
+            font-size: 0.9rem;
+            font-weight: 700;
+            color: var(--color-text);
+            flex: 1;
+        }
+
+        .rank-your-label {
+            background: var(--color-pink);
+            color: #fff;
+            font-size: 0.65rem;
+            padding: 2px 8px;
+            border-radius: 10px;
+            font-weight: 900;
+        }
+
+        .capture-header {
+            font-family: 'Outfit', sans-serif;
+            color: var(--color-text);
+            font-size: 0.7rem;
+            letter-spacing: 2px;
+            margin-bottom: auto;
+            /* 上部へ追いやる */
+            opacity: 0.7;
+            padding-top: 15px;
+            z-index: 2;
+        }
+
+        .capture-content {
+            z-index: 2;
+            background: rgba(255, 255, 255, 0.85);
+            border-radius: 15px;
+            padding: 20px 15px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+            width: 90%;
+            margin-bottom: 20px;
+        }
+
+        /* === 画像オーバーレイ用コンテナ === */
+        .result-image-container {
+            position: relative;
+            width: 100%;
+            border-radius: 12px;
+            overflow: hidden;
+            margin-bottom: 15px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .result-image-container .result-crown {
+            position: absolute;
+            top: 5px;
+            right: 10px;
+            z-index: 10;
+            font-size: 2rem;
+        }
+
+        .result-image-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            padding: 40px 15px 15px 15px;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.8) 0%, rgba(0, 0, 0, 0) 100%);
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            text-align: left;
+        }
+
+        #result-title {
+            color: #fff;
+            font-size: 1.35rem;
+            margin: 0;
+            line-height: 1.3;
+            font-weight: 900;
+            text-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+        }
+
+        .result-en {
+            font-family: 'Outfit', sans-serif;
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 0.8rem;
+            font-weight: 700;
+            margin-top: 3px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .result-crown {
+            font-size: 2.5rem;
+            margin-bottom: 5px;
+            display: block;
+        }
+
+        /* .result-title, .result-en は上で定義済み */
+
+        #result-description {
+            font-size: 0.9rem;
+            line-height: 1.7;
+            color: var(--color-text);
+            text-align: left;
+            margin: 0;
+            font-weight: 500;
+        }
+
+        .capture-footer {
+            font-family: 'Outfit', sans-serif;
+            color: var(--color-pink);
+            font-size: 0.75rem;
+            opacity: 0.8;
+            margin-top: auto;
+            /* 下部へ追いやる */
+            padding-bottom: 15px;
+            z-index: 2;
+        }
+
+        /* === アクションボタン群 === */
+        .action-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .btn {
+            border: none;
+            border-radius: 15px;
+            padding: 14px;
+            font-family: inherit;
+            font-weight: 700;
+            cursor: pointer;
+            font-size: 0.9rem;
+            transition: all 0.2s;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-save {
+            background: var(--color-pink);
+            color: white;
+        }
+
+        .btn-copy {
+            background: var(--color-mint);
+            color: white;
+        }
+
+        .btn-reload {
+            background: transparent;
+            border: 1.5px dashed var(--color-pink);
+            color: var(--color-pink);
+        }
+
+        .share-header {
+            font-size: 1rem;
+            margin-top: 15px;
+            color: var(--color-pink);
+        }
+
+        .share-message {
+            font-size: 0.75rem;
+            margin-bottom: 10px;
+            color: var(--color-text);
+            opacity: 0.8;
+        }
+
+        .share-buttons {
+            display: flex;
+            gap: 8px;
+            justify-content: center;
+        }
+
+        .share-buttons .btn {
+            flex: 1;
+            padding: 10px;
+            font-size: 0.8rem;
+        }
+
+        .btn-ig {
+            background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+            color: white;
+        }
+
+        .btn-threads {
+            background: #000;
+            color: white;
+        }
+
+        .btn-x {
+            background: #555;
+            color: white;
+        }
+
+        .btn-line {
+            background: #06C755;
+            color: white;
+        }
+
+        .btn:hover {
+            opacity: 0.9;
+            transform: scale(1.02);
+        }
+
+        /* === 改善：広告・おすすめセクションのAdblock対策 === */
+        ._recommend-wrapper {
+            margin: 25px 0;
+            padding: 15px;
+            background: rgba(255, 255, 255, 0.7);
+            border-radius: 20px;
+            border: 1px solid rgba(241, 150, 163, 0.1);
+            text-align: center;
+        }
+
+        ._recommend-label {
+            font-size: 0.7rem;
+            font-weight: 900;
+            color: #999;
+            margin-bottom: 12px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        /* 外部バナーが消えた時の代用テキストリンク */
+        .fallback-premium-link {
+            display: block;
+            background: linear-gradient(135deg, #FF6B81 0%, #F196A3 100%);
+            color: #fff !important;
+            padding: 18px 15px;
+            border-radius: 15px;
+            text-decoration: none;
+            font-weight: 900;
+            font-size: 1rem;
+            box-shadow: 0 5px 15px rgba(241, 150, 163, 0.4);
+            animation: pulse-btn 2.5s infinite;
+        }
+
+        .fallback-premium-desc {
+            font-size: 0.75rem;
+            color: #666;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+
+        .ad-banner {
+            font-size: 0.8rem;
+            color: #ccc;
+            min-height: 50px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .ad-space .recommend-text {
+            font-size: 0.85rem;
+            color: var(--color-text);
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+
+        .ad-space .affiliate-button {
+            display: block;
+            background-color: var(--color-pink);
+            color: white;
+            padding: 12px 20px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: bold;
+            margin: 10px auto;
+            max-width: 250px;
+            transition: all 0.3s ease;
+        }
+
+        .ad-space .main-app-button {
+            background-color: #ff8c00;
+            /* オレンジ系 */
+            font-size: 1rem;
+        }
+
+        .ad-space img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin: 10px auto;
+            border-radius: 10px;
+        }
+
+        /* 年齢制限注釈スタイル */
+        .age-notice {
+            font-size: 0.7rem;
+            color: #999;
+            margin-top: 30px;
+            padding: 10px;
+            border-top: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        /* オリジナルバナー用スタイル */
+        .custom-banner {
+            display: block;
+            position: relative;
+            width: 100%;
+            max-width: 320px;
+            box-sizing: border-box;
+            /* paddingによるはみ出しを防止 */
+            margin: 0 auto;
+            border-radius: 16px;
+            overflow: hidden;
+            text-decoration: none;
+            color: #fff;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .custom-banner:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .urano-banner {
+            background: linear-gradient(135deg, #0e5c5e 0%, #178385 50%, #1e9a9c 100%);
+            padding: 16px;
+            text-align: left;
+        }
+
+        .banner-header {
+            font-size: 0.7rem;
+            font-weight: 700;
+            color: #bbf0f1;
+            margin-bottom: 4px;
+            letter-spacing: 0.5px;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+        }
+
+        .banner-title {
+            font-size: 1.1rem;
+            font-weight: 900;
+            line-height: 1.35;
+            margin: 0 0 10px 0;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+        }
+
+        .banner-highlight {
+            color: #ffeb3b;
+        }
+
+        .banner-features {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 4px;
+            margin-bottom: 12px;
+        }
+
+        .feature-badge {
+            background: #fff;
+            color: #0e5c5e;
+            font-size: 0.65rem;
+            font-weight: 700;
+            padding: 3px 6px;
+            border-radius: 8px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
+        }
+
+        .banner-cta {
+            text-align: center;
+            background: linear-gradient(to right, #ff4763, #ff8eaa);
+            color: white;
+            padding: 10px 0;
+            border-radius: 20px;
+            font-weight: 900;
+            font-size: 0.95rem;
+            box-shadow: 0 4px 8px rgba(255, 71, 99, 0.4);
+            animation: pulse-btn 2.5s infinite;
+        }
+
+        @keyframes pulse-btn {
+            0% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.02);
+            }
+
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        /* -----------------------
+           ケアプリ (iOS用) バナー
+           ----------------------- */
+        .careapp-banner {
+            /* 宇宙/夜空を思わせる深いネオン系グラデーション */
+            background: linear-gradient(135deg, #0a0133 0%, #2f0854 40%, #521882 100%);
+            padding: 16px;
+            text-align: left;
+            position: relative;
+        }
+
+        /* 背景に星空のキラキラを演出 */
+        .careapp-banner::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: radial-gradient(white 1px, transparent 1px), radial-gradient(white 1px, transparent 1px);
+            background-size: 20px 20px, 15px 15px;
+            background-position: 0 0, 10px 10px;
+            opacity: 0.1;
+            pointer-events: none;
+        }
+
+        .careapp-banner .banner-header {
+            font-size: 0.75rem;
+            font-weight: 900;
+            color: #ff66cc;
+            /* ピンクネオン風 */
+            margin-bottom: 4px;
+            text-shadow: 0 0 5px rgba(255, 102, 204, 0.6);
+            letter-spacing: 1px;
+        }
+
+        .careapp-banner .banner-title {
+            font-size: 1.15rem;
+            font-weight: 900;
+            line-height: 1.4;
+            color: #e0f7ff;
+            margin: 0 0 10px 0;
+            text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.8);
+        }
+
+        .careapp-banner .banner-highlight {
+            color: #00e5ff;
+            /* シアンネオン風 */
+            text-shadow: 0 0 8px rgba(0, 229, 255, 0.5);
+            font-size: 1.25rem;
+        }
+
+        .careapp-banner .feature-badge {
+            background: rgba(255, 102, 204, 0.2);
+            border: 1px solid #ff66cc;
+            color: #fff;
+            text-shadow: 0 0 2px #ff66cc;
+            font-size: 0.65rem;
+            font-weight: 700;
+            padding: 3px 6px;
+            border-radius: 8px;
+        }
+
+        .careapp-banner .banner-cta {
+            text-align: center;
+            background: linear-gradient(to right, #00c6ff, #0072ff);
+            color: white;
+            padding: 10px 0;
+            border-radius: 20px;
+            font-weight: 900;
+            font-size: 0.95rem;
+            box-shadow: 0 4px 10px rgba(0, 114, 255, 0.5);
+            animation: pulse-btn 2.5s infinite;
+            position: relative;
+            z-index: 2;
+        }
+
+        .careapp-banner .banner-features {
+            position: relative;
+            z-index: 2;
+        }
+
+        /* === バズを生む新機能（ハッシュタグ、ステータス、相性） === */
+        .result-hashtags {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 5px;
+            margin: 10px 0;
+        }
+
+        .hashtag {
+            background: rgba(230, 230, 250, 0.5);
+            color: var(--color-pink);
+            font-size: 0.7rem;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 12px;
+            border: 1px solid var(--color-pink);
+        }
+
+        .result-stats {
+            margin: 15px 0;
+            text-align: left;
+            background: rgba(255, 255, 255, 0.6);
+            padding: 10px;
+            border-radius: 12px;
+            border: 1px dashed var(--color-mint);
+        }
+
+        .stat-row {
+            margin-bottom: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .stat-row:last-child {
+            margin-bottom: 0;
+        }
+
+        .stat-label {
+            font-size: 0.7rem;
+            font-weight: 700;
+            color: var(--color-text);
+            flex: 0 0 45%;
+        }
+
+        .stat-bar-bg {
+            flex: 1;
+            height: 8px;
+            background: var(--color-bg);
+            border-radius: 4px;
+            overflow: hidden;
+            position: relative;
+            box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+        }
+
+        .stat-bar-fill {
+            height: 100%;
+            border-radius: 4px;
+            width: 0%;
+            transition: width 1s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        .fill-pink {
+            background: linear-gradient(90deg, #F196A3, #ffb6c1);
+        }
+
+        .fill-mint {
+            background: linear-gradient(90deg, #BFCBA8, #d4e0bb);
+        }
+
+        .fill-lavender {
+            background: linear-gradient(90deg, #E6E6FA, #d8bfd8);
+        }
+
+        .result-match {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 15px;
+            gap: 10px;
+        }
+
+        .match-box {
+            flex: 1;
+            background: var(--color-bg);
+            border-radius: 12px;
+            padding: 8px;
+            text-align: center;
+            box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.05);
+            border: 1px dashed rgba(241, 150, 163, 0.3);
+        }
+
+        .match-box-title {
+            font-size: 0.6rem;
+            font-weight: 900;
+            margin-bottom: 4px;
+        }
+
+        .match-good .match-box-title {
+            color: #ff6b81;
+        }
+
+        .match-bad .match-box-title {
+            color: #576574;
+        }
+
+        .match-type-name {
+            font-size: 0.75rem;
+            font-weight: 700;
+            color: var(--color-text);
+        }
+
+        .all-types-section {
+            margin: 20px 0;
+            text-align: left;
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+        }
+
+        .all-types-header {
+            padding: 15px;
+            font-weight: 900;
+            color: var(--color-pink);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            background: var(--color-bg);
+        }
+
+        .all-types-header:hover {
+            background: #fff;
+        }
+
+        .all-types-content {
+            display: none;
+            padding: 15px;
+        }
+
+        .all-types-content.open {
+            display: block;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .type-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+            padding-bottom: 15px;
+            border-bottom: 1px dashed var(--color-pink);
+        }
+
+        .type-item:last-child {
+            margin-bottom: 0;
+            padding-bottom: 0;
+            border-bottom: none;
+        }
+
+        .type-item-crown {
+            font-size: 1.5rem;
+            margin-right: 10px;
+            background: var(--color-lavender);
+            min-width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .type-item-info h4 {
+            margin: 0 0 3px 0;
+            color: var(--color-text);
+            font-size: 0.9rem;
+        }
+
+        .type-item-info p {
+            margin: 0;
+            font-size: 0.75rem;
+            line-height: 1.4;
+            color: #666;
+        }
+
+        /* === スタート画面 === */
+        #start-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 10px 0 20px 0;
+            animation: fadeIn 0.5s ease;
+        }
+
+        /* === トップページ画像 === */
+        .top-page-image {
+            width: 100%;
+            height: auto;
+            border-radius: 20px;
+            box-shadow: 0 10px 25px rgba(241, 150, 163, 0.4);
+            margin-bottom: 25px;
+            object-fit: cover;
+        }
+
+        /* === 結果キャラクター画像 === */
+        .result-character-img {
+            width: 100%;
+            height: auto;
+            vertical-align: middle;
+            object-fit: cover;
+        }
+
+        .type-item-img {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-right: 15px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .start-description {
+            font-size: 0.95rem;
+            line-height: 1.6;
+            color: var(--color-text);
+            margin-bottom: 30px;
+            font-weight: 700;
+        }
+
+        .btn-start {
+            background: linear-gradient(to right, #F196A3, #ffb6c1);
+            color: white;
+            font-size: 1.1rem;
+            padding: 16px 30px;
+            border-radius: 30px;
+            box-shadow: 0 5px 15px rgba(241, 150, 163, 0.4);
+            animation: pulse-btn 2.5s infinite;
+            width: 90%;
+            max-width: 300px;
+        }
+
+        /* ユーティリティ */
+        .hidden {
+            display: none;
+        }
+
+        /* === 新規UI追加CSS === */
+
+        /* 恋愛偏差値メーター */
+        .deviation-score-wrapper {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            width: 70px;
+            height: 70px;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 50%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+            border: 3px solid var(--color-pink);
+            z-index: 10;
+        }
+
+        .deviation-text-small {
+            font-size: 0.55rem;
+            font-weight: 700;
+            color: var(--color-pink);
+            margin-bottom: 2px;
+        }
+
+        .deviation-value {
+            font-size: 1.4rem;
+            font-weight: 900;
+            color: var(--color-text);
+            line-height: 1;
+            font-family: 'Outfit', sans-serif;
+        }
+
+        /* 恋愛リスク指標カード */
+        .risk-indicators {
+            display: flex;
+            justify-content: space-between;
+            gap: 10px;
+            margin: 15px 0;
+            padding: 0 10px;
+        }
+
+        @media (max-width: 375px) {
+            .risk-indicators {
+                flex-direction: column;
+            }
+        }
+
+        .risk-card {
+            flex: 1;
+            background: #fff;
+            border-radius: 12px;
+            padding: 12px;
+            text-align: center;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+            border: 1px solid rgba(241, 150, 163, 0.2);
+        }
+
+        .risk-label {
+            font-size: 0.65rem;
+            font-weight: 700;
+            color: #666;
+            margin-bottom: 5px;
+        }
+
+        .risk-value {
+            font-size: 1.1rem;
+            font-weight: 900;
+            color: var(--color-pink);
+            margin-bottom: 5px;
+            font-family: 'Outfit', sans-serif;
+        }
+
+        .risk-bar-bg {
+            width: 100%;
+            height: 6px;
+            background-color: var(--color-lavender);
+            border-radius: 3px;
+            overflow: hidden;
+        }
+
+        .risk-bar-fill {
+            height: 100%;
+            background-color: var(--color-pink);
+            border-radius: 3px;
+        }
+
+        /* 結果キャプチャエリア全体のカード化 */
+        .capture-area {
+            background: linear-gradient(135deg, #FFF5F7 0%, #FFF0F3 100%);
+            border-radius: 30px;
+            padding: 25px 15px;
+            box-shadow: 0 10px 30px rgba(241, 150, 163, 0.15);
+            border: 1px solid rgba(241, 150, 163, 0.2);
+            overflow: hidden;
+            margin-bottom: 20px;
+        }
+
+        .result-card {
+            background: transparent;
+            box-shadow: none;
+            padding: 0;
+            border: none;
+        }
+
+        /* 4枚の分析カードUI */
+        .analysis-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+            margin: 20px 0;
+        }
+
+        .analysis-card {
+            background: #fff;
+            border-radius: 15px;
+            padding: 15px 10px;
+            text-align: center;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.03);
+            border: 1px solid rgba(241, 150, 163, 0.1);
+        }
+
+        .analysis-card h4 {
+            font-size: 0.8rem;
+            color: var(--color-pink);
+            margin: 0 0 8px 0;
+            font-weight: 800;
+        }
+
+        .analysis-card .card-value {
+            font-size: 0.95rem;
+            font-weight: 900;
+            color: var(--color-text);
+            margin-bottom: 5px;
+            display: block;
+        }
+
+        .analysis-card .card-desc {
+            font-size: 0.75rem;
+            line-height: 1.4;
+            color: #666;
+            text-align: left;
+        }
+
+        /* 1カラム用の大きなカード */
+        .analysis-card.full-width {
+            grid-column: span 2;
+        }
+
+        /* 占い誘導CTAカード */
+        .fortune-info-card {
+            background: #fff;
+            border-radius: 20px;
+            padding: 20px;
+            margin: 25px 0;
+            text-align: center;
+            border: 2px solid #F196A3;
+            box-shadow: 0 6px 15px rgba(241, 150, 163, 0.1);
+        }
+
+        .fortune-info-card h3 {
+            font-size: 1.1rem;
+            color: var(--color-text);
+            margin-top: 0;
+            margin-bottom: 10px;
+        }
+
+        .fortune-info-card p {
+            font-size: 0.85rem;
+            color: #555;
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+
+        .btn-affiliate-red {
+            display: block;
+            background: linear-gradient(135deg, #ff4757, #e84118);
+            color: #fff;
+            padding: 15px;
+            border-radius: 30px;
+            font-size: 1.1rem;
+            font-weight: 900;
+            text-decoration: none;
+            box-shadow: 0 6px 20px rgba(232, 65, 24, 0.3);
+            transition: transform 0.2s;
+        }
+
+        .btn-affiliate-red:active {
+            transform: scale(0.98);
+        }
+
+        /* Xシェアボタン (キャプチャ外) */
+        .btn-x-large {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            width: 100%;
+            background: #000;
+            color: #fff;
+            padding: 16px;
+            border-radius: 35px;
+            font-size: 1rem;
+            font-weight: 900;
+            text-decoration: none;
+            margin: 20px 0;
+            border: none;
+            cursor: pointer;
+        }
+
+        /* 改修に伴う不要なスタイルの削除・調整 */
+        .analysis-section,
+        .partner-feelings-card,
+        .future-prediction,
+        .fortune-cta,
+        .x-share-cta-wrapper {
+            display: none;
+        }
+
+        /* 相性占いセクション */
+        .compatibility-cta {
+            background: #fff;
+            border-radius: 15px;
+            padding: 20px;
+            margin: 25px 0;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+            text-align: center;
+            border: 2px solid rgba(191, 203, 168, 0.5);
+        }
+
+        .compatibility-cta h3 {
+            font-size: 1.05rem;
+            color: var(--color-text);
+            margin-top: 0;
+            margin-bottom: 15px;
+        }
+
+        .compatibility-list {
+            list-style: none;
+            padding: 0;
+            margin: 0 0 15px 0;
+            text-align: left;
+            display: inline-block;
+        }
+
+        .compatibility-list li {
+            font-size: 0.9rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+            color: #555;
+        }
+
+        .compatibility-list li::before {
+            content: "❤️";
+            margin-right: 6px;
+        }
+
+        .capture-footer-new {
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 12px;
+            padding: 12px;
+            margin-top: 20px;
+            text-align: center;
+            font-size: 0.8rem;
+            color: var(--color-text);
+            font-weight: 700;
+            border: 2px dashed rgba(241, 150, 163, 0.5);
+        }
+
+        .capture-footer-new div {
+            margin-bottom: 4px;
+        }
+
+        .capture-footer-url {
+            font-family: 'Outfit', sans-serif;
+            color: var(--color-pink);
+            font-size: 0.85rem;
+            margin-top: 6px;
+        }
+
+        /* セールスファネル用 PASONAセクション追加スタイル */
+        .pasona-section {
+            background: #fff;
+            border-radius: 16px;
+            padding: 25px 20px;
+            margin: 30px 0;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.06);
+            border: 1px solid rgba(241, 150, 163, 0.4);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .pasona-section::before {
+            content: "WARNING";
+            position: absolute;
+            top: -15px;
+            left: -15px;
+            font-size: 5rem;
+            font-weight: 900;
+            color: rgba(241, 150, 163, 0.05);
+            pointer-events: none;
+            letter-spacing: -2px;
+        }
+
+        .pasona-problem {
+            font-size: 0.95rem;
+            color: #d63031;
+            font-weight: 900;
+            line-height: 1.6;
+            margin-bottom: 15px;
+            text-align: center;
+            border-bottom: 2px dashed #f19066;
+            padding-bottom: 15px;
+        }
+
+        .pasona-agitation {
+            font-size: 0.85rem;
+            color: #2d3436;
+            line-height: 1.8;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+
+        .pasona-solution {
+            background: #fff3f3;
+            border-left: 4px solid #ff4757;
+            padding: 15px;
+            border-radius: 0 8px 8px 0;
+            margin-bottom: 25px;
+        }
+        
+        .pasona-solution p {
+            margin: 0;
+            font-size: 0.85rem;
+            color: #ff4757;
+            font-weight: 900;
+            line-height: 1.6;
+        }
+
+        .urgency-badge {
+            display: inline-block;
+            background: #ff4757;
+            color: #fff;
+            font-size: 0.7rem;
+            font-weight: 900;
+            padding: 3px 8px;
+            border-radius: 12px;
+            margin-bottom: 8px;
+            animation: pulse-badge 2s infinite;
+        }
+        
+        @keyframes pulse-badge {
+            0% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.05); opacity: 0.8; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+
+        .fortune-info-card {
+            background: transparent;
+            border-radius: 0;
+            padding: 0;
+            margin: 0;
+            text-align: center;
+            border: none;
+            box-shadow: none;
+            position: relative;
+            z-index: 2;
+        }
+
+
+        /* 追従型CTA (Floating Action Button) */
+        .floating-cta {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 15px;
+            box-shadow: 0 -5px 15px rgba(0,0,0,0.1);
+            backdrop-filter: blur(5px);
+            -webkit-backdrop-filter: blur(5px);
+            z-index: 1000;
+            display: none; /* 初期は非表示 */
+            box-sizing: border-box;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="bg-shapes">
+        <div class="shape-blob blob1"></div>
+        <div class="shape-blob blob2"></div>
+        <div class="shape-blob blob3"></div>
+    </div>
+
+    <div id="app">
+        <span class="title-en">Love Talent Test</span>
+        <h1>浮気されやすさ<br>診断🎀</h1>
+
+        <!-- スタート画面 -->
+        <div id="start-container">
+            <img src="images/top_page_group_1773017763877.png" alt="恋愛才能診断キャラクター" class="top-page-image">
+
+            <h2 style="margin-bottom: 20px;">10問でわかる！<br>恋愛タイプと恋愛リスク</h2>
+
+            <!-- 改善点①：診断結果例のプレビュー -->
+            <div class="result-preview-card">
+                <div class="preview-label">DIAGNOSIS EXAMPLE</div>
+                <div class="preview-content">
+                    <img src="images/type_d_character_1773017730735.png" alt="例" class="preview-img">
+                    <div class="preview-info">
+                        <h4>👑 心理マスタータイプ</h4>
+                        <div class="preview-deviation">恋愛偏差値：<span>86</span></div>
+                        <div style="font-size: 0.65rem; color: #999; margin-top: 4px;">相手の本音を読み解く天才的な才能…</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="start-check-list">
+                <div class="check-item">✔ 恋愛偏差値の算出</div>
+                <div class="check-item">✔ 隠れた恋愛スタイルの分析</div>
+                <div class="check-item">✔ 恋愛依存・浮気リスク</div>
+                <div class="check-item">✔ 相性バツグンな相手のタイプ</div>
+            </div>
+
+            <button class="btn btn-start" onclick="startDiagnosis()" style="font-size: 1.25rem; padding: 20px;">
+                診断スタート！ ▶
+            </button>
+
+            <p style="font-size: 0.75rem; margin-top: 20px; opacity: 0.7;">所要時間：約1分 / 完全無料</p>
+        </div>
+
+        <!-- クイズ画面 (初期は非表示) -->
+        <div id="quiz-container" class="hidden">
+            <div class="quiz-progress-wrapper" id="quiz-progress-ui">
+                <div id="progress-text">Q1 / 10</div>
+                <div id="progress-visual" class="progress-visual">□□□□□□□□□□</div>
+            </div>
+            <div id="question-fade-target">
+                <h2 id="question-text">読み込み中...</h2>
+                <div class="choices" id="choices-container"></div>
+            </div>
+        </div>
+
+        <!-- 結果画面 (初期は非表示) -->
+        <div id="result-container" class="hidden">
+
+            <div id="capture-area-wrapper">
+                <div id="capture-area">
+                    <div class="card-inner-border"></div>
+
+                    <div class="capture-header">
+                        # HIDDEN LOVE TALENT TEST
+                    </div>
+
+                    <div class="capture-content">
+                        <!-- 画像内偏差値＋キャラクター -->
+                        <div class="result-image-container" style="position: relative;">
+                            <!-- 最強バズ機能：ランキング表示 -->
+                            <div class="ranking-badge-wrapper" id="ranking-badge" style="display: none;">
+                                上位 <span id="ranking-percent">--</span>%
+                            </div>
+
+                            <!-- 戦略的改善：才能ランキングバッジ -->
+                            <div class="talent-rank-badge" id="talent-rank-badge" style="display: none;">
+                                <span id="talent-rank-value">-</span>位 / 5タイプ
+                            </div>
+
+                            <span class="result-crown" id="result-crown">👑</span>
+                            <!-- 新規：恋愛偏差値バッジ -->
+                            <div class="deviation-score-wrapper">
+                                <div class="deviation-text-small">恋愛偏差値</div>
+                                <div class="deviation-value" id="result-deviation">--</div>
+                            </div>
+
+                            <img id="result-character-img" class="result-character-img" src="" alt="キャラクター画像">
+                            <div class="result-image-overlay">
+                                <h3 id="result-title"></h3>
+                                <div class="result-en" id="result-en"></div>
+                            </div>
+                        </div>
+
+                        <!-- 恋愛リスク指標 -->
+                        <div class="risk-indicators" id="risk-indicators">
+                            <!-- JS側で生成 -->
+                        </div>
+
+                        <p id="result-description" data-html2canvas-ignore="true"
+                            style="font-size: 0.9rem; margin-top: 15px; padding: 0 15px;"></p>
+
+                        <!-- 新設：恋愛分析 4枚カードグリッド -->
+                        <div class="analysis-grid" data-html2canvas-ignore="true">
+                            <div class="analysis-card full-width">
+                                <h4>恋愛スタイル</h4>
+                                <div class="card-value" id="card-style"></div>
+                                <div class="card-desc" id="card-style-desc"></div>
+                            </div>
+                            <div class="analysis-card">
+                                <h4>恋愛の強み</h4>
+                                <div class="card-value" id="card-strengths" style="font-size: 0.8rem;"></div>
+                            </div>
+                            <div class="analysis-card">
+                                <h4>注意ポイント</h4>
+                                <div class="card-value" id="card-weaknesses" style="font-size: 0.8rem;"></div>
+                            </div>
+                            <div class="analysis-card full-width">
+                                <h4>相性のいいタイプ</h4>
+                                <div class="card-value" id="card-match"></div>
+                            </div>
+                        </div>
+
+                        <!-- 占いCTAカード（一番目立つ導線） -->
+                        <div class="pasona-section" id="pasona-section-ui" data-html2canvas-ignore="true">
+                            <div class="pasona-problem" id="pasona-problem-text">
+                                本当の危機：あなたは「都合よく扱われる」リスクを抱えています。
+                            </div>
+                            <div class="pasona-agitation" id="pasona-agitation-text">
+                                あなたのその特別な才能は、一歩間違えると「相手をダメにする」「浮気に走らせる」原因になります。愛情を注いでいるのに、なぜかいつも自分が傷つく側になっていませんか？
+                            </div>
+                            <div class="pasona-solution">
+                                <p id="pasona-solution-text">
+                                    でも大丈夫です。あなたのタイプの弱点を補い、あの人を「あなたにだけ沼らせる」確実な方法があります。
+                                </p>
+                            </div>
+
+                            <div class="fortune-info-card">
+                                <div class="urgency-badge">🔥 本日分の無料相談枠：残りわずか</div>
+                                <h3 style="font-size: 1.05rem; margin-top: 0; margin-bottom: 10px; color:#2d3436;">
+                                    浮気される前に…！
+                                </h3>
+                                <p style="font-size: 0.8rem; color:#636e72; margin-bottom: 15px; font-weight:700;">
+                                    あなたの「隠された運命」と「相手の本音」を<br>
+                                    プロの占い師が<span style="color:#ff4757; font-weight:900;">今だけ無料で個別鑑定</span>🔮
+                                </p>
+                                <div id="cta-button-red-container"></div>
+                                <p style="font-size: 0.65rem; color:#b2bec3; margin-top: 10px; font-weight:bold;">
+                                    ※ 相談者が殺到しているため、予告なく無料枠が終了する場合があります。
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- 戦略的改善：恋愛才能ランキングリスト -->
+                        <div class="ranking-list-section" id="ranking-list-ui" data-html2canvas-ignore="true">
+                            <h3>👑 恋愛才能タイプランキング</h3>
+                            <div id="ranking-list-container">
+                                <!-- JSで動的生成 -->
+                            </div>
+                        </div>
+
+                        <div class="result-hashtags" id="result-hashtags" data-html2canvas-ignore="true"></div>
+
+                        <div class="result-stats" id="result-stats" style="margin-top: 20px;"
+                            data-html2canvas-ignore="true">
+                            <!-- JS側で生成 -->
+                        </div>
+
+                        <div class="result-match" data-html2canvas-ignore="true">
+                            <div class="match-box match-good">
+                                <div class="match-box-title">❤️ 相性サイコー</div>
+                                <div class="match-type-name" id="match-good-name"></div>
+                            </div>
+                            <div class="match-box match-bad">
+                                <div class="match-box-title">⚠️ 少し注意かも？</div>
+                                <div class="match-type-name" id="match-bad-name"></div>
+                            </div>
+                        </div>
+
+                        <div class="capture-footer-new" data-html2canvas-ignore="true" style="display:none;">
+                            <!-- 画像用フッターは非表示にするか、必要なら残す（今回はユーザー要望に合わせる） -->
+                            <div style="font-size: 0.9rem; color: var(--color-pink);">浮気されやすさ診断</div>
+                            <div style="display: flex; justify-content: space-between; margin-top: 5px;">
+                                <span>タイプ：<span id="footer-type-name"></span></span>
+                                <span>偏差値：<span id="footer-deviation"></span></span>
+                            </div>
+                            <div class="capture-footer-url">romance-diagnosis.lover.workers.dev</div>
+                        </div>
+                    </div> <!-- capture-content を閉じる -->
+                </div> <!-- capture-area を閉じる -->
+            </div> <!-- capture-area-wrapper を閉じる -->
+
+            <!-- マネタイズ改善：結果直後の高CV広告枠 -->
+            <div class="_recommend-wrapper" style="margin-top: 0; margin-bottom: 25px;">
+                <div class="_recommend-label">LOVE LUCK ADVICE</div>
+                <div id="after-result-ad-content"></div>
+            </div>
+
+            <!-- 新設：X拡散ボタン (キャプチャ外) -->
+            <button class="btn-x-large" onclick="shareX()">
+                <i>𝕏</i> この結果をXでシェア
+            </button>
+
+
+            <!-- 相性診断追加CTA -->
+            <section class="compatibility-cta">
+                <h3>あなたと相性がいい恋愛タイプ</h3>
+                <ul class="compatibility-list" id="compatibility-best-list">
+                    <!-- JS書き換え -->
+                </ul>
+                <p style="font-size:0.85rem; font-weight:700; color:#ff6b81; margin-bottom:15px;">
+                    今気になる相手との相性も占えます
+                </p>
+                <div id="compat-cta-button-container"></div>
+            </section>
+
+            <div class="deep-dive-section" style="text-align:center; margin-bottom: 25px;">
+                <button class="btn btn-start"
+                    style="width: 100%; max-width: 360px; font-size: 0.95rem; padding: 14px 20px; box-shadow: 0 4px 10px rgba(241, 150, 163, 0.4);"
+                    onclick="scrollToAllTypes()">
+                    他のタイプとの相性を詳しく見る 👀
+                </button>
+            </div>
+
+            <!-- 全タイプ一覧 (図鑑機能) -->
+            <div class="all-types-section" id="all-types-section-target">
+                <div class="all-types-header" onclick="toggleAllTypes()">
+                    <span>📖 全5タイプの恋愛才能辞典を見る</span>
+                    <span id="all-types-icon">▼</span>
+                </div>
+                <div class="all-types-content" id="all-types-content">
+                    <!-- JSで自動生成 -->
+                </div>
+            </div>
+
+            <!-- アクションボタン群 -->
+            <div class="action-buttons">
+                <h3 class="share-header">Share with friends!</h3>
+                <div class="share-message">
+                    「〇〇タイプだった！」って友達にLINEで送ってみよう💌<br>
+                    #隠れた恋愛才能診断 で投稿して、同じタイプの人と繋がろう！✨
+                </div>
+
+                <button class="btn btn-save" onclick="saveAsImage()">📸 結果画像を保存する</button>
+
+                <!-- マネタイズ改善：保存ボタン直下の広告枠 -->
+                <div class="_recommend-wrapper" style="margin: 10px 0;">
+                    <div id="after-save-ad-content"></div>
+                </div>
+
+                <button class="btn btn-copy" onclick="copyToClipboard()">📋 テキストとURLをコピー</button>
+
+                <div class="share-buttons">
+                    <button class="btn btn-ig" onclick="shareInstagram()">Instagram</button>
+                    <button class="btn btn-threads" onclick="shareThreads()">Threads</button>
+                </div>
+                <div class="share-buttons">
+                    <button class="btn btn-x" onclick="shareX()">𝕏 (Twitter)</button>
+                    <button class="btn btn-line" onclick="shareLine()">LINE</button>
+                </div>
+
+                <button class="btn btn-reload" onclick="location.reload()">↺ 最初からやり直す</button>
+            </div>
+
+            <!-- 下部広告枠 (タイプ別) -->
+            <div class="ad-space bottom-ad">
+                <div class="ad-title">お役立ち恋愛情報</div>
+                <div id="bottom-ad-content"></div>
+            </div>
+
+            <!-- 年齢制限注釈 -->
+            <div class="age-notice">
+                ※占いは18歳以上（または20歳以上）の方が対象です。<br>
+                ※各サービスの利用規約をご確認の上、お楽しみください。
+            </div>
+        </div>
+    </div>
+
+    <!-- 追従型CTA (JSでリンクを動的生成) -->
+    <div id="floating-cta" class="floating-cta">
+        <p style="font-size:0.75rem; font-weight:700; color:#555; margin:0 0 8px 0;">＼ 浮気される前に…！運命を知る🔮 ／</p>
+        <div id="floating-cta-container"></div>
+    </div>
+
+    <script>
+        const questions = [
+            {
+                text: "休日の午後はどう過ごすのが好き？",
+                choices: [
+                    { text: "A. カフェでのんびり読書☕️", type: "A" },
+                    { text: "B. 友達と買い物や遊びに行く🛍️", type: "B" },
+                    { text: "C. 家でリラックスして映画やゲーム🎬", type: "C" },
+                    { text: "D. アクティブにスポーツやアウトドア🏕️", type: "D" }
+                ]
+            },
+            {
+                text: "初対面の人と接するとき、どんな態度をとることが多い？",
+                choices: [
+                    { text: "A. 自分から積極的に話しかける🙋‍♀️", type: "B" },
+                    { text: "B. 相手が話しかけてくるのを待つ🫣", type: "C" },
+                    { text: "C. ニコニコしながら聞き役に徹する😊", type: "A" },
+                    { text: "D. 共通の話題を探りながら少しずつ話す💡", type: "D" }
+                ]
+            },
+            {
+                text: "恋人が落ち込んでいるとき、どうしてあげる？",
+                choices: [
+                    { text: "A. 美味しいものをご馳走したり、外に連れ出す🍰", type: "B" },
+                    { text: "B. とにかくじっくりと話を聞いてあげる👂", type: "A" },
+                    { text: "C. そっと寄り添い、静かな時間を共有する🫂", type: "C" },
+                    { text: "D. 解決策やアドバイスを論理的に提案する📝", type: "D" }
+                ]
+            },
+            {
+                text: "理想のデートプランはどれに一番近い？",
+                choices: [
+                    { text: "A. 話題のテーマパークやイベントで思い切りはしゃぐ🎡", type: "B" },
+                    { text: "B. おしゃれなレストランでロマンチックなディナー🥂", type: "D" },
+                    { text: "C. 美術館や水族館など、落ち着いた場所を巡る🐠", type: "A" },
+                    { text: "D. 家で一緒に料理を作って、のんびり過ごす🍳", type: "C" }
+                ]
+            },
+            {
+                text: "恋人と些細なことで喧嘩しちゃった！どう対応する？",
+                choices: [
+                    { text: "A. 少し時間を置いて冷静になってから自分から謝る🙇‍♀️", type: "C" },
+                    { text: "B. その場ですぐに話し合って解決しようとする🗣️", type: "D" },
+                    { text: "C. 相手が謝ってくるまで少し様子を見る👀", type: "B" },
+                    { text: "D. 何事もなかったかのように明るく振る舞って仲直りする🌟", type: "A" }
+                ]
+            },
+            {
+                text: "恋愛において、最も大切だと思うことは何？",
+                choices: [
+                    { text: "A. お互いの趣味や価値観が合うこと🤝", type: "D" },
+                    { text: "B. ドキドキするような刺激的な関係でいること🔥", type: "B" },
+                    { text: "C. 言葉にしなくても伝わる安心感や信頼感🍀", type: "C" },
+                    { text: "D. お互いが成長し合えるようなパートナーシップ🌱", type: "A" }
+                ]
+            },
+            {
+                text: "恋人からの連絡の頻度について、理想はどれ？",
+                choices: [
+                    { text: "A. 毎日こまめに連絡を取り合いたい📱", type: "A" },
+                    { text: "B. 用事があるときや、数日に1回程度でいい💌", type: "C" },
+                    { text: "C. お互いのペースに合わせて無理なく🕊️", type: "D" },
+                    { text: "D. 特に決まりは作らず、気まぐれでいい🎈", type: "B" }
+                ]
+            },
+            {
+                text: "サプライズプレゼントをされるなら、どんなものが嬉しい？",
+                choices: [
+                    { text: "A. ずっと欲しかったものをこっそり買ってくれていた🎁", type: "D" },
+                    { text: "B. 素敵なレストランでのディナーなどの体験🍝", type: "B" },
+                    { text: "C. 日常的に使えるちょっとした小物や消耗品💄", type: "C" },
+                    { text: "D. 思いのこもった手紙や手作りのもの💌", type: "A" }
+                ]
+            },
+            {
+                text: "恋人の過去の恋愛について、どう感じる？",
+                choices: [
+                    { text: "A. 全く気にしない、今の自分たちの方が大切🌈", type: "B" },
+                    { text: "B. 気になるけど、あえて聞かないようにする🤫", type: "C" },
+                    { text: "C. 隠し事なくすべて話してほしいと思う💬", type: "A" },
+                    { text: "D. 嫉妬してしまうので、絶対に聞きたくない😣", type: "D" }
+                ]
+            },
+            {
+                text: "将来、どんな関係の夫婦やカップルになりたい？",
+                choices: [
+                    { text: "A. いつまでも恋人同士のようなドキドキ感のある関係💞", type: "B" },
+                    { text: "B. 親友のようになんでも相談し合える関係👬", type: "D" },
+                    { text: "C. お互いの趣味や一人の時間を尊重し合える関係☕️", type: "C" },
+                    { text: "D. 笑いの絶えない、明るく楽しい家庭を築きたい🏡", type: "A" }
+                ]
+            }
+        ];
+
+        const resultsData = {
+            "A": {
+                title: "バブみ強めな癒やし系沼",
+                en: "OASIS OF TOLERANCE",
+                description: "あなたの隠れた才能は、相手を底無し沼のような優しさで包み込む『圧倒的・包容力』。ダメなところも全部受け入れてくれるあなたと一緒にいると、相手は物理的にも精神的にも完全に依存してしまいます。\n\n「この人といると落ち着く」——それは間違いなくあなたの最大の武器であり、同時に最大の弱点でもあります。",
+                image: "images/type_a_character_1773017634214.png",
+                hashtags: ["#圧倒的包容力", "#平和主義", "#聞き上手", "#歩くオアシス"],
+                deviationScore: 68,
+                riskStats: { success: 65, depend: 88, cheat: 62 },
+                futurePrediction: "身近な人との関係が発展して、新しい恋が始まる予感…💖",
+                loveAnalysis: "あなたは相手の感情を察知する能力が非常に高く、無意識のうちに相手が求める「理想の居場所」を提供してしまう天才です。その絶対的な安定感は唯一無二ですが、相手に尽くしすぎるあまり、自分の本音を押し殺し、結果的に不満を溜め込みやすい点には厳重な注意が必要です。",
+                partnerFeelings: "「この人といると、本当の自分をさらけ出せる」と深く信頼されています。ただ、あなたの優しさに甘えすぎて、無意識に「何をしても許される」と勘違いさせるリスクを孕んでいます。",
+                futureDetail: "2026年後半、あなたの良き理解者が現れる暗示。ただし、相手の本音を見抜きすぎて、一歩引いてしまうかも。信頼できる第三者のアドバイスが、幸せへの鍵となります。",
+                pasonaProblem: "⚠️ 警告：あなたの底なしの優しさは、「都合のいい人」への最短ルートです。",
+                pasonaAgitation: "「私ばっかり我慢してる…」そう感じたことはありませんか？あなたの圧倒的な包容力は、ナルシストや依存体質の相手（テイカー）を無意識に引き寄せます。あなたがなんでも許してしまうため、相手は安心しきって外で刺激（浮気）を求めるリスクが全タイプ中で最も高い状態です。尽くせば尽くすほど、あなたは軽く扱われてしまうのです。",
+                pasonaSolution: "これ以上の自己犠牲は終わりです。相手を適切にコントロールし、「あなたを失うことの恐怖」を植え付けることで、永遠に愛される関係を築く具体的な方法が存在します。",
+                stats: [
+                    { label: "甘やかし度", value: 95, colorClass: "fill-pink" },
+                    { label: "メンタルつよつよ度", value: 80, colorClass: "fill-mint" },
+                    { label: "ロマンチック度", value: 60, colorClass: "fill-lavender" }
+                ],
+                matchGood: "D",
+                matchBad: "B",
+                loveStyle: "和み包容型",
+                loveStyleDesc: "全てを優しく包み込む慈愛の精神",
+                strengths: "圧倒的な肯定感と深い傾聴力",
+                weaknesses: "自分を犠牲にしやすく、尽くしすぎ危険",
+                matchType: "Dタイプ（ハイスペ知性）"
+            },
+            "B": {
+                title: "圧倒的💥陽キャエナジー",
+                en: "SUNNY ENERGY",
+                description: "あなたの才能は、周りの空気を一瞬でパッと明るくする『スーパー・ポジティブ』！「この子と一緒にいると楽しい！」と思わせる天才であり、相手をグイグイ引っ張る無敵のヒロインです。\n\nしかし、その眩しさの裏で、心の底では「本当に私だけを見てくれているの？」という孤独感を抱えやすい一面も持ち合わせています。",
+                image: "images/type_b_character_1773017702586.png",
+                hashtags: ["#天性の愛され力", "#笑顔クリエイター", "#一緒にいて飽きない", "#コミュ力お化け"],
+                deviationScore: 75,
+                riskStats: { success: 82, depend: 30, cheat: 45 },
+                futurePrediction: "イベントや新しい出会いの場で、ドラマチックな展開が！？✨",
+                loveAnalysis: "どんな困難も笑いに変える明るさは、多くの人を惹きつけます。駆け引きなしのストレートな愛情表現は、相手の心を強く揺さぶり、勇気を与える特別な才能。しかし、常に明るく振る舞おうとするあまり、自分の「本当の弱さ」を相手に見せるのが極度に苦手な傾向があります。",
+                partnerFeelings: "「一緒にいるだけで元気になれる」太陽のような存在。ただ、あなたが常にポジティブすぎるため、相手が弱音を吐き出せず、勝手にプレッシャーに感じてしまう瞬間があるようです。",
+                futureDetail: "まもなく、あなたを密かに想い続けてきた人物からアプローチがある予感。ただし、その人は少し恥ずかしがり屋かも。あなたから扉を開いてあげることで、未来が大きく動き出します。",
+                pasonaProblem: "⚠️ 警告：あなたの「明るさ」が、実は相手を精神的に追い詰めているかもしれません。",
+                pasonaAgitation: "「一緒にいて楽しいけど、なんか疲れる」…過去にそんな態度をとられたことはありませんか？あなたの圧倒的なエネルギーは魅力的ですが、自信のない相手はあなたに劣等感を抱き、「自分を頼ってくれる、少し影のある人」へと浮気してしまう傾向があります。あなたの魅力は、一歩間違えると彼を逃避させてしまう原因になるのです。",
+                pasonaSolution: "強がる必要はありません。あの人の前でだけ見せる『特別な脆さ』を演出するだけで、相手の保護欲は爆発し、一生あなただけを守り抜くヒーローへと変わります。",
+                stats: [
+                    { label: "コミュ力", value: 100, colorClass: "fill-pink" },
+                    { label: "アクティブ度", value: 90, colorClass: "fill-mint" },
+                    { label: "病まない度", value: 85, colorClass: "fill-lavender" }
+                ],
+                matchGood: "C",
+                matchBad: "A",
+                loveStyle: "情熱ポジティブ型",
+                loveStyleDesc: "明るいエネルギーで一直線に向き合う太陽",
+                strengths: "物事を前向きに変える圧倒的行動力",
+                weaknesses: "勢いあまって相手を置き去りにしがち",
+                matchType: "Cタイプ（自然体・癒やし）"
+            },
+            "C": {
+                title: "エフォートレスな自然体",
+                en: "GENTLE WAVES",
+                description: "あなたの才能は、飾らずにありのままでいられる『奇跡のマイペース』。無理して相手に合わせるのではなく、二人のペースを大切に育めるサステナブルな関係構築の天才です。\n\nしかし、「言わなくても伝わるだろう」というあなたの期待は、時に恋愛において致命的なすれ違いを生む火種になります。",
+                image: "images/type_c_character_1773017715657.png",
+                hashtags: ["#マイペース", "#ブレない芯", "#安心感ハンパない", "#おうちデート派"],
+                deviationScore: 61,
+                riskStats: { success: 70, depend: 20, cheat: 55 },
+                futurePrediction: "趣味の繋がりから、深い絆で結ばれる相手が現れるかも…🌱",
+                loveAnalysis: "接する人に「心の余裕」を感じさせるエフォートレスな魅力は、現代人にとって最大の癒やし。しかし、執着心がないように見えるため、相手に過度な安心感（マンネリ）を与えてしまい、情熱的な恋愛に発展しづらいという構造的な欠点も抱えています。",
+                partnerFeelings: "「飾らない自分でいられる」と感じる一方で、「本当に自分のことが好きなのだろうか？」という不安を相手に抱かせ続けている可能性が高いです。",
+                futureDetail: "意外な場所での再会が、新しい恋のきっかけになる暗示。相手はあなたの「変わらない良さ」に改めて気づくはず。ただ、想いを言葉にしないと、チャンスを逃してしまう可能性も。占いで適切なタイミングを知るのが吉です。",
+                pasonaProblem: "⚠️ 警告：あなたの「分かりやすさの欠如」が、相手の心を離れさせています。",
+                pasonaAgitation: "「本当に私のこと好きなの？」と聞かれたり、相手が急に冷めた態度を取ったことはありませんか？あなたの心地よいマイペースさは、見方を変えれば「関心が薄い」ように映ります。この『無刺激な安心感』が続くと、相手は自分が愛されている実感を他で満たそうとし、結果として悪気のないまま別の異性（浮気）へと走ってしまうのです。",
+                pasonaSolution: "あなたの良さである「自然体」を崩さずに、相手の心を強烈に揺さぶり「絶対に手放したくない」と思わせる「たった一つの言葉の魔法」をお伝えします。",
+                stats: [
+                    { label: "マイペース度", value: 95, colorClass: "fill-pink" },
+                    { label: "精神安定度", value: 90, colorClass: "fill-mint" },
+                    { label: "執着しない度", value: 85, colorClass: "fill-lavender" }
+                ],
+                matchGood: "B",
+                matchBad: "D",
+                loveStyle: "自然体マイペース型",
+                loveStyleDesc: "ありのままで穏やかな関係を築く安定感",
+                strengths: "周囲に流されない独自の価値観と余裕",
+                weaknesses: "考えが伝わりにくく不安にさせる",
+                matchType: "Bタイプ（情熱・陽キャ）"
+            },
+            "D": {
+                title: "ハイスペックな最強相棒",
+                en: "GROWING PARTNER",
+                description: "あなたの才能は、お互いのレベルをバッチリ高め合える『クレバーな対話力』。人生の良き理解者として最強のタッグを組める人です。\n\nしかし、あなたのその「優秀さ」と「正しさ」こそが、普通の恋愛において最も相手の自尊心を削り取る刃になっていることに気づいていないかもしれません。",
+                image: "images/type_d_character_1773017730735.png",
+                hashtags: ["#高め合える関係", "#対話重視", "#自立系女子", "#最高のパートナー"],
+                deviationScore: 72,
+                riskStats: { success: 63, depend: 15, cheat: 35 },
+                futurePrediction: "共通の目標を持つ仲間の中から、特別なパートナーが誕生する予兆。🎯",
+                loveAnalysis: "論理的な思考と共感力で「大人の恋愛」ができるあなたの知的なサポートは、相手を大きく成長させます。しかし、問題解決を急ぐあまり、相手が求めている「ただの共感」や「甘え」を論破してしまい、結果的に「隙がない」と敬遠される傾向があります。",
+                partnerFeelings: "「尊敬できる最高のパートナー」として一目置かれていますが、同時に、「この人は自分が守ってあげなくても一人で生きていける」という一抹の寂しさを相手に与え続けています。",
+                futureDetail: "仕事や学びの場での出会いが、運命的な恋に発展するかも。相手はあなたの「芯の強さ」に惹かれています。ただし、お互いにプライドが邪魔をして、素直になれない時期がありそう。注意点を知ることで、円満なスタートを切れます。",
+                pasonaProblem: "⚠️ 警告：「完璧すぎるあなた」は、あの人を無意識に見下し、自信を奪っています。",
+                pasonaAgitation: "あなたが正論を言えば言うほど、相手は無言になり、心の距離が離れていく…そんな経験はありませんか？あなたが正しければ正しいほど、相手は『あなたより劣っている自分』を突きつけられます。そして、自分の存在意義を満たしてくれる「ちょっとダメな、守ってあげたくなる別の誰か」のところへ逃げ出してしまうのです。",
+                pasonaSolution: "論理を捨てて「愛嬌」だけで勝負する必要はありません。あなたの知性を武器にしたまま、相手のプライドを劇的に満たし「俺がいないとダメだ」と勘違いさせる究極の心理テクニックがあります。",
+                stats: [
+                    { label: "知性・論理力", value: 95, colorClass: "fill-pink" },
+                    { label: "リード力", value: 80, colorClass: "fill-mint" },
+                    { label: "感情コントロール", value: 85, colorClass: "fill-lavender" }
+                ],
+                matchGood: "A",
+                matchBad: "C",
+                loveStyle: "理想追求・対話型",
+                loveStyleDesc: "論理的かつ誠実に解決策を探る知性派",
+                strengths: "的確な分析力と高い信頼構築能力",
+                weaknesses: "正論すぎて相手に逃げ場をなくす",
+                matchType: "Aタイプ（包容力・癒やし）"
+            },
+            "MIX": {
+                title: "あざと賢いカメレオン",
+                en: "CHAMELEON CHARM",
+                description: "あなたの才能は、相手や状況に合わせて自由自在にアップデートできる『抜群のバランス感覚』。どんな相手も虜にしてしまうスーパーマルチプレイヤーです。\n\nですが、他人の欲望に合わせすぎるあまり、「本当の自分の恋愛感情」がわからなくなり、深い孤独に陥ることはありませんか？",
+                image: "images/type_e_character_1773017747762.png",
+                hashtags: ["#変幻自在", "#あざとい", "#バランス感覚神", "#モテの境地"],
+                deviationScore: 85,
+                riskStats: { success: 90, depend: 40, cheat: 70 },
+                futurePrediction: "予想外のシチュエーションで、運命の歯車が回り出すかも！⚡️",
+                loveAnalysis: "相手のニーズを瞬時に察知し、自分を最適化できる「あざと賢さ」はまさにモテの天才。高度な心理テクニックが無意識に備わっています。しかし、器用に立ち回れるが故に「相手に合わせている自分」に疲れ果て、長続きする深い愛情関係を築くことを無意識に避けてしまう傾向があります。",
+                partnerFeelings: "「この人なしではいられない」と、あなたの魅力にハマっていますが、あなたの「本音」が見えないことに薄々不安を感じ、あなたを永遠に手に入れられていない焦燥感と戦っています。",
+                futureDetail: "これまでのタイプとは全く違う人物との、電撃的な出会いの暗示。相手の強引さに、あなたのカメレオン気質が通用しないかも？そこに本当の恋を見つけるチャンスがあります。相性を深く知ることで、主導権を握り続けられます。",
+                pasonaProblem: "⚠️ 警告：誰にでも合わせられる才能は、誰からも「特別」だと思われない呪縛です。",
+                pasonaAgitation: "器用に恋愛をこなしているように見えて、「結局、この人は私の何が好きなの？」と虚無感に襲われる夜はありませんか？相手はあなたが作り出した『理想の幻影』を愛しているだけであり、あなたの本当のコアな部分には触れていません。だからこそ、相手は不意に他の分かりやすい刺激にブレてしまう危険を常に孕んでいるのです。",
+                pasonaSolution: "これ以上の演技は不用です。変幻自在なカメレオンのあなたが、たった一つだけ見せるべき「究極の弱点」を意図的に晒すことで、相手を不可逆的な沼へと突き落とし、絶対的な本命になる方法があります。",
+                stats: [
+                    { label: "空気を読む力", value: 100, colorClass: "fill-pink" },
+                    { label: "小悪魔度", value: 95, colorClass: "fill-mint" },
+                    { label: "適応力", value: 100, colorClass: "fill-lavender" }
+                ],
+                matchGood: "MIX",
+                matchBad: "誰とでも仲良くできる",
+                loveStyle: "変幻自在カメレオン型",
+                loveStyleDesc: "相手に最適化できるあざと賢い魅力",
+                strengths: "高い適応力とニーズを察知する観察眼",
+                weaknesses: "本音が見えにくく、ミステリアスすぎ",
+                matchType: "全タイプ（合わせるのが得意）"
+            }
+        };
+
+        const compatibilityTexts = {
+            "A": {
+                "A": "似た者同士、相手を思いやりすぎて決断に迷うかも。たまには本音でぶつかることも大切です。",
+                "B": "あなたの包容力が、自由奔放な相手を優しく受け止める最高のバランス！一緒にいると元気をもらえます。",
+                "C": "お互いのペースを尊重し合える、とても穏やかで平和な関係。疲れないオアシスのような相性です。",
+                "D": "相手の理論的な部分をあなたの優しさが上手く中和し、深い信頼関係で結ばれる最強の相棒になります。",
+                "MIX": "相手の変幻自在な魅力に少し振り回されつつも、最終的にはあなたの大きな愛で包み込める相性です。"
+            },
+            "B": {
+                "A": "あなたの明るさに相手が癒やされ、どんなあなたもニコニコ受け入れてくれる安心の組み合わせ。",
+                "B": "まるで親友同士！エネルギーがぶつかり合う分、一緒にいると最強に楽しいエンタメカップルに！",
+                "C": "あなたが引っ張り、相手が穏やかに見守る。お互いの長所が活きて自然体でいられる相性です。",
+                "D": "気合いが空回りすることもあるあなたに、相手の冷静なアドバイスがビシッと決まる良いコンビ。",
+                "MIX": "お互いに場の空気を読んで盛り上げられる、刺激的で絶対に飽きない最高のエンタメパートナー。"
+            },
+            "C": {
+                "A": "お互いに刺激は少なめですが、絶対的な安心感で結ばれる長続きカップル。のんびりデートがおすすめ。",
+                "B": "あなたの穏やかさが、行動力のある相手にとって最高の「帰る場所」になり、深く愛される相性です。",
+                "C": "言葉がなくても分かり合える、空気のような自然体でいられる関係。一緒にいて一番疲れない相手。",
+                "D": "相手のリードに身を任せつつ、あなたのマイペースさが良い緩衝材になってスマートにまとまります。",
+                "MIX": "相手の器用さに感心しつつも、あなたは自分のペースを崩さないため、良い意味で相手を転がせる相性。"
+            },
+            "D": {
+                "A": "あなたの理屈っぽさを、相手の優しさがまるっと包み込んでくれる、精神的にとても満たされる相性。",
+                "B": "相手の圧倒的な行動力とあなたの知性が組み合わさることで、お互いを高め合える無敵のタッグに。",
+                "C": "お互い自立しているため、依存しすぎない大人でスマートな関係が築けます。程よい距離感が心地よい。",
+                "D": "価値観が合えば最強のバディ。たまには論理を捨てて、感情を素直に出すことも長続きの秘訣です。",
+                "MIX": "相手のあざとさを見抜きつつも、なんだかんだでその魅力にハマってあげる大人の余裕を持てる関係。"
+            },
+            "MIX": {
+                "A": "あなたがどんな顔を見せてもすべて受け入れてくれるので、一番素直な「素の自分」でいられる相性。",
+                "B": "一緒に悪ふざけをして盛り上がれる、とにかく刺激的で毎日がイベントのような楽しいパートナー。",
+                "C": "マイペースな相手にはあなたの適応力が最大限に発揮され、居心地の良いサステナブルな関係に。",
+                "D": "相手の高い見込みや要望にうまく合わせられるため、相手に「最高の理解者」と思わせます。",
+                "MIX": "お互いに相手の出方を伺う高度な心理戦になりがち。素直になるのが一番の長続きの秘訣かも！"
+            }
+        };
+
+        let currentQuestionIndex = 0;
+        let answers = { "A": 0, "B": 0, "C": 0, "D": 0 };
+        let currentResultTitle = "";
+
+        window.onload = function () {
+            // 初期状態はスタート画面を表示しているため、特に何もしない
+        };
+
+        function startDiagnosis() {
+            trackEvent('start_quiz'); // GA強化
+
+            // スタート画面を隠して、クイズ画面を表示する
+            document.getElementById("start-container").style.display = "none";
+
+            const quizContainer = document.getElementById("quiz-container");
+            quizContainer.classList.remove("hidden");
+            quizContainer.style.display = "block";
+
+            showQuestion();
+        }
+
+        function showQuestion() {
+            const q = questions[currentQuestionIndex];
+            const currentNum = currentQuestionIndex + 1;
+            const totalNum = questions.length;
+
+            // プログレス表示の更新
+            document.getElementById("progress-text").innerText = `質問 ${currentNum} / ${totalNum}`;
+
+            // 視覚的プログレスバー (■■□□□□)
+            let visualBar = "";
+            for (let i = 0; i < totalNum; i++) {
+                visualBar += (i < currentNum) ? "■" : "□";
+            }
+            document.getElementById("progress-visual").innerText = visualBar;
+
+            // 質問テキストと回答の設定
+            document.getElementById("question-text").innerText = q.text;
+
+            const choicesContainer = document.getElementById("choices-container");
+            choicesContainer.innerHTML = "";
+
+            q.choices.forEach(choice => {
+                const button = document.createElement("button");
+                button.innerText = choice.text;
+
+                button.onclick = function () {
+                    answerQuestion(choice.type);
+                };
+                choicesContainer.appendChild(button);
+            });
+
+            // フェードアニメーションの適用
+            const target = document.getElementById("question-fade-target");
+            target.classList.remove("fade-in");
+            void target.offsetWidth; // 強制リフロー
+            target.classList.add("fade-in");
+        }
+
+        function answerQuestion(selectedType) {
+            answers[selectedType]++;
+            currentQuestionIndex++;
+
+            trackEvent('answer_question', { question_num: currentQuestionIndex, selected_type: selectedType }); // GA強化
+
+            if (currentQuestionIndex < questions.length) {
+                showQuestion();
+            } else {
+                showResult();
+            }
+        }
+
+        function showResult() {
+            document.getElementById("quiz-container").style.display = "none";
+            document.getElementById("result-container").classList.remove("hidden");
+            window.scrollTo(0, 0);
+
+            let maxCount = -1;
+            let resultTypeKey = "MIX";
+            let isTie = false;
+
+            for (const type in answers) {
+                if (answers[type] > maxCount) {
+                    maxCount = answers[type];
+                    resultTypeKey = type;
+                    isTie = false;
+                } else if (answers[type] === maxCount) {
+                    isTie = true;
+                }
+            }
+            if (isTie) {
+                resultTypeKey = "MIX";
+            }
+
+            const result = resultsData[resultTypeKey];
+            currentResultTitle = result.title;
+
+            // 恋愛偏差値のランダム変動ロジック (ベース値 -3 〜 +3 で変動)
+            const randomOffset = Math.floor(Math.random() * 7) - 3;
+            let finalDeviation = result.deviationScore + randomOffset;
+            // 極端な数値にならないよう、一応50〜99の間に収める安全処理
+            if (finalDeviation > 99) finalDeviation = 99;
+            if (finalDeviation < 50) finalDeviation = 50;
+
+            // シェアテキスト用グローバル変数
+            window.currentHashtags = result.hashtags.join(" ");
+            window.currentGoodMatch = resultsData[result.matchGood] ? resultsData[result.matchGood].title : "誰とでも最高";
+            window.currentDeviation = finalDeviation;
+
+            document.getElementById("result-title").innerText = result.title;
+            document.getElementById("result-en").innerText = result.en;
+            document.getElementById("result-deviation").innerText = finalDeviation;
+
+            // 最強バズ機能：ランキング算出（小数点+ランダム変動）
+            let basePercent = 50;
+            // 順位出し（5タイプ中の分布シミュレーション）
+            let rankInTypes = 5;
+
+            if (finalDeviation >= 96) { basePercent = 0.2; rankInTypes = 1; }
+            else if (finalDeviation >= 93) { basePercent = 0.6; rankInTypes = 1; }
+            else if (finalDeviation >= 90) { basePercent = 1.2; rankInTypes = 1; }
+            else if (finalDeviation >= 85) { basePercent = 2.8; rankInTypes = 1; }
+            else if (finalDeviation >= 80) { basePercent = 5.4; rankInTypes = 2; }
+            else if (finalDeviation >= 75) { basePercent = 9.2; rankInTypes = 2; }
+            else if (finalDeviation >= 70) { basePercent = 14.8; rankInTypes = 3; }
+            else if (finalDeviation >= 65) { basePercent = 24.5; rankInTypes = 3; }
+            else if (finalDeviation >= 60) { basePercent = 38.2; rankInTypes = 4; }
+            else { basePercent = 48.0; rankInTypes = 5; }
+
+            // 微量なランダム変動を追加 (±0.9%以内)
+            const microOffset = (Math.random() * 1.8 - 0.9);
+            let rankPercent = (basePercent + microOffset).toFixed(1);
+            if (parseFloat(rankPercent) < 0.1) rankPercent = "0.1";
+
+            const rankingBadge = document.getElementById("ranking-badge");
+            const rankingValue = document.getElementById("ranking-percent");
+            if (rankingBadge && rankingValue) {
+                rankingValue.innerText = rankPercent;
+                rankingBadge.style.display = "block";
+            }
+
+            // 戦略的改善：才能ランキングバッジの反映
+            const talentRankBadge = document.getElementById("talent-rank-badge");
+            const talentRankValue = document.getElementById("talent-rank-value");
+            if (talentRankBadge && talentRankValue) {
+                talentRankValue.innerText = rankInTypes;
+                talentRankBadge.style.display = "block";
+            }
+
+            // 画像保存用の順位をバッジ内に反映（後続のHTML反映で利用）
+            window.currentRankInTypes = rankInTypes;
+
+            // 下部画像保存用情報の更新
+            document.getElementById("footer-type-name").innerText = result.title;
+            document.getElementById("footer-deviation").innerText = finalDeviation;
+
+            // 画像の差し替え
+            const charaImg = document.getElementById("result-character-img");
+            charaImg.src = result.image;
+
+            // 恋愛リスク指標の生成
+            const riskContainer = document.getElementById("risk-indicators");
+            riskContainer.innerHTML = `
+                <div class="risk-card">
+                    <div class="risk-label">恋愛成功率</div>
+                    <div class="risk-value">${result.riskStats.success}%</div>
+                    <div class="risk-bar-bg"><div class="risk-bar-fill" style="width: ${result.riskStats.success}%;"></div></div>
+                </div>
+                <div class="risk-card">
+                    <div class="risk-label">恋愛依存リスク</div>
+                    <div class="risk-value">${result.riskStats.depend}%</div>
+                    <div class="risk-bar-bg"><div class="risk-bar-fill" style="width: ${result.riskStats.depend}%;"></div></div>
+                </div>
+                <div class="risk-card">
+                    <div class="risk-label">浮気されやすさ</div>
+                    <div class="risk-value">${result.riskStats.cheat}%</div>
+                    <div class="risk-bar-bg"><div class="risk-bar-fill" style="width: ${result.riskStats.cheat}%;"></div></div>
+                </div>
+            `;
+
+            document.getElementById("result-description").innerHTML = result.description.replace(/\n/g, '<br>');
+
+            document.getElementById("result-description").innerHTML = result.description.replace(/\n/g, '<br>');
+
+            // 詳細分析カードへのデータ反映
+            document.getElementById("card-style").innerText = result.loveStyle;
+            document.getElementById("card-style-desc").innerText = result.loveStyleDesc;
+            document.getElementById("card-strengths").innerText = result.strengths;
+            document.getElementById("card-weaknesses").innerText = result.weaknesses;
+            document.getElementById("card-match").innerText = result.matchType;
+            
+            // PASONAの文章反映
+            document.getElementById("pasona-problem-text").innerText = result.pasonaProblem;
+            document.getElementById("pasona-agitation-text").innerText = result.pasonaAgitation;
+            document.getElementById("pasona-solution-text").innerText = result.pasonaSolution;
+
+            // 相性リスト（下部）
+            const goodObj = resultsData[result.matchGood] || resultsData["MIX"];
+            const bestListHtml = `
+                <li>${goodObj.title}</li>
+                <li>${resultsData["MIX"].title}</li>
+                <li>相性を補完する器用なタイプ</li>
+            `;
+            document.getElementById("compatibility-best-list").innerHTML = bestListHtml;
+
+            // 戦略的改善：才能ランキングリストの生成
+            const rankingListContainer = document.getElementById("ranking-list-container");
+            if (rankingListContainer) {
+                // 仮のランキング順序（現在のタイプを算出した順位に滑り込ませる）
+                const allTypes = Object.keys(resultsData).filter(key => key !== "MIX");
+                const sortedTypes = ["MIX", "B", "D", "A", "C"]; // デフォルト
+
+                // 表示用のHTML生成
+                let listHtml = "";
+                sortedTypes.slice(0, 5).forEach((key, index) => {
+                    const rank = index + 1;
+                    const isYourType = (key === resultTypeKey);
+                    const label = isYourType ? '<span class="rank-your-label">YOU</span>' : '';
+                    const rankClass = rank <= 3 ? `top${rank}` : '';
+
+                    listHtml += `
+                        <div class="ranking-item">
+                            <span class="rank-num ${rankClass}">${rank}</span>
+                            <span class="rank-type-name">${resultsData[key].title}</span>
+                            ${label}
+                        </div>
+                    `;
+                });
+                rankingListContainer.innerHTML = listHtml;
+            }
+
+            const hashtagsContainer = document.getElementById("result-hashtags");
+            hashtagsContainer.innerHTML = "";
+            result.hashtags.forEach(tag => {
+                const span = document.createElement("span");
+                span.className = "hashtag";
+                span.innerText = tag;
+                hashtagsContainer.appendChild(span);
+            });
+
+            const statsContainer = document.getElementById("result-stats");
+            statsContainer.innerHTML = "";
+            result.stats.forEach(stat => {
+                const row = document.createElement("div");
+                row.className = "stat-row";
+                const label = document.createElement("div");
+                label.className = "stat-label";
+                label.innerText = stat.label;
+
+                const barBg = document.createElement("div");
+                barBg.className = "stat-bar-bg";
+
+                const barFill = document.createElement("div");
+                barFill.className = `stat-bar-fill ${stat.colorClass}`;
+                barFill.style.width = "0%";
+
+                barBg.appendChild(barFill);
+                row.appendChild(label);
+                row.appendChild(barBg);
+                statsContainer.appendChild(row);
+
+                setTimeout(() => {
+                    barFill.style.width = `${stat.value}%`;
+                }, 300);
+            });
+
+            const goodMatchObj = resultsData[result.matchGood];
+            document.getElementById("match-good-name").innerText = goodMatchObj ? goodMatchObj.title : "みんな！";
+
+            const badMatchObj = resultsData[result.matchBad];
+            document.getElementById("match-bad-name").innerText = badMatchObj ? badMatchObj.title : result.matchBad;
+
+            generateAllTypesDict(resultTypeKey);
+
+            // アフィリエイトリンクの動的表示を呼び出す
+            displayAffiliateLinks(result.title);
+
+            // アクセス解析：結果表示イベント
+            trackEvent('show_result', {
+                result_type: resultTypeKey,
+                result_title: result.title,
+                deviation: finalDeviation
+            });
+        }
+
+        function scrollToCta() {
+            trackEvent('click_reveal', { action: 'scroll_to_cta' });
+            const target = document.getElementById("fortune-cta-section");
+            if (target) {
+                const y = target.getBoundingClientRect().top + window.scrollY - 20;
+                window.scrollTo({ top: y, behavior: 'smooth' });
+            }
+        }
+
+        function generateAllTypesDict(myTypeKey) {
+            const container = document.getElementById("all-types-content");
+            container.innerHTML = "";
+            for (const key in resultsData) {
+                const data = resultsData[key];
+
+                let compHtml = "";
+                if (myTypeKey && compatibilityTexts[myTypeKey] && key !== myTypeKey) {
+                    const compText = compatibilityTexts[myTypeKey][key];
+                    compHtml = `
+                        <div style="margin-top: 15px; padding: 12px; background: rgba(241, 150, 163, 0.1); border-radius: 8px; border-left: 4px solid var(--color-pink);">
+                            <p style="font-size:0.75rem; font-weight:900; color:var(--color-pink); margin:0 0 6px 0;">
+                                👩‍❤️‍👨 「${resultsData[myTypeKey].title}」のあなたとの相性は…
+                            </p>
+                            <p style="font-size:0.8rem; line-height:1.5; color:var(--color-text); margin:0;">
+                                ${compText}
+                            </p>
+                        </div>
+                    `;
+                } else if (key === myTypeKey) {
+                    compHtml = `
+                        <div style="margin-top: 15px; padding: 8px; background: rgba(191, 203, 168, 0.2); border-radius: 8px; text-align: center;">
+                            <span style="font-size:0.8rem; font-weight:bold; color:var(--color-mint);">📍 あなたの診断結果タイプです</span>
+                        </div>
+                    `;
+                }
+
+                const item = document.createElement("div");
+                item.className = "type-item";
+                item.innerHTML = `
+                    <div style="display: flex; align-items: center; margin-bottom: 10px;">
+                        <img class="type-item-img" src="${data.image}" alt="${data.title}">
+                        <h4 style="margin:0; font-size:1rem; color:var(--color-text);">${data.title}</h4>
+                    </div>
+                    <div class="type-item-info">
+                        <p>${data.description}</p>
+                        ${compHtml}
+                    </div>
+                `;
+                container.appendChild(item);
+            }
+        }
+
+        function toggleAllTypes() {
+            const content = document.getElementById("all-types-content");
+            const icon = document.getElementById("all-types-icon");
+            if (content.classList.contains("open")) {
+                content.classList.remove("open");
+                icon.innerText = "▼";
+            } else {
+                content.classList.add("open");
+                icon.innerText = "▲";
+            }
+        }
+
+        function scrollToAllTypes() {
+            const content = document.getElementById("all-types-content");
+            const icon = document.getElementById("all-types-icon");
+            if (!content.classList.contains("open")) {
+                content.classList.add("open");
+                icon.innerText = "▲";
+            }
+            // 少し上にオフセットを持たせてスクロール
+            const target = document.getElementById("all-types-section-target");
+            const y = target.getBoundingClientRect().top + window.scrollY - 20;
+            window.scrollTo({ top: y, behavior: 'smooth' });
+        }
+
+        // ▼ アフィリエイト・デバイス自動振り分け機能 ▼
+
+        function getOS() {
+            const userAgent = navigator.userAgent || navigator.vendor || window.opera;
+            if (/android/i.test(userAgent)) return 'Android';
+            if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) return 'iOS';
+            return 'Other';
+        }
+
+        /**
+         * アフィリエイトリンク表示
+         * 安全のためURLは平文に戻し、画像とテキストリンクを併用するハイブリッド方式に変更
+         */
+        function displayAffiliateLinks(resultTitle) {
+            const afterResultAdSpace = document.getElementById('after-result-ad-content');
+            const afterSaveAdSpace = document.getElementById('after-save-ad-content');
+            const bottomAdSpace = document.getElementById('bottom-ad-content');
+            const os = getOS();
+
+            // 安全性を優先し、URLは平文で管理（Adblock対策はクラス名と構造で対応）
+            const linkUrl = (os === 'iOS')
+                ? 'https://mttag.com/s/FVEwe5OMQ6c'
+                : 'https://mttag.com/s/T0bH03Hq6sA';
+
+            const partnerName = (os === 'iOS') ? 'careapp' : 'urano';
+            const buttonText = (os === 'iOS') ? 'ケアプリで今すぐ無料相談 ▶' : 'ウラーノで今すぐ無料占う ▶';
+            const catchPhrase = (os === 'iOS') ? 'チャットで本格相談✨' : '一流占い師にお悩み相談✨';
+            const bannerSrc = (os === 'iOS')
+                ? 'https://mttag.com/banner/FVEwe5OMQ6c'
+                : 'https://mttag.com/banner/T0bH03Hq6sA';
+
+            // 画像とテキストボタンをセットにしたHTML
+            // 画像がブロックされてもボタンが残る設計
+            const createHybridAdHTML = (pos) => `
+                <div class="hybrid-ad-container">
+                    <a href="${linkUrl}" rel="nofollow" target="_blank" onclick="trackEvent('affiliate_click', { ad_name: '${partnerName}', position: '${pos}_img', type: '${os}' })">
+                        <img src="${bannerSrc}" alt="鑑定" style="width:100%; border-radius:12px; display:block; margin-bottom:12px;" onerror="this.style.display='none'">
+                    </a>
+                    <p class="fallback-premium-desc">${catchPhrase}</p>
+                    <a href="${linkUrl}" class="fallback-premium-link" target="_blank" onclick="trackEvent('affiliate_click', { ad_name: '${partnerName}', position: '${pos}_txt', type: '${os}' })">
+                        ${buttonText}
+                    </a>
+                </div>
+            `;
+
+            // 反映
+            if (afterResultAdSpace) afterResultAdSpace.innerHTML = createHybridAdHTML('after_result');
+            if (afterSaveAdSpace) afterSaveAdSpace.innerHTML = createHybridAdHTML('after_save');
+
+            // 各種CTAボタンの設定
+            const redCtaContainer = document.getElementById("cta-button-red-container");
+            if (redCtaContainer) {
+                redCtaContainer.innerHTML = `<a href="${linkUrl}" class="btn-affiliate-red" target="_blank" onclick="trackEvent('affiliate_click', {ad_name: '${partnerName}', position: 'red_cta', type: '${os}'})">今すぐ無料で鑑定する ▶</a>`;
+            }
+
+            // 追従型CTA (Floating Action Button) の設定
+            const floatingCtaContainer = document.getElementById("floating-cta-container");
+            if (floatingCtaContainer) {
+                floatingCtaContainer.innerHTML = `<a href="${linkUrl}" class="btn-affiliate-red" style="padding: 12px; font-size: 1rem;" target="_blank" onclick="trackEvent('affiliate_click', {ad_name: '${partnerName}', position: 'floating', type: '${os}'})">今すぐ無料で鑑定する ▶</a>`;
+                document.getElementById("floating-cta").style.display = "block";
+            }
+
+            // 下部広告枠 (レコメンド風)
+            if (bottomAdSpace) {
+                const extraLink = (resultTitle.includes('陽キャ') || resultTitle.includes('カメレオン'))
+                    ? 'https://mttag.com/s/SxEQ5KFsReE'
+                    : 'https://mttag.com/s/UJy-M-sarJ4';
+
+                bottomAdSpace.innerHTML = `
+                    <div style="font-size:0.8rem; font-weight:700; color:#888; margin-bottom:10px;">あなたへの特別メッセージ</div>
+                    <a href="${extraLink}" class="fallback-premium-link" style="background:var(--color-mint); box-shadow:0 4px 10px rgba(191,203,168,0.3);" target="_blank" onclick="trackEvent('affiliate_click', { ad_name: 'extra_advice' })">
+                        今すぐアドバイスを聞く ▶
+                    </a>
+                `;
+            }
+        }
+
+        // ▼ アクション機能 ▼
+
+        function getShareText() {
+            return `私の恋愛偏差値は【${window.currentDeviation}】でした💖あなたもやってみて！✨\n\n#恋愛偏差値診断 #浮気されやすさ診断\n${window.location.href}`;
+        }
+
+        function shareX() {
+            trackEvent('share_click', { method: 'X' });
+            const text = encodeURIComponent(getShareText());
+            const url = encodeURIComponent(window.location.href);
+            window.open(`https://twitter.com/intent/tweet?text=${text}&url=${url}`, '_blank');
+        }
+
+        function shareLine() {
+            trackEvent('share_click', { method: 'LINE' });
+            const text = encodeURIComponent(`${getShareText()}\n\nここからやってみて！✨\n${window.location.href}`);
+            window.open(`https://line.me/R/msg/text/?${text}`, '_blank');
+        }
+
+        function dummyShare(snsName) {
+            trackEvent('share_click', { method: snsName });
+            alert(`【${snsName}でシェアする方法】\n\n① 上にある「📸 結果画像を保存する」ボタンで、結果の画像 (9:16) をスマホに保存してください。\n② ${snsName}のアプリを開いて、ストーリーズやフィードに画像を載せて投稿してね✨`);
+        }
+
+        // ▼ 追加実装: Threadsのシェア（ワンタップ）
+        function shareThreads() {
+            trackEvent('share_click', { method: 'Threads' });
+            // Threadsの投稿画面を自動で開き、テキストとURLを埋め込む（※ブラウザ環境によってアプリが開きます）
+            const text = encodeURIComponent(`${getShareText()}\n\nここからやってみて！✨\n${window.location.href}`);
+            window.open(`https://www.threads.net/intent/post?text=${text}`, '_blank');
+        }
+
+        // ▼ 追加実装: Instagramのシェア補助（テキストとURLを自動コピーしてインスタを開く）
+        function shareInstagram() {
+            trackEvent('share_click', { method: 'Instagram_Assistant' });
+            const tempText = `${getShareText()}\n\nここから診断してみてね！✨\n${window.location.href}`;
+
+            // Web Share API が使えるスマホ（iPhoneなど）のネイティブシェアメニューを呼び出す機能があれば優先する
+            if (navigator.share) {
+                navigator.share({
+                    title: 'あなたの隠れた恋愛才能診断🎀',
+                    text: `${getShareText()}\n\nここからやってみて！✨\n`,
+                    url: window.location.href
+                }).catch((error) => {
+                    console.log('シェアがキャンセル、または失敗しました', error);
+                    // 失敗した場合はコピーへフォールバック
+                    copyToClipboardInstagramFallback(tempText);
+                });
+            } else {
+                // PC等の場合はコピー機能とインスタ起動を呼び出す
+                copyToClipboardInstagramFallback(tempText);
+            }
+        }
+
+        // Instagramフォールバック用
+        function copyToClipboardInstagramFallback(tempText) {
+            if (navigator.clipboard) {
+                navigator.clipboard.writeText(tempText).then(() => {
+                    alert("【Instagramでシェアする方法】\n\n① 診断結果とURLをコピーしました！📋\n（※まだの場合は上のボタンから結果の画像も保存してね📸）\n\n② この後Instagramが開くので、ストーリーズやフィードの投稿画面で「ペースト（貼り付け）」してシェアしてね✨");
+                    // インスタを別タブで開く（スマホならアプリに飛ぶことが多い）
+                    window.open('https://www.instagram.com/', '_blank');
+                }).catch(err => {
+                    dummyShare('Instagram');
+                });
+            } else {
+                dummyShare('Instagram');
+            }
+        }
+
+        function copyToClipboard() {
+            trackEvent('share', { method: 'copy_link' });
+            const tempText = `${getShareText()}\n\nみんなもここから診断してみてね！✨\n${window.location.href}`;
+            if (navigator.clipboard) {
+                navigator.clipboard.writeText(tempText).then(() => {
+                    alert("テキストとURLをコピーしたよ！💖\nSNSに貼り付けてシェアしてね！");
+                }).catch(err => {
+                    alert("コピーに失敗しちゃいました🥲");
+                });
+            } else {
+                prompt("下のテキストをコピーしてね！", tempText);
+            }
+        }
+
+        /**
+         * 画像保存・シェア体験の最適化
+         * 範囲を絞り、iOSではシェアシート(写真アプリ保存)を起動、PCではDL
+         */
+        async function saveAsImage() {
+            trackEvent('save_image', { result_title: currentResultTitle });
+            const target = document.getElementById("capture-area");
+
+            try {
+                // キャプチャ実行 (JPEG品質向上のためscale:3)
+                const canvas = await html2canvas(target, {
+                    backgroundColor: "#FCF8F5",
+                    scale: 3,
+                    logging: false,
+                    useCORS: true
+                });
+
+                // JPEG形式に変換 (品質0.9)
+                const dataUrl = canvas.toDataURL("image/jpeg", 0.9);
+                const fileName = `恋愛才能診断_${currentResultTitle}.jpg`;
+
+                // Web Share API (iOS/Androidでの写真保存・SNS直接シェア)
+                if (navigator.share && navigator.canShare) {
+                    const blob = await (await fetch(dataUrl)).blob();
+                    const file = new File([blob], fileName, { type: "image/jpeg" });
+
+                    if (navigator.canShare({ files: [file] })) {
+                        await navigator.share({
+                            files: [file],
+                            title: '恋愛才能診断結果',
+                            text: `恋愛偏差値は【${window.currentDeviation}】でした！✨ #恋愛才能診断`
+                        });
+                        return; // シェアが成功したら終了
+                    }
+                }
+
+                // フォールバック: 従来のダウンロード処理 (PC/未対応ブラウザ)
+                const link = document.createElement("a");
+                link.download = fileName;
+                link.href = dataUrl;
+                link.click();
+
+            } catch (err) {
+                console.error("画像の保存に失敗しました。", err);
+                alert("画像の保存に失敗しました。もう一回やってみてね🥲");
+            }
+        }
+    </script>
+</body>
+
+</html>
